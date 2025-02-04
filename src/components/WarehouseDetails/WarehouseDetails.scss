@@ -1,0 +1,27 @@
+@use "../../styles/partials/global";
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+.warehouse-detail {
+  margin: 0 1rem;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 auto;
+  }
+
+  &__heading-container {
+  }
+
+  &__back-icon {
+  }
+
+  &__name {
+  }
+
+  &__edit-icon {
+  }
+}
