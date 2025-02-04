@@ -10,7 +10,6 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <p>This is MM's instock project</p>
         <main>
           <Routes>
             <Route path="/" element={<Warehouses />} />
