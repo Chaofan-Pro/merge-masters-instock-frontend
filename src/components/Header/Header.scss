@@ -4,6 +4,7 @@
 
 .header {
   background-color: $background-color1;
+  overflow-y: visible;
   padding: 0 1rem;
   height: 12.5rem;
   @include tablet {
@@ -36,9 +37,11 @@
     font-size: 0.8125rem;
     text-align: center;
     width: 10.1875rem;
+    height: 2.25rem;
     border-radius: 1.25rem;
     @include tablet {
       width: 6.6875rem;
+      height: 2.375rem;
       font-size: 0.875rem;
       border-radius: 1.25rem;
     }
