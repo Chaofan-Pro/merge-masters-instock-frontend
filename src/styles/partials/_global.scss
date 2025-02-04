@@ -1,3 +1,6 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
 *,
 *::before,
 *::after {
@@ -8,3 +11,4 @@
 a {
   text-decoration: none;
 }
+

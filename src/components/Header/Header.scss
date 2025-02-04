@@ -5,26 +5,46 @@
 .header {
   background-color: $background-color1;
   padding: 0 1rem;
+  @include tablet {
+    display: flex;
+    padding: 2rem 2rem 0 2rem;
+    justify-content: space-between;
+  }
+  @include desktop {
+    width: 100vw;
+    padding-left: calc((100vw - 63.75rem) / 2);
+    padding-right: calc((100vw - 63.75rem) / 2);
+  }
   &__logo {
     display: block;
     margin: 0 auto;
     padding: 1.5rem 0 1rem 0;
-    width: auto;
+    @include tablet {
+      padding: 0;
+      margin: 0;
+      padding-bottom: 7.5625rem;
+    }
   }
-
   &__nav-bar {
     display: flex;
     justify-content: space-between;
     padding-bottom: 5.5rem;
+    @include tablet {
+      padding-bottom: 7.5625rem;
+    }
   }
   &__nav-item {
     padding: 0.5rem;
     color: $secondary-color2;
     font-size: 0.8125rem;
-    width: 10.25rem;
-    height: 2.25rem;
     text-align: center;
+    width: 10.1875rem;
     border-radius: 1.25rem;
+    @include tablet {
+      width: 6.6875rem;
+      font-size: 0.875rem;
+      border-radius: 1.25rem;
+    }
     &:hover {
       color: $primary-color3;
       text-decoration: underline;
