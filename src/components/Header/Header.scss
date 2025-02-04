@@ -5,10 +5,12 @@
 .header {
   background-color: $background-color1;
   padding: 0 1rem;
+  height: 12.5rem;
   @include tablet {
     display: flex;
     padding: 2rem 2rem 0 2rem;
     justify-content: space-between;
+    height: 11.625rem;
   }
   @include desktop {
     width: 100vw;
@@ -22,16 +24,11 @@
     @include tablet {
       padding: 0;
       margin: 0;
-      padding-bottom: 7.5625rem;
     }
   }
   &__nav-bar {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 5.5rem;
-    @include tablet {
-      padding-bottom: 7.5625rem;
-    }
   }
   &__nav-item {
     padding: 0.5rem;
