@@ -1,0 +1,7 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixin" as *;
+
+.editWarehouse__title{
+display: flex;
+}
