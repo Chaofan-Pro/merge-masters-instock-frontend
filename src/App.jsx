@@ -1,6 +1,7 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
+import CustomModal from "./components/CustomModal/CustomModal";
 import Footer from "./components/Footer/Footer";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
@@ -10,6 +11,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+        <CustomModal />
         <main>
           <Routes>
             <Route path="/" element={<Warehouses />} />
