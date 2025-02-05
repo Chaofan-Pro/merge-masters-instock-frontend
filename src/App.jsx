@@ -2,12 +2,12 @@ import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import AddInventory from "./components/AddInventory/AddInventory";
-import AddWarehouse from "./components/AddWarehouse/AddWarehouse";
-import EditInventory from "./components/EditInventory/EditInventory";
-import EditWarehouse from "./components/EditWarehouse/EditWarehouse";
-import InventoryDetails from "./components/InventoryDetails/InventoryDetails";
-import WarehouseDetails from "./components/WarehouseDetails/WarehouseDetails";
+import AddInventory from "./pages/AddInventory/AddInventory";
+import AddWarehouse from "./pages/AddWarehouse/AddWarehouse";
+import EditInventory from "./pages/EditInventory/EditInventory";
+import EditWarehouse from "./pages/EditWarehouse/EditWarehouse";
+import InventoryDetails from "./pages/InventoryDetails/InventoryDetails";
+import WarehouseDetails from "./pages/WarehouseDetails/WarehouseDetails";
 import Warehouses from "./pages/Warehouses/Warehouses";
 import Inventory from "./pages/Inventory/Inventory";
 
@@ -34,8 +34,8 @@ function App() {
             <Route path="/inventory/add" element={<AddInventory />} />
           </Routes>
         </main>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
