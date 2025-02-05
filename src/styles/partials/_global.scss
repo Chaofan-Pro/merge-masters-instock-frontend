@@ -32,3 +32,28 @@ main {
     top: 5.75rem;
   }
 }
+
+.warehouse-heading {
+  &__container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  &__back-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &__name {
+    line-height: 2.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $primary-color1;
+
+    @include tablet {
+      line-height: 2.5rem;
+      font-size: 2rem;
+    }
+  }
+}

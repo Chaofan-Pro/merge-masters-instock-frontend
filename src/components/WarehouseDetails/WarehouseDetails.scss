@@ -1,6 +1,7 @@
 @use "../../styles/partials/global";
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
 
 .warehouse-detail {
   display: flex;
@@ -57,7 +58,8 @@
       color: $primary-color3;
       line-height: 1.375rem;
       font-size: 0.875rem;
-      //   font-weight: 600;
+      font-family: "Titillium Web", sans-serif !important;
+      font-weight: 600;
     }
   }
 }
