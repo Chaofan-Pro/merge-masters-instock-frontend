@@ -16,7 +16,7 @@ const Header = () => {
         <Link
           to="/warehouses"
           className={
-            location === "/warehouses"
+            location.includes("warehouses")
               ? "header__nav-item--active"
               : "header__nav-item"
           }
@@ -26,7 +26,7 @@ const Header = () => {
         <Link
           to="/inventory"
           className={
-            location === "/inventory"
+            location.includes("/inventory")
               ? "header__nav-item--active"
               : "header__nav-item"
           }
