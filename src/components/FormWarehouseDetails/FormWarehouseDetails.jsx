@@ -17,14 +17,14 @@ const FormWarehouseDetails = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const [isNameValid, setNameValid] = useState("true");
-  const [isAddressValid, setAddressValid] = useState("true");
-  const [isCityValid, setCityValid] = useState("true");
-  const [isCountryValid, setCountryValid] = useState("true");
-  const [isContactNameValid, setContactNameValid] = useState("true");
-  const [isContactPositionValid, setContactPositionValid] = useState("true");
-  const [isPhoneValid, setPhoneValid] = useState("true");
-  const [isEmailValid, setEmailValid] = useState("true");
+  const [isNameValid, setNameValid] = useState(true);
+  const [isAddressValid, setAddressValid] = useState(true);
+  const [isCityValid, setCityValid] = useState(true);
+  const [isCountryValid, setCountryValid] = useState(true);
+  const [isContactNameValid, setContactNameValid] = useState(true);
+  const [isContactPositionValid, setContactPositionValid] = useState(true);
+  const [isPhoneValid, setPhoneValid] = useState(true);
+  const [isEmailValid, setEmailValid] = useState(true);
 
   const fetchWarehouseDetail = async () => {
     try {
@@ -39,58 +39,58 @@ const FormWarehouseDetails = () => {
       setContactPosition(data.contact_position);
       setPhone(data.contact_phone);
       setEmail(data.contact_email);
-      console.log(warehouse);
     } catch (error) {
       console.error("ERROR: " + error);
     }
   };
   useEffect(() => {
     fetchWarehouseDetail();
-  }, []);
+  }, [id]);
 
   // if (!warehouse) return <p>No Warehouse Detail Found</p>;
 
   const changeNameHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setName(e.target.value);
     setNameValid(true);
   };
   const changeAddressHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setAddress(e.target.value);
     setAddressValid(true);
   };
   const changeCityHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setCity(e.target.value);
     setCityValid(true);
   };
   const changeCountryHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setCountry(e.target.value);
   };
   const changeContactNameHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setContactName(e.target.value);
     setContactNameValid(true);
   };
   const changeContactPositionHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setContactPosition(e.target.value);
     setContactPositionValid(true);
   };
   const changePhoneHandle = (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setPhone(e.target.value);
     setPhoneValid(true);
   };
   const changeEmailHandle = (e) => {
-    e.PreventDeault;
-    setEmailPosition(e.target.value);
+    e.preventDefault();
+    setEmail(e.target.value);
     setEmailValid(true);
   };
+
   const submitHandle = async (e) => {
-    e.PreventDeault;
+    e.preventDefault();
     setNameValid(!!name);
     setAddressValid(!!address);
     setCityValid(!!city);
@@ -101,25 +101,25 @@ const FormWarehouseDetails = () => {
     setEmailValid(!!email);
 
     if (
-      isNameValid &&
-      isAddressValid &&
-      isCityValid &&
-      isCountryValid &&
-      isContactNameValid &&
-      isContactPositionValid &&
-      isPhoneValid &&
-      isEmailValid
+      name &&
+      address &&
+      city &&
+      country &&
+      contactName &&
+      contactPosition &&
+      phone &&
+      email
     ) {
       try {
         await axios.put(baseUrl + `/api/warehouses/${id}`, {
-          name,
+          warehouse_name: name,
           address,
           city,
           country,
-          contactName,
-          contactPosition,
-          phone,
-          email,
+          contact_name: contactName,
+          contact_position: contactPosition,
+          contact_phone: phone,
+          contact_email: email,
         });
         fetchWarehouseDetail();
       } catch (error) {
@@ -132,13 +132,13 @@ const FormWarehouseDetails = () => {
     <form onSubmit={submitHandle}>
       <article className="form">
         <h3 className="form__title">Warehouse Details</h3>
-        <label className="form__lable" htmlFor="name">
+        <label className="form__lable" htmlFor="warehouse_name">
           Warehouse Name
         </label>
         <input
           className="form__input"
           type="text"
-          id="name"
+          id="warehouse_name"
           value={name}
           onChange={changeNameHandle}
           placeholder={name}
@@ -211,46 +211,46 @@ const FormWarehouseDetails = () => {
       </article>
       <article className="form">
         <h3 className="form__title">Contact Details</h3>
-        <label className="form__lable" htmlFor="name">
+        <label className="form__lable" htmlFor="contact_name">
           Contact Name
         </label>
         <input
           className="form__input"
           type="text"
-          id="name"
+          id="contact_name"
           value={contactName}
           onChange={changeContactNameHandle}
           placeholder={contactName}
         />
-        <label className="form__lable" htmlFor="position">
+        <label className="form__lable" htmlFor="contact_position">
           Position
         </label>
         <input
           className="form__input"
           type="text"
-          id="position"
+          id="contact_position"
           placeholder={contactPosition}
           onChange={changeContactPositionHandle}
           value={contactPosition}
         />
-        <label className="form__lable" htmlFor="phoneNumber">
+        <label className="form__lable" htmlFor="contact_phone">
           Phone Number
         </label>
         <input
           className="form__input"
           type="tel"
-          id="phoneNumber"
+          id="contact_phone"
           placeholder={phone}
           onChange={changePhoneHandle}
           value={phone}
         />
-        <label className="form__lable" htmlFor="email">
+        <label className="form__lable" htmlFor="contact_email">
           Email
         </label>
         <input
           className="form__input"
           type="email"
-          id="email"
+          id="contact_email"
           placeholder={email}
           onChange={changeEmailHandle}
           value={email}
