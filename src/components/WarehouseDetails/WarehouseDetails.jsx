@@ -1,22 +1,21 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import edit from "../../assets/icons/edit-white-24px.svg";
 import axios from "axios";
 import "./WarehouseDetails.scss";
 
-const baseUrl = import.meta.env.VITE_APP_URL;
+const baseUrl = import.meta.env.VITE_API_URL;
 
 const WarehouseDetails = () => {
   const { id } = useParams(); // Get warehouse ID from URL
-  const navigate = useNavigate();
   const [warehouse, setWarehouse] = useState(null);
 
   useEffect(() => {
     const fetchWarehouseDetail = async () => {
       try {
         const singleWarehouseRes = await axios.get(
-          baseUrl + `api/warehouses/${id}`
+          baseUrl + `/api/warehouses/${id}`
         );
         setWarehouse(singleWarehouseRes.data);
       } catch (error) {
