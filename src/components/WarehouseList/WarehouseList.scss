@@ -250,6 +250,9 @@ body {
     @include tablet {
       padding-left: 0.3rem;
     }
+    @include desktop {
+      cursor: pointer;
+    }
   }
 
   &__actions {
