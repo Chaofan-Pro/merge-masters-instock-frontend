@@ -2,8 +2,8 @@ import "./EditWarehouse.scss";
 import axios from "axios";
 import { useState } from "react";
 
-import InputWarehouseDetails from "../../components/InputWarehouseDetails/InputWarehouseDetails";
-import InputContactDetails from "../../components/InputContactDetails/InputContactDetails";
+import FormWarehouseDetails from "../../components/FormWarehouseDetails/FormWarehouseDetails";
+import FormContactDetails from "../../components/FormContactDetails/FormContactDetails";
 
 const EditWarehouse = () => {
   const getWarehouse = 
@@ -13,8 +13,8 @@ const EditWarehouse = () => {
         <img className="main-heading__back-icon" src="/src/assets/icons/arrow_back-24px.svg" alt="back arrow" />
         <h3 className="main-heading__name" >Edit Warehouse</h3>
       </div>
-      <InputWarehouseDetails />
-      <InputContactDetails />
+      <FormWarehouseDetails />
+      <FormContactDetails />
     </>
   );
 };
