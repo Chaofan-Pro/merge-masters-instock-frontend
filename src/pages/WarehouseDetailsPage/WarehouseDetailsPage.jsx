@@ -2,10 +2,13 @@ import "./WarehouseDetailsPage.scss";
 import WarehouseDetailsComp from "../../components/WarehouseDetails/WarehouseDetails";
 import React from "react";
 
-function WarehouseDetails() {
+function WarehouseDetails({ warehouse, fetchWarehouseDetail }) {
   return (
     <>
-      <WarehouseDetailsComp />
+      <WarehouseDetailsComp
+        warehouse={warehouse}
+        fetchWarehouseDetail={fetchWarehouseDetail}
+      />
     </>
   );
 }
