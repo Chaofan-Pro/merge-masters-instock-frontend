@@ -13,6 +13,7 @@ a {
 }
 body {
   position: relative;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -34,6 +35,10 @@ main {
   }
 }
 
+.hide {
+  display: none;
+}
+
 .form {
   padding: 1rem 1rem 1.5rem 1rem;
   border-top: 1px solid $secondary-color2;
@@ -47,7 +52,7 @@ main {
     font-weight: 600;
     padding-bottom: 0.5rem;
     color: $primary-color1;
-    @include tablet{
+    @include tablet {
       font-size: 1.5rem;
     }
   }
@@ -56,9 +61,23 @@ main {
     font-size: 0.8125rem;
     padding: 1rem 0 0.25rem 0;
     font-weight: 600;
-    @include tablet{
-      font-size: .875rem;
+    color: $primary-color1;
+    @include tablet {
+      font-size: 0.875rem;
     }
+  }
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-top: 4px;
+  }
+  &__error-icon {
+    height: 1rem;
+  }
+  &__error-text {
+    color: $supporting-color2;
+    font-size: 0.75rem;
   }
 
   &__input {
@@ -67,7 +86,7 @@ main {
     font-weight: 400;
     font-size: 0.8125rem;
     font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-    padding-left: 1rem;
+    padding: 0 1rem;
     width: calc(100vw - 5rem);
     height: 2.25rem;
     border-radius: 20px;
@@ -75,9 +94,20 @@ main {
     &::placeholder {
       color: $primary-color1;
       font-weight: 400;
+      // &:focus {
+      //   display: none;
+      // }
     }
-    @include tablet{
-      font-size: .875rem;
+    &:focus {
+      outline: none;
+      border: 1px solid $primary-color2;
+    }
+    &--error {
+      border: 1px solid $supporting-color2;
+    }
+    @include tablet {
+      font-size: 0.875rem;
+      height: 2.375rem;
     }
   }
 }

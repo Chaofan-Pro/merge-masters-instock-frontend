@@ -1,4 +1,4 @@
-import "./InventoryDetails.scss";
+import "./InventoryDetailsPage.scss";
 import React from "react";
 
 function InventoryDetails() {
