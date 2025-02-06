@@ -1,9 +1,12 @@
 import "./EditWarehouse.scss";
+import axios from "axios";
+import { useState } from "react";
 
 import InputWarehouseDetails from "../../components/InputWarehouseDetails/InputWarehouseDetails";
 import InputContactDetails from "../../components/InputContactDetails/InputContactDetails";
 
 const EditWarehouse = () => {
+  const getWarehouse = 
   return (
     <>
       <div className="main-heading">
