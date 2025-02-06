@@ -113,4 +113,14 @@
         }
     }
 
+    &__cancel:hover{
+        border-color: $primary-color2;
+        color: $primary-color2;
+    }
+
+    &__delete:hover{
+        background-color: $background-color1;
+        color: $primary-color3;
+    }
+
 }
