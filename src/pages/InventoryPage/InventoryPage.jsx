@@ -1,4 +1,4 @@
-import "./Inventory.scss";
+import "./InventoryPage.scss";
 
 const Inventory = () => {
   return (
