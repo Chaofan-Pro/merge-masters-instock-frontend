@@ -5,7 +5,7 @@
 body {
   background-color: $background-color2;
   font-size: 13px;
-  font-family: "Titillium Web", sans-serif;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
 }
 
 .warehouse {
@@ -297,9 +297,9 @@ body {
       font-size: 12px;
     }
 
-    &__sort-add {
-      // gap: 10%;
-    }
+    // &__sort-add {
+    //   // gap: 10%;
+    // }
 
     &__sort-icon {
       width: 16px;
