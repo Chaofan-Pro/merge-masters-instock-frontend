@@ -1,12 +1,46 @@
-import "./InputWarehouseDetails.scss";
+import "./FormWarehouseDetails.scss";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const InputWarehouseDetails = () => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
+const FormWarehouseDetails = () => {
+  // const [name, setName] = useState("");
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [country, setCountry] = useState("");
+
+  const baseUrl = import.meta.env.VITE_API_URL;
+
+  const { id } = useParams(); // Get warehouse ID from URL
+  const [warehouse, setWarehouse] = useState(null);
+
+  const fetchWarehouseDetail = async () => {
+    try {
+      const singleWarehouseRes = await axios.get(
+        baseUrl + `/api/warehouses/${id}`
+      );
+      setWarehouse(singleWarehouseRes.data);
+      console.log(warehouse);
+    } catch (error) {
+      console.error("ERROR: " + error);
+    }
+  };
+  useEffect(() => {
+    fetchWarehouseDetail();
+  }, [id]);
+
+  if (!warehouse) return <p>No Warehouse Detail Found</p>;
+
+  const {
+    warehouse_name,
+    address,
+    city,
+    country,
+    contact_name,
+    contact_position,
+    contact_phone,
+    contact_email,
+  } = warehouse;
 
   return (
     <form className="form">
@@ -19,7 +53,7 @@ const InputWarehouseDetails = () => {
         type="text"
         id="name"
         value={name}
-        placeholder="warehouse.name"
+        placeholder={warehouse_name}
       />
       <label className="form__lable" htmlFor="address">
         Street Address
@@ -55,4 +89,4 @@ const InputWarehouseDetails = () => {
   );
 };
 
-export default InputWarehouseDetails;
+export default FormWarehouseDetails;

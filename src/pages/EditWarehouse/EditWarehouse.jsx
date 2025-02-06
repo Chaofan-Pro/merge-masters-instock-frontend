@@ -6,7 +6,6 @@ import FormWarehouseDetails from "../../components/FormWarehouseDetails/FormWare
 import FormContactDetails from "../../components/FormContactDetails/FormContactDetails";
 
 const EditWarehouse = () => {
-  const getWarehouse = 
   return (
     <>
       <div className="main-heading">
