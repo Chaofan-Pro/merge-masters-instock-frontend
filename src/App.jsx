@@ -8,8 +8,8 @@ import EditInventoryPage from "./pages/EditInventoryPage/EditInventoryPage";
 import EditWarehousePage from "./pages/EditWarehousePage/EditWarehousePage";
 import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage";
 import WarehouseDetailsPage from "./pages/WarehouseDetailsPage/WarehouseDetailsPage";
-import Warehouses from "./pages/Warehouses/Warehouses";
-import Inventory from "./pages/Inventory/Inventory";
+import WarehousesPage from "./pages/WarehousesPage/WarehousesPage";
+import InventoryPage from "./pages/InventoryPage/InventoryPage";
 
 function App() {
   return (
@@ -19,10 +19,10 @@ function App() {
         <main>
           <Routes>
             {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-            <Route path="/" element={<Warehouses />} />
+            <Route path="/" element={<WarehousesPage />} />
 
             {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
-            <Route path="/warehouses" element={<Warehouses />} />
+            <Route path="/warehouses" element={<WarehousesPage />} />
             <Route path="/warehouses/:id" element={<WarehouseDetailsPage />} />
             <Route
               path="/warehouses/edit/:id"
@@ -31,7 +31,7 @@ function App() {
             <Route path="/warehouses/add" element={<AddWarehousePage />} />
 
             {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
-            <Route path="/inventory" element={<Inventory />} />
+            <Route path="/inventory" element={<InventoryPage />} />
             <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
             <Route path="/inventory/edit/:id" element={<EditInventoryPage />} />
             <Route path="/inventory/add" element={<AddInventoryPage />} />

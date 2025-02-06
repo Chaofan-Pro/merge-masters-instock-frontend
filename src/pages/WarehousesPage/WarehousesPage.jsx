@@ -1,4 +1,4 @@
-import "./Warehouses.scss";
+import "./WarehousesPage.scss";
 
 const Warehouses = () => {
   return (
