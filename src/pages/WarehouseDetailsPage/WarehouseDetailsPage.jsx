@@ -1,5 +1,5 @@
+import "./WarehouseDetailsPage.scss";
 import WarehouseDetailsComp from "../../components/WarehouseDetails/WarehouseDetails";
-import "./WarehouseDetails.scss";
 import React from "react";
 
 function WarehouseDetails() {
