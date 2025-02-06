@@ -13,6 +13,7 @@ a {
 }
 body {
   position: relative;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
 }
 
 main {
@@ -21,6 +22,7 @@ main {
   background-color: white;
   position: absolute;
   top: 8.5rem;
+  border-radius: 3px;
   @include tablet {
     width: calc(100vw - 4rem);
     margin: 0 2rem;
@@ -30,5 +32,30 @@ main {
     width: 63.75rem;
     margin: 0 calc((100vw - 63.75rem) / 2);
     top: 5.75rem;
+  }
+}
+
+.main-heading {
+  &__container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  &__back-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  &__name {
+    line-height: 2.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $primary-color1;
+
+    @include tablet {
+      line-height: 2.5rem;
+      font-size: 2rem;
+    }
   }
 }

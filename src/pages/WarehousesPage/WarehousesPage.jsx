@@ -1,5 +1,4 @@
-import "./Warehouses.scss";
-import WarehouseList from "../../components/WarehouseList/WarehouseList";
+import "./WarehousesPage.scss";
 
 const WarehousePage = () => {
   return (
