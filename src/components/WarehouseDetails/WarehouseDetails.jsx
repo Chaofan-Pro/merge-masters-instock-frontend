@@ -30,23 +30,21 @@ const WarehouseDetails = () => {
 
   return (
     <section className="warehouse-detail">
-      <div className="warehouse-heading">
-        <div className="warehouse-heading__container">
+      <div className="main-heading">
+        <div className="main-heading__container">
           <Link to="/warehouses">
             <img
               src={backArrow}
               alt="Back Arrow Icon"
-              className="warehouse-heading__back-icon"
+              className="main-heading__back-icon"
             />
           </Link>
-          <h1 className="warehouse-heading__name">
-            {warehouse.warehouse_name}
-          </h1>
+          <h1 className="main-heading__name">{warehouse.warehouse_name}</h1>
         </div>
         <Link to="/warehouses/edit/:id">
-          <button className="warehouse-heading__edit-button">
+          <button className="main-heading__edit-button">
             <img src={edit} alt="Edit Icon" />
-            <span className="warehouse-heading__edit-text">Edit</span>
+            <span className="main-heading__edit-text">Edit</span>
           </button>
         </Link>
       </div>

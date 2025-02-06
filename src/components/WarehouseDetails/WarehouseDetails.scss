@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 
-.warehouse-heading {
+.main-heading {
   display: flex;
   flex-direction: row;
   padding-top: 2rem;
@@ -73,7 +73,12 @@
     flex-direction: row;
     border-bottom: none;
     padding: 1.5rem 0;
+    gap: 7.5rem;
+  }
+
+  @include desktop {
     justify-content: space-between;
+    gap: 0;
   }
 
   &__address-container {
@@ -96,6 +101,7 @@
     font-size: 0.6875rem;
     font-weight: 600;
     color: $secondary-color1;
+    padding-bottom: 0.25rem;
 
     @include tablet {
       line-height: 1.125rem;
@@ -137,7 +143,7 @@
     justify-content: space-between;
 
     @include tablet {
-      padding: 0 5.5rem 0 2.5rem;
+      padding: 0 0 0 2.5rem;
       border-left: 1px solid $secondary-color2;
       gap: 1.5rem;
     }
