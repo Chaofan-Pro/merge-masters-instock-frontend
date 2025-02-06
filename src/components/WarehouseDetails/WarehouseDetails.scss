@@ -48,6 +48,10 @@
       width: 1.25rem;
       height: 1.25rem;
     }
+
+    &:hover {
+      background-color: $background-color1;
+    }
   }
 
   &__edit-text {
