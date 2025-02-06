@@ -1,0 +1,25 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixin" as *;
+
+.footer {
+  background-color: $background-color2;
+  &__text {
+    line-height: 1rem;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: $secondary-color1;
+    text-align: center;
+    padding-bottom: 2.5rem;
+    padding-top: 20rem; //need to update
+
+    @include tablet {
+      line-height: 1.125rem;
+      font-size: 0.75rem;
+    }
+
+    @include desktop {
+      padding-bottom: 3rem;
+    }
+  }
+}
