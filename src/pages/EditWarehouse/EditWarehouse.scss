@@ -2,6 +2,8 @@
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixin" as *;
 
-.editWarehouse__title{
-display: flex;
+.main-heading {
+  @extend .main-heading__container;
+  padding: 2rem 0 1.5rem 1rem;
+  align-items: center;
 }

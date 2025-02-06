@@ -9,25 +9,49 @@ const InputWarehouseDetails = () => {
   const [country, setCountry] = useState("");
 
   return (
-    <div>
-      <h3>Warehouse Details</h3>
-      <label className="lable" htmlFor="name">
+    <form className="form">
+      <h3 className="form__title">Warehouse Details</h3>
+      <label className="form__lable" htmlFor="name">
         Warehouse Name
       </label>
-      <input className="input" type="text" id="name" value={name} />
-      <label className="lable" htmlFor="Address">
+      <input
+        className="form__input"
+        type="text"
+        id="name"
+        value={name}
+        placeholder="warehouse.name"
+      />
+      <label className="form__lable" htmlFor="address">
         Street Address
       </label>
-      <input className="input" type="text" id="name" value={address} />
-      <label className="lable" htmlFor="city">
+      <input
+        className="form__input"
+        type="text"
+        id="address"
+        placeholder="warehouse.address"
+        value={address}
+      />
+      <label className="form__lable" htmlFor="city">
         City
       </label>
-      <input className="input" type="text" id="name" value={city} />
-      <label className="lable" htmlFor="country">
+      <input
+        className="form__input"
+        type="text"
+        id="city"
+        placeholder="warehouse.city"
+        value={city}
+      />
+      <label className="form__lable" htmlFor="country">
         Country
       </label>
-      <input className="input" type="text" id="name" value={country} />
-    </div>
+      <input
+        className="form__input"
+        type="text"
+        id="country"
+        placeholder="warehouse.country"
+        value={country}
+      />
+    </form>
   );
 };
 

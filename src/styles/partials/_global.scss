@@ -21,6 +21,7 @@ main {
   background-color: white;
   position: absolute;
   top: 8.5rem;
+  border-radius: 3px;
   @include tablet {
     width: calc(100vw - 4rem);
     margin: 0 2rem;
@@ -33,25 +34,71 @@ main {
   }
 }
 
-.lable{
-  display: block;
+.form {
+  padding: 1rem 1rem 1.5rem 1rem;
+  border-top: 1px solid $secondary-color2;
+  border-bottom: 1px solid $secondary-color2;
+  @include tablet {
+    padding: 1.5rem 2rem 2rem 2rem;
+    border: none;
+  }
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    color: $primary-color1;
+    @include tablet{
+      font-size: 1.5rem;
+    }
+  }
+  &__lable {
+    display: block;
+    font-size: 0.8125rem;
+    padding: 1rem 0 0.25rem 0;
+    @include tablet{
+      font-size: .875rem;
+    }
+  }
+
+  &__input {
+    display: block;
+    color: $primary-color1;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+    padding-left: 1rem;
+    width: calc(100vw - 5rem);
+    height: 2.25rem;
+    border-radius: 20px;
+    border: 1px solid $secondary-color2;
+    &::placeholder {
+      color: $primary-color1;
+      font-weight: 400;
+    }
+    @include tablet{
+      font-size: .875rem;
+    }
+  }
 }
 
-.warehouse-heading {
+.main-heading {
   &__container {
     display: flex;
     gap: 0.5rem;
     align-items: baseline;
   }
+
   &__back-icon {
     width: 1.5rem;
     height: 1.5rem;
   }
+
   &__name {
     line-height: 2.25rem;
     font-size: 1.75rem;
     font-weight: 600;
     color: $primary-color1;
+
     @include tablet {
       line-height: 2.5rem;
       font-size: 2rem;
