@@ -1,11 +1,16 @@
 import "./WarehouseDetailsPage.scss";
+import WarehouseDetailsComp from "../../components/WarehouseDetails/WarehouseDetails";
 import React from "react";
 
-function WarehouseDetails() {
-  return;
-  <>
-    <h3>This is the WarehouseDetails page</h3>;
-  </>;
+function WarehouseDetails({ warehouse, fetchWarehouseDetail }) {
+  return (
+    <>
+      <WarehouseDetailsComp
+        warehouse={warehouse}
+        fetchWarehouseDetail={fetchWarehouseDetail}
+      />
+    </>
+  );
 }
 
 export default WarehouseDetails;
