@@ -34,7 +34,6 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <CustomModal />
         <main>
           <Routes>
             {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
