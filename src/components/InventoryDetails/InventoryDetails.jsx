@@ -34,17 +34,17 @@ const InventoryDetails = ({ fetchInventoryDetail, inventory }) => {
         </Link>
       </div>
       <div className="inventory-details">
-        <div className="inventory-details__container">
+        <div className="inventory-details__container inventory-details__container--tablet">
           <div>
             <h4 className="inventory-details__heading">ITEM DESCRIPTION: </h4>
-            <p className="inventory-details__text ">{inventory.description}</p>
+            <p className="inventory-details__text">{inventory.description}</p>
           </div>
           <div>
             <h4 className="inventory-details__heading">CATEGORY: </h4>
             <p className="inventory-details__text ">{inventory.category}</p>
           </div>
         </div>
-        <div className="inventory-details__container">
+        <div className="inventory-details__container inventory-details__container--divider">
           <div className="inventory-details__status-qty-container">
             <div className="inventory-details__sub-container">
               <h4 className="inventory-details__heading">STATUS: </h4>
@@ -70,7 +70,7 @@ const InventoryDetails = ({ fetchInventoryDetail, inventory }) => {
             </p>
           </div>
         </div>
-        <div className="inventory-details__container"></div>
+        {/* <div className="inventory-details__container"></div> */}
       </div>
     </section>
   );
