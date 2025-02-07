@@ -12,6 +12,9 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+button {
+  cursor: pointer;
+}
 body {
   position: relative;
   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
@@ -34,10 +37,6 @@ main {
     margin: 0 calc((100vw - 63.75rem) / 2);
     top: 5.75rem;
   }
-}
-
-.hide {
-  display: none;
 }
 
 .main-heading {

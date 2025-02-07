@@ -13,22 +13,23 @@
 }
 
 .form {
-  padding: 1rem 1rem 1.5rem 1rem;
-  border-bottom: 1px solid $secondary-color2;
   @include tablet {
-    padding: 0 2rem 0.5rem 2rem;
-    margin: 1.5rem 0;
-    border: none;
-    border-right: 1px solid $secondary-color2;
-    width: 100%;
+    display: flex;
   }
-  &__container {
+  &__left {
+    padding: 1rem 1rem 1.5rem 1rem;
+    border-bottom: 1px solid $secondary-color2;
+
     @include tablet {
-      display: flex;
+      padding: 0 2rem 0.5rem 2rem;
+      margin: 1.5rem 0;
+      border: none;
+      border-right: 1px solid $secondary-color2;
+      width: 100%;
     }
   }
-  &__low {
-    @extend .form;
+  &__right {
+    @extend .form__left;
     border-bottom: none;
     border-right: none;
   }

@@ -3,7 +3,7 @@ import "./Input.scss";
 const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
   return (
     <>
-      <label className="form__lable" htmlFor={id}>
+      <label className="form__label" htmlFor={id}>
         {label}
       </label>
       <input
@@ -14,14 +14,16 @@ const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
         onChange={changeInputHandle}
         placeholder={value}
       />
-      <div className={`${isInputValid ? "hide" : "form__error"} `}>
-        <img
-          className="form__error-icon"
-          src="/src/assets/icons/error-24px.svg"
-          alt="error icon"
-        />
-        <p className="form__error-text">This field is required</p>
-      </div>
+      {!isInputValid && (
+        <div className="form__error">
+          <img
+            className="form__error-icon"
+            src="/src/assets/icons/error-24px.svg"
+            alt="error icon"
+          />
+          <p className="form__error-text">This field is required</p>
+        </div>
+      )}
     </>
   );
 };

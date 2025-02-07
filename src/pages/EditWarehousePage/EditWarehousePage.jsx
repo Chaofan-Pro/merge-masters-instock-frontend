@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
+import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
-const FormWarehouseDetails = () => {
+const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
   const baseUrl = import.meta.env.VITE_API_URL;
-  const { id } = useParams(); // Get warehouse ID from URL
-  const [warehouse, setWarehouse] = useState(null);
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetchWarehouseDetail(id);
+  }, [id]);
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -19,6 +23,19 @@ const FormWarehouseDetails = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
+  useEffect(() => {
+    if (warehouse) {
+      setName(warehouse.warehouse_name || "");
+      setAddress(warehouse.address || "");
+      setCity(warehouse.city || "");
+      setCountry(warehouse.country || "");
+      setContactName(warehouse.contact_name || "");
+      setContactPosition(warehouse.contact_position || "");
+      setPhone(warehouse.contact_phone || "");
+      setEmail(warehouse.contact_email || "");
+    }
+  }, [warehouse]);
+
   const [isNameValid, setNameValid] = useState(true);
   const [isAddressValid, setAddressValid] = useState(true);
   const [isCityValid, setCityValid] = useState(true);
@@ -28,71 +45,37 @@ const FormWarehouseDetails = () => {
   const [isPhoneValid, setPhoneValid] = useState(true);
   const [isEmailValid, setEmailValid] = useState(true);
 
-  const fetchWarehouseDetail = async () => {
-    try {
-      const { data } = await axios.get(baseUrl + `/api/warehouses/${id}`);
-      console.log(data);
-      setWarehouse(data);
-      setAddress(data.address);
-      setName(data.warehouse_name);
-      setCity(data.city);
-      setCountry(data.country);
-      setContactName(data.contact_name);
-      setContactPosition(data.contact_position);
-      setPhone(data.contact_phone);
-      setEmail(data.contact_email);
-    } catch (error) {
-      console.error("ERROR: " + error);
-    }
-  };
-  useEffect(() => {
-    fetchWarehouseDetail();
-  }, [id]);
-
-  // if (!warehouse) return <p>No Warehouse Detail Found</p>;
-
   const changeNameHandle = (e) => {
-    e.preventDefault();
     setName(e.target.value);
     setNameValid(true);
   };
   const changeAddressHandle = (e) => {
-    e.preventDefault();
     setAddress(e.target.value);
     setAddressValid(true);
   };
   const changeCityHandle = (e) => {
-    e.preventDefault();
     setCity(e.target.value);
     setCityValid(true);
   };
   const changeCountryHandle = (e) => {
-    e.preventDefault();
     setCountry(e.target.value);
+    setCountryValid(true);
   };
   const changeContactNameHandle = (e) => {
-    e.preventDefault();
     setContactName(e.target.value);
     setContactNameValid(true);
   };
   const changeContactPositionHandle = (e) => {
-    e.preventDefault();
     setContactPosition(e.target.value);
     setContactPositionValid(true);
   };
   const changePhoneHandle = (e) => {
-    e.preventDefault();
     setPhone(e.target.value);
     setPhoneValid(true);
   };
   const changeEmailHandle = (e) => {
-    e.preventDefault();
     setEmail(e.target.value);
     setEmailValid(true);
-  };
-  const changeInputHandle = (e) => {
-    e.preventDefault();
-    setInputValid(true);
   };
 
   const submitHandle = async (e) => {
@@ -127,12 +110,73 @@ const FormWarehouseDetails = () => {
           contact_phone: phone,
           contact_email: email,
         });
-        fetchWarehouseDetail();
+        fetchWarehouseDetail(id);
       } catch (error) {
         console.error(error);
       }
     }
   };
+
+  const warehouseDetails = [
+    {
+      label: "Warehouse Name",
+      id: "warehouse_name",
+      value: name,
+      isInputValid: isNameValid,
+      changeInputHandle: changeNameHandle,
+    },
+    {
+      label: "Street Address",
+      id: "address",
+      value: address,
+      isInputValid: isAddressValid,
+      changeInputHandle: changeAddressHandle,
+    },
+    {
+      label: "City",
+      id: "city",
+      value: city,
+      isInputValid: isCityValid,
+      changeInputHandle: changeCityHandle,
+    },
+    {
+      label: "Country",
+      id: "country",
+      value: country,
+      isInputValid: isCountryValid,
+      changeInputHandle: changeCountryHandle,
+    },
+  ];
+  const contactDetails = [
+    {
+      label: "Contact Name",
+      id: "contact_name",
+      value: contactName,
+      isInputValid: isContactNameValid,
+      changeInputHandle: changeContactNameHandle,
+    },
+    {
+      label: "Position",
+      id: "contact_position",
+      value: contactPosition,
+      isInputValid: isContactPositionValid,
+      changeInputHandle: changeContactPositionHandle,
+    },
+    {
+      label: "Phone Number",
+      id: "contact_phone",
+      value: phone,
+      isInputValid: isPhoneValid,
+      changeInputHandle: changePhoneHandle,
+    },
+    {
+      label: "Email",
+      id: "contact_email",
+      value: email,
+      isInputValid: isEmailValid,
+      changeInputHandle: changeEmailHandle,
+    },
+  ];
 
   return (
     <>
@@ -140,77 +184,41 @@ const FormWarehouseDetails = () => {
         <Link className="link" to={`${baseUrl}/warehouses/${id}`}>
           <img
             className="main-heading__back-icon"
-            src="/src/assets/icons/arrow_back-24px.svg"
+            src={backArrow}
             alt="back arrow"
           />
         </Link>
         <h3 className="main-heading__name">Edit Warehouse</h3>
       </section>
-      <form className="form__container" onSubmit={submitHandle}>
-        <article className="form">
-          <h3 className="form__title">Warehouse Details</h3>
-          <Input
-            label="Warehouse Name"
-            id="warehouse_name"
-            value={name}
-            isInputValid={isNameValid}
-            changeInputHandle={changeNameHandle}
-          />
-          <Input
-            label="Street Address"
-            id="address"
-            value={address}
-            isInputValid={isAddressValid}
-            changeInputHandle={changeAddressHandle}
-          />
-          <Input
-            label="City"
-            id="city"
-            value={city}
-            isInputValid={isCityValid}
-            changeInputHandle={changeCityHandle}
-          />
-          <Input
-            label="Country"
-            id="country"
-            value={country}
-            isInputValid={isCountryValid}
-            changeInputHandle={changeCountryHandle}
-          />
-        </article>
-        <article className="form__low">
-          <h3 className="form__title">Contact Details</h3>
-          <Input
-            label="Contact Name"
-            id="contact_name"
-            value={contactName}
-            isInputValid={isContactNameValid}
-            changeInputHandle={changeContactNameHandle}
-          />
-          <Input
-            label="Position"
-            id="contact_position"
-            value={contactPosition}
-            isInputValid={isContactPositionValid}
-            changeInputHandle={changeContactPositionHandle}
-          />
-          <Input
-            label="Phone Number"
-            id="contact_phone"
-            value={phone}
-            isInputValid={isPhoneValid}
-            changeInputHandle={changePhoneHandle}
-          />
-          <Input
-            label="Email"
-            id="contact_email"
-            value={email}
-            isInputValid={isEmailValid}
-            changeInputHandle={changeEmailHandle}
-          />
-        </article>
+      <form onSubmit={submitHandle}>
+        <section className="form">
+          <article className="form__left">
+            <h3 className="form__title">Warehouse Details</h3>
+            {warehouseDetails.map((warehouseDetail) => (
+              <Input key={warehouseDetail.id}
+                label={warehouseDetail.label}
+                id={warehouseDetail.id}
+                value={warehouseDetail.value}
+                isInputValid={warehouseDetail.isInputValid}
+                changeInputHandle={warehouseDetail.changeInputHandle}
+              />
+            ))}
+          </article>
+          <article className="form__right">
+            <h3 className="form__title">Contact Details</h3>
+            {contactDetails.map((contactDetail) => (
+              <Input key={contactDetail.id}
+                label={contactDetail.label}
+                id={contactDetail.id}
+                value={contactDetail.value}
+                isInputValid={contactDetail.isInputValid}
+                changeInputHandle={contactDetail.changeInputHandle}
+              />
+            ))}
+          </article>
+        </section>
+        <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
       </form>
-      <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
     </>
   );
 };
