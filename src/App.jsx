@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header";
-import CustomModal from "./components/CustomModal/CustomModal";
 import Footer from "./components/Footer/Footer";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage";
@@ -33,42 +32,46 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <CustomModal />
-        <main>
-          <Routes>
-            {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-            <Route path="/" element={<WarehousesPage />} />
+        <div>
+          <Header />
+          <main>
+            <Routes>
+              {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
+              <Route path="/" element={<WarehousesPage />} />
 
-            {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
-            <Route path="/warehouses" element={<WarehousesPage />} />
-            <Route
-              path="/warehouses/:id"
-              element={
-                <WarehouseDetailsPage
-                  warehouse={warehouse}
-                  fetchWarehouseDetail={fetchWarehouseDetail}
-                />
-              }
-            />
-            <Route
-              path="/warehouses/edit/:id"
-              element={
-                <EditWarehousePage
-                  warehouse={warehouse}
-                  fetchWarehouseDetail={fetchWarehouseDetail}
-                />
-              }
-            />
-            <Route path="/warehouses/add" element={<AddWarehousePage />} />
+              {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
+              <Route path="/warehouses" element={<WarehousesPage />} />
+              <Route
+                path="/warehouses/:id"
+                element={
+                  <WarehouseDetailsPage
+                    warehouse={warehouse}
+                    fetchWarehouseDetail={fetchWarehouseDetail}
+                  />
+                }
+              />
+              <Route
+                path="/warehouses/edit/:id"
+                element={
+                  <EditWarehousePage
+                    warehouse={warehouse}
+                    fetchWarehouseDetail={fetchWarehouseDetail}
+                  />
+                }
+              />
+              <Route path="/warehouses/add" element={<AddWarehousePage />} />
 
-            {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
-            <Route path="/inventory" element={<InventoryPage />} />
-            <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
-            <Route path="/inventory/edit/:id" element={<EditInventoryPage />} />
-            <Route path="/inventory/add" element={<AddInventoryPage />} />
-          </Routes>
-        </main>
+              {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
+              <Route path="/inventory" element={<InventoryPage />} />
+              <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
+              <Route
+                path="/inventory/edit/:id"
+                element={<EditInventoryPage />}
+              />
+              <Route path="/inventory/add" element={<AddInventoryPage />} />
+            </Routes>
+          </main>
+        </div>
         <Footer />
       </BrowserRouter>
     </>

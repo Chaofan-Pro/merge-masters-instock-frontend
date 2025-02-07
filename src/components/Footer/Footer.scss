@@ -5,11 +5,16 @@
 .footer {
   background-color: $background-color2;
   width: 100%;
-  position: fixed; // Keeps footer at the bottom
   bottom: 0;
   left: 0;
   z-index: -1;
-  padding-top: 100vh;
+  margin-top: 2.5rem;
+  @include tablet {
+    margin-top: 4.375rem;
+  }
+  @include desktop {
+    margin-top: 5.9375rem;
+  }
   &__text {
     line-height: 1rem;
     font-size: 0.6875rem;
