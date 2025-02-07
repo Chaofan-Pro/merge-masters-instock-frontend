@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
+import BottomButtons from "../../components/BottomButtons/BottomButtons";
 
 const FormWarehouseDetails = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -177,7 +178,7 @@ const FormWarehouseDetails = () => {
             changeInputHandle={changeCountryHandle}
           />
         </article>
-        <article className="form">
+        <article className="form__low">
           <h3 className="form__title">Contact Details</h3>
           <Input
             label="Contact Name"
@@ -208,7 +209,7 @@ const FormWarehouseDetails = () => {
             changeInputHandle={changeEmailHandle}
           />
         </article>
-        <button>Save</button>
+        <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
       </form>
     </>
   );
