@@ -39,80 +39,6 @@ main {
   display: none;
 }
 
-.form {
-  padding: 1rem 1rem 1.5rem 1rem;
-  border-top: 1px solid $secondary-color2;
-  border-bottom: 1px solid $secondary-color2;
-  @include tablet {
-    padding: 1.5rem 2rem 2rem 2rem;
-    border: none;
-  }
-  &__title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    padding-bottom: 0.5rem;
-    color: $primary-color1;
-    @include tablet {
-      font-size: 1.5rem;
-    }
-  }
-  &__lable {
-    display: block;
-    font-size: 0.8125rem;
-    padding: 1rem 0 0.25rem 0;
-    font-weight: 600;
-    color: $primary-color1;
-    @include tablet {
-      font-size: 0.875rem;
-    }
-  }
-  &__error {
-    display: flex;
-    align-items: center;
-    gap: 1px;
-    margin-top: 4px;
-  }
-  &__error-icon {
-    height: 1rem;
-  }
-  &__error-text {
-    color: $supporting-color2;
-    font-size: 0.75rem;
-  }
-
-  &__input {
-    display: block;
-    color: $primary-color1;
-    font-weight: 400;
-    font-size: 0.8125rem;
-    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-    padding: 0 1rem;
-    width: calc(100vw - 5rem);
-    height: 2.25rem;
-    border-radius: 20px;
-    border: 1px solid $secondary-color2;
-    &::placeholder {
-      color: $primary-color1;
-      font-weight: 400;
-      // &:focus {
-      //   display: none;
-      // }
-    }
-    &:focus {
-      outline: none;
-      border: 1px solid $primary-color2;
-      background-color: none;
-    }
-    &--error {
-      border: 1px solid $supporting-color2;
-    }
-    @include tablet {
-      font-size: 0.875rem;
-      height: 2.375rem;
-    }
-  }
-}
-
 .main-heading {
   &__container {
     display: flex;
@@ -138,6 +64,6 @@ main {
   }
 }
 
-.link{
+.link {
   cursor: pointer;
 }

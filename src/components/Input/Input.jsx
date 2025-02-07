@@ -1,3 +1,5 @@
+import "./Input.scss";
+
 const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
   return (
     <>
