@@ -97,7 +97,7 @@
     &__cancel{
         background-color: $primary-color3;
         color: $primary-color1;
-        font-weight: 400;
+        font-weight: 600;
         @include tablet{
             margin-right: 10rem;
         }
@@ -105,9 +105,10 @@
     &__delete{
         background-color: $supporting-color2;
         color: $primary-color3;
-        font-weight: 400;
+        font-weight: 600;
         right: 0;
         margin-right: 1rem;
+        border-color: $supporting-color2;   
         @include tablet{
             margin-right: 5rem;
         }
@@ -116,11 +117,14 @@
     &__cancel:hover{
         border-color: $primary-color2;
         color: $primary-color2;
+        cursor: pointer;
     }
 
     &__delete:hover{
         background-color: $background-color1;
         color: $primary-color3;
+        border-color: $background-color1;
+        cursor: pointer;
     }
 
 }
