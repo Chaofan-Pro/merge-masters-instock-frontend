@@ -2,43 +2,60 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
 
-body {
-  background-color: $background-color2;
-  font-size: 13px;
-  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-}
+
+// Global styles
+// body {
+//   background-color: $background-color2;
+//   font-size: 13px;
+//   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+// } 
 
 .warehouse {
-  width: 100%;
-  max-width: 768px;
+  width: 100%; 
   background: $primary-color3;
   padding: 16px;
-  padding-left: 0;
-  padding-right: 0;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   margin: 0 auto;
+  color: $secondary-color1;
+  font-size: 13px;
   border-radius: 3px;
-
-  @include tablet {
-    padding: 0;
-  }
 
   &__container {
     display: flex;
     flex-direction: column;
     align-items: center;
+   
+    
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
-      padding: 16px;
+      margin-top: 8.5px;
+      margin-bottom: 24.5px;
     }
   }
+  &__title-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    
 
-  &__title {
+    @include tablet {
+      width: 50%;
+      margin-bottom: 0;
+    }
+  }
+  &__title {  
     font-size: 28px;
     font-weight: 600;
-    padding-right: 6.5rem;
+    color: $primary-color1;
+    margin: 1rem 0;
+    margin-left: 1.5rem;
+    @include tablet {
+      margin: 0;
+    }
+
+   
   }
 
   &__search-container {
@@ -50,11 +67,13 @@ body {
     height: 36px;
     border-radius: 20px;
     border: 1px solid $secondary-color2;
-    margin-bottom: 12px;
+    margin-bottom: 1rem;
+
 
     @include tablet {
       width: 200px;
       height: 38px;
+      margin-bottom: 0;
     }
 
     @include desktop {
@@ -62,17 +81,20 @@ body {
       height: 38px;
     }
 
-    .warehouse__search {
+    input, .warehouse__search {
       border: none;
-      width: 100%;
+      width: 95%;
       height: 20px;
       font-size: 13px;
       line-height: 20px;
       font-weight: 400;
-      font-family: "Titillium Web", sans-serif;
       padding: 8px 46px 8px 12px;
       color: $secondary-color1;
       outline: none;
+      font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+      position: absolute;
+      left: 5px;
+      
     }
 
     .warehouse__search-icon {
@@ -91,16 +113,19 @@ body {
     padding: 9px;
     border-radius: 20px;
     border: none;
-    font-family: "Titillium Web", sans-serif;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
     font-weight: 600;
     margin-bottom: 1rem;
+  
 
     @include tablet {
       width: 170px;
       height: 38px;
       padding-left: 0;
       padding-right: 0;
-    }
+      margin-left: 1rem;
+        margin-bottom: 0;
+      }
   }
 
   &__table-container {
@@ -137,7 +162,7 @@ body {
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+   
   }
 
   &__card {
@@ -167,9 +192,12 @@ body {
       justify-content: space-between;
       align-items: center;
       position: absolute;
-      left: 63%;
+      left: 62%;
+      @include tablet{
+        bottom: 16%;
+      }
       @include desktop {
-        left: 64%;
+        left: 66%;
       }
     }
   }
@@ -198,18 +226,22 @@ body {
   }
   &__address {
     padding-right: 1rem;
+    color: $primary-color1;
     @include tablet {
       max-width: 110px;
       padding-left: 1rem;
       position: absolute;
-      left: 20.5%;
+      left: 20%;
       align-items: center;
       padding-right: 0;
     }
-
+    
     @include desktop {
+      display: flex;
+      flex-direction: row;
       position: absolute;
-      left: 21%;
+      max-width: 200px;
+      left: 22%;
     }
   }
   &__contact {
@@ -217,28 +249,34 @@ body {
     flex-direction: column;
     padding-right: 2rem;
 
-    @include tablet {
+    @include desktop {
       flex-direction: row;
       align-items: center;
     }
 
     &-name {
       padding-bottom: 1.1rem;
+      color: $primary-color1;
       @include tablet {
         position: absolute;
-        left: 41.5%;
+        left: 40.5%;
+        bottom: 35%;
+        padding-bottom: 0;
       }
       @include desktop {
-        position: absolute;
-        left: 41.5%;
+        left: 43.5%;
+        padding-bottom: 0;
       }
     }
 
     &-info {
-      padding-top: 0.1rem;
+      color: $primary-color1
+      
     }
   }
-
+  &__name{
+    font-family: 'titillium web', Arial, Helvetica, sans-serif;
+  }
   &__name-button {
     display: flex;
     background: none;
@@ -249,6 +287,7 @@ body {
     align-items: center;
     @include tablet {
       padding-left: 0.3rem;
+      padding-bottom: 0;
     }
     @include desktop {
       cursor: pointer;
@@ -260,7 +299,6 @@ body {
     justify-content: flex-start;
     gap: 13rem;
     padding-left: 1.5rem;
-
     @include tablet {
       gap: 1rem;
     }
@@ -269,6 +307,15 @@ body {
       background: none;
       border: none;
     }
+    
+  }
+}
+
+.warehouse__action--edit{
+  position: absolute;
+  right : 2rem;
+  @include tablet {
+    margin-right: 1.5rem;
   }
 }
 
@@ -311,3 +358,4 @@ body {
     }
   }
 }
+

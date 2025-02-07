@@ -29,8 +29,8 @@ function WarehouseList() {
   return (
     <div className="warehouse">
       <div className="warehouse__container">
-        <h1 className="warehouse__title">Warehouses</h1>
-
+        <div className="warehouse__title-container">
+        <h1 className="warehouse__title">Warehouses</h1></div>
         <div className="warehouse__search-container">
           <input
             type="text"
@@ -57,7 +57,7 @@ function WarehouseList() {
               <div className="warehouse__info">
                 <p className="warehouse__heading">WAREHOUSE</p>
                 <button className="warehouse__name-button">
-                  <div>{warehouse.warehouse_name}</div>
+                  <div className="warehouse__name">{warehouse.warehouse_name}</div>
                   <img
                     src={rightArrowIcon}
                     alt="Go to warehouse"
