@@ -1,130 +1,131 @@
-@use '../../styles/partials/global' as *;  
-@use '../../styles/partials/mixin' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
 
 .Overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($primary-color1, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($primary-color1, 0.5);
 }
-  
+
 .Modal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $primary-color3;
-    width: 100%;
-    height: 100%;
-    @include tablet {
-        width: 42rem;
-        height: 16.375rem;
-        top: 11.5625rem;
-        margin: 0 auto;
-        border-radius: .1875rem;
-    }
-} 
-.modal-icon{
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $primary-color3;
+  width: 100%;
+  height: 100%;
+  @include tablet {
+    width: 42rem;
+    height: 16.375rem;
+    top: 11.5625rem;
+    margin: 0 auto;
+    border-radius: 0.1875rem;
+  }
+}
+.modal-icon {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
 }
 
-.modal-title{
-    font-size: 1.75rem;
-    font-weight: 600;
-    line-height: 2.25rem;
-    color: $primary-color1;
-    width: 21.4375rem;
-    margin-left: 1rem;
-    margin-top: 3.75rem;
-    @include tablet {
-        width: 30rem;
-        height: 2.5rem;
-        font-size: 2rem;
-        line-height: 2.5rem;
-        margin-left: 3rem;
-    }
+.modal-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 2.25rem;
+  color: $primary-color1;
+  width: 21.4375rem;
+  margin-left: 1rem;
+  margin-top: 3.75rem;
+  @include tablet {
+    width: 30rem;
+    height: 2.5rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    margin-left: 3rem;
+  }
 }
-.modal-article{
-    width: 21.4375rem;
-    height: 4.875rem;
-    margin-left: 1rem;
-    margin-top: 2rem;
-    font-size: .9375rem;
-    font-weight: 400;
-    line-height: 1.625rem;
-    color: $primary-color1;
+.modal-article {
+  width: 21.4375rem;
+  height: 4.875rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.625rem;
+  color: $primary-color1;
 
-    @include tablet{
-        width: 30rem;
-        height: 3.5rem;
-        margin-left: 3rem;
-        margin-top: 1rem;
-        font-size: 1rem;
-        line-height: 1.75rem;
-    }
+  @include tablet {
+    width: 30rem;
+    height: 3.5rem;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
 }
 
-.modal-btn{
-    display: flex;
-    justify-content: space-between;
-    @include tablet{
+.modal-btn {
+  display: flex;
+  justify-content: space-between;
+  @include tablet {
     justify-content: end;
-    }
+  }
 
-    &__cancel, &__delete{
-        margin-left: 1rem;
-        border-radius: 1.25rem;
-        border: 1px solid $secondary-color2;
-        padding: .5rem 3.9375rem;
-        position: absolute;
-        bottom: 1rem;
-        width: 10.1875rem;
-        height: 2.25rem;
-        font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
-        @include tablet{
-            padding: .5rem 1rem;
-            width: 4.4375rem;
-            height: 38px;
-            bottom: 2rem;
-        }
+  &__cancel,
+  &__delete {
+    margin-left: 1rem;
+    border-radius: 1.25rem;
+    border: 1px solid $secondary-color2;
+    padding: 0.5rem 3.9375rem;
+    position: absolute;
+    bottom: 1rem;
+    width: 10.1875rem;
+    height: 2.25rem;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+    @include tablet {
+      padding: 0.5rem 1rem;
+      width: 4.4375rem;
+      height: 38px;
+      bottom: 2rem;
     }
-    &__cancel{
-        background-color: $primary-color3;
-        color: $primary-color1;
-        font-weight: 600;
-        @include tablet{
-            margin-right: 10rem;
-        }
+  }
+  &__cancel {
+    background-color: $primary-color3;
+    color: $primary-color1;
+    font-weight: 600;
+    @include tablet {
+      margin-right: 10rem;
     }
-    &__delete{
-        background-color: $supporting-color2;
-        color: $primary-color3;
-        font-weight: 600;
-        right: 0;
-        margin-right: 1rem;
-        border-color: $supporting-color2;   
-        @include tablet{
-            margin-right: 5rem;
-        }
+  }
+  &__delete {
+    background-color: $supporting-color2;
+    color: $primary-color3;
+    font-weight: 600;
+    right: 0;
+    margin-right: 1rem;
+    border-color: $supporting-color2;
+    @include tablet {
+      margin-right: 5rem;
     }
+  }
 
-    &__cancel:hover{
-        border-color: $primary-color2;
-        color: $primary-color2;
-        cursor: pointer;
-    }
+  &__cancel:hover {
+    border-color: $primary-color2;
+    color: $primary-color2;
+    cursor: pointer;
+  }
 
-    &__delete:hover{
-        background-color: $background-color1;
-        color: $primary-color3;
-        border-color: $background-color1;
-        cursor: pointer;
-    }
-
+  &__delete:hover {
+    background-color: $background-color1;
+    color: $primary-color3;
+    border-color: $background-color1;
+    cursor: pointer;
+  }
 }
