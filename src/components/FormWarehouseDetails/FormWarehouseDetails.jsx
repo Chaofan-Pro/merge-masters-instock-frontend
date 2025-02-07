@@ -2,6 +2,7 @@ import "./FormWarehouseDetails.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Input from "../Input/Input";
 
 const FormWarehouseDetails = () => {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -25,6 +26,7 @@ const FormWarehouseDetails = () => {
   const [isContactPositionValid, setContactPositionValid] = useState(true);
   const [isPhoneValid, setPhoneValid] = useState(true);
   const [isEmailValid, setEmailValid] = useState(true);
+  const [isInputValid, setInputValid] = useState(true);
 
   const fetchWarehouseDetail = async () => {
     try {
@@ -88,6 +90,10 @@ const FormWarehouseDetails = () => {
     setEmail(e.target.value);
     setEmailValid(true);
   };
+  const changeInputHandle = (e) => {
+    e.preventDefault();
+    setInputValid(true);
+  };
 
   const submitHandle = async (e) => {
     e.preventDefault();
@@ -132,128 +138,64 @@ const FormWarehouseDetails = () => {
     <form onSubmit={submitHandle}>
       <article className="form">
         <h3 className="form__title">Warehouse Details</h3>
-        <label className="form__lable" htmlFor="warehouse_name">
-          Warehouse Name
-        </label>
-        <input
-          className={`form__input ${isNameValid ? "" : "form__input--error"} `}
-          type="text"
+        <Input
+          label="Warehouse Name"
           id="warehouse_name"
           value={name}
-          onChange={changeNameHandle}
-          placeholder={name}
+          isInputValid={isNameValid}
+          changeInputHandle={changeNameHandle}
         />
-        <div className={`${isNameValid ? "hide" : "form__error"} `}>
-          <img
-            className="form__error-icon"
-            src="/src/assets/icons/error-24px.svg"
-            alt="error icon"
-          />
-          <p className="form__error-text">This field is required</p>
-        </div>
-        <label className="form__lable" htmlFor="address">
-          Street Address
-        </label>
-        <input
-          className="form__input"
-          type="text"
+        <Input
+          label="Street Address"
           id="address"
           value={address}
-          onChange={changeAddressHandle}
-          placeholder={address}
+          isInputValid={isAddressValid}
+          changeInputHandle={changeAddressHandle}
         />
-        <div className={`${isAddressValid ? "hide" : "form__error"} `}>
-          <img
-            className="form__error-icon"
-            src="/src/assets/icons/error-24px.svg"
-            alt="error icon"
-          />
-          <p className="form__error-text">This field is required</p>
-        </div>
-        <label className="form__lable" htmlFor="city">
-          City
-        </label>
-        <input
-          className="form__input"
-          type="text"
+        <Input
+          label="City"
           id="city"
           value={city}
-          onChange={changeCityHandle}
-          placeholder={city}
+          isInputValid={isCityValid}
+          changeInputHandle={changeCityHandle}
         />
-        <div className={`${isCityValid ? "hide" : "form__error"} `}>
-          <img
-            className="form__error-icon"
-            src="/src/assets/icons/error-24px.svg"
-            alt="error icon"
-          />
-          <p className="form__error-text">This field is required</p>
-        </div>
-        <label className="form__lable" htmlFor="country">
-          Country
-        </label>
-        <input
-          className="form__input"
-          type="text"
+        <Input
+          label="Country"
           id="country"
           value={country}
-          onChange={changeCountryHandle}
-          placeholder={country}
+          isInputValid={isCountryValid}
+          changeInputHandle={changeCountryHandle}
         />
-        <div className={`${isCountryValid ? "hide" : "form__error"} `}>
-          <img
-            className="form__error-icon"
-            src="/src/assets/icons/error-24px.svg"
-            alt="error icon"
-          />
-          <p className="form__error-text">This field is required</p>
-        </div>
       </article>
       <article className="form">
         <h3 className="form__title">Contact Details</h3>
-        <label className="form__lable" htmlFor="contact_name">
-          Contact Name
-        </label>
-        <input
-          className="form__input"
-          type="text"
+        <Input
+          label="Contact Name"
           id="contact_name"
           value={contactName}
-          onChange={changeContactNameHandle}
-          placeholder={contactName}
+          isInputValid={isContactNameValid}
+          changeInputHandle={changeContactNameHandle}
         />
-        <label className="form__lable" htmlFor="contact_position">
-          Position
-        </label>
-        <input
-          className="form__input"
-          type="text"
+        <Input
+          label="Position"
           id="contact_position"
-          placeholder={contactPosition}
-          onChange={changeContactPositionHandle}
           value={contactPosition}
+          isInputValid={isContactPositionValid}
+          changeInputHandle={changeContactPositionHandle}
         />
-        <label className="form__lable" htmlFor="contact_phone">
-          Phone Number
-        </label>
-        <input
-          className="form__input"
-          type="tel"
+        <Input
+          label="Phone Number"
           id="contact_phone"
-          placeholder={phone}
-          onChange={changePhoneHandle}
           value={phone}
+          isInputValid={isPhoneValid}
+          changeInputHandle={changePhoneHandle}
         />
-        <label className="form__lable" htmlFor="contact_email">
-          Email
-        </label>
-        <input
-          className="form__input"
-          type="email"
+        <Input
+          label="Email"
           id="contact_email"
-          placeholder={email}
-          onChange={changeEmailHandle}
           value={email}
+          isInputValid={isEmailValid}
+          changeInputHandle={changeEmailHandle}
         />
       </article>
       <button>Save</button>
