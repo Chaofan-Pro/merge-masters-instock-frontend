@@ -136,7 +136,7 @@ const FormWarehouseDetails = () => {
           Warehouse Name
         </label>
         <input
-          className="form__input"
+          className={`form__input ${isNameValid ? "" : "form__input--error"} `}
           type="text"
           id="warehouse_name"
           value={name}

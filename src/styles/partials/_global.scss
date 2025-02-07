@@ -101,6 +101,7 @@ main {
     &:focus {
       outline: none;
       border: 1px solid $primary-color2;
+      background-color: none;
     }
     &--error {
       border: 1px solid $supporting-color2;
