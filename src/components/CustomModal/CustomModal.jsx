@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Modal from 'react-modal'; 
 import "./CustomModal.scss";
 
 Modal.setAppElement('#root');
 
-function CustomModal() {
-    const [isOpen, setIsOpen] = useState(false);
+function CustomModal({warehouse, closeModal, deleteWarehouse}) {
+    const handleDelete = () => {
+      deleteWarehouse(warehouse.id);
+      closeModal();
+    };
 
-    function openModal() {
-      setIsOpen(true);
-    }
-  
-    function closeModal() { 
-      setIsOpen(false);
-    }
 
   return (
 
       <div>
-        <button onClick={openModal}>Open Modal</button>
         <Modal 
-          isOpen={isOpen} 
+          isOpen={true} 
           onRequestClose={closeModal}
           className="Modal"
           overlayClassName="Overlay"     
@@ -30,15 +25,16 @@ function CustomModal() {
             <path d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z" fill="#13182C"/>
           </svg>
           <p className='modal-text'>
-            <p className='modal-title'>Delete Washington Warehouse?</p>
+            <p className='modal-title'>Delete {warehouse.warehouse_name}?</p>
           </p>
-          <article className='modal-article'>Please confirm that you’d like to delete the Washington from 
-            the list of warehouses. You won’t be 
-            able to undo this action.</article>
+          <article className='modal-article'>Please confirm that you'd like to delete 
+            the {warehouse.warehouse_name} from the list of warehouses.
+            You won't be able to undo this action.
+          </article>
           
           <div className='modal-btn'>
             <button className='modal-btn__cancel' onClick={closeModal}>Cancel</button>
-            <button className='modal-btn__delete' onClick={closeModal}>Delete</button> 
+            <button className='modal-btn__delete' onClick={handleDelete}>Delete</button> 
           </div>
         </Modal>
       </div>

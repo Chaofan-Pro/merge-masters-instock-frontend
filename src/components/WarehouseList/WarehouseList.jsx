@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+// import { useState} from "react";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import searchIcon from "../../assets/icons/search-24px.svg";
@@ -6,25 +6,18 @@ import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import TableHeader from "../TableHeader/TableHeader";
 import "./WarehouseList.scss";
 
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-function WarehouseList() {
-  const [warehouses, setWarehouses] = useState([]);
+function WarehouseList({openModal, warehouses}) {
 
-  useEffect(() => {
-    fetch(`${API_URL}/api/warehouses`)
-      .then((response) => response.json())
-      .then((data) => setWarehouses(data))
-      .catch((error) => console.error("Error getting warehouses:", error));
-  }, []);
-
-  const sortItems = (key) => {
-    const sortedData = [...warehouses].sort((a, b) =>
-      a[key].localeCompare(b[key])
-    );
-    setWarehouses(sortedData);
-    setSortKey(key);
-  };
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const handleSearch = (e) => {
+  //   setSearchTerm(e.target.value);
+  // };
+  // const filteredWarehouses = warehouses.filter((warehouse) => 
+  //   warehouse.warehouse_name.toLowerCase().includes(searchTerm.toLowerCase())
+  // );
 
   return (
     <div className="warehouse">
@@ -90,7 +83,8 @@ function WarehouseList() {
             </div>
             {/* Actions */}
             <div className="warehouse__actions">
-              <button className="warehouse__action warehouse__action--delete">
+              <button className="warehouse__action warehouse__action--delete"
+              onClick={() => openModal(warehouse)}>
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <button className="warehouse__action warehouse__action--edit">
