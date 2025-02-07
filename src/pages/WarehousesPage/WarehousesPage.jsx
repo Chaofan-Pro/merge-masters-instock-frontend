@@ -1,7 +1,5 @@
 import "./WarehousesPage.scss";
 import WarehouseList from "../../components/WarehouseList/WarehouseList";
-import { useState } from "react";
-import CustomModal from "../../components/CustomModal/CustomModal";
 
 const WarehousePage = () => {
 const[warehouses, setWarehouses] = useState([]);
