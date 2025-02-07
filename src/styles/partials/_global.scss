@@ -10,6 +10,7 @@
 }
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 body {
   position: relative;
@@ -62,8 +63,4 @@ main {
       font-size: 2rem;
     }
   }
-}
-
-.link {
-  cursor: pointer;
 }

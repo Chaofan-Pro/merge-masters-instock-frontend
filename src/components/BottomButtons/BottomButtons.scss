@@ -7,9 +7,14 @@
   border-radius: 20px;
   padding: 0.5rem;
   width: 100%;
+  text-align: center;
+  @include tablet {
+    width: auto;
+    padding: 0.5rem 1rem;
+  }
   &__container {
     display: flex;
-    gap: 1.0625rem;
+    gap: 1rem;
     padding: 1rem 1.5rem;
     background-color: $background-color2;
     @include tablet {

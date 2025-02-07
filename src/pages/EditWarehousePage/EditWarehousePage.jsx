@@ -136,7 +136,7 @@ const FormWarehouseDetails = () => {
 
   return (
     <>
-      <div className="main-heading">
+      <section className="main-header">
         <Link className="link" to={`${baseUrl}/warehouses/${id}`}>
           <img
             className="main-heading__back-icon"
@@ -145,8 +145,8 @@ const FormWarehouseDetails = () => {
           />
         </Link>
         <h3 className="main-heading__name">Edit Warehouse</h3>
-      </div>
-      <form onSubmit={submitHandle}>
+      </section>
+      <form className="form__container" onSubmit={submitHandle}>
         <article className="form">
           <h3 className="form__title">Warehouse Details</h3>
           <Input
@@ -209,8 +209,8 @@ const FormWarehouseDetails = () => {
             changeInputHandle={changeEmailHandle}
           />
         </article>
-        <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
       </form>
+      <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
     </>
   );
 };
