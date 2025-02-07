@@ -115,6 +115,14 @@ function AddInventory() {
               className="warehouse__select"
             >
               <option value="Select">Please select</option>
+              <option value="Manhattan">Manhattan</option>
+              <option value="Washington">Washington</option>
+              <option value="Jersey">Jersey</option>
+              <option value="SF">SF</option>
+              <option value="Santa Monica">Santa Monica</option>
+              <option value="Seattle">Seattle</option>
+              <option value="Miami">Miami</option>
+              <option value="Boston">Boston</option>
             </select>
           </div>
         </div>
