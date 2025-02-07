@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Header from "./components/Header/Header";
+import CustomModal from "./components/CustomModal/CustomModal";
 import Footer from "./components/Footer/Footer";
 import AddInventoryPage from "./pages/AddInventoryPage/AddInventoryPage";
 import AddWarehousePage from "./pages/AddWarehousePage/AddWarehousePage";
@@ -33,6 +34,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
+        <CustomModal />
         <main>
           <Routes>
             {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
