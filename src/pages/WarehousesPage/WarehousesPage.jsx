@@ -1,17 +1,12 @@
 import "./WarehousesPage.scss";
+import WarehouseList from "../../components/WarehouseList/WarehouseList";
 
-const Warehouses = () => {
+const WarehousePage = () => {
   return (
-    <div>
-      This is the <strong>Warehouses </strong>Page This is the{" "}
-      <strong>Warehouses </strong>Page This is the <strong>Warehouses </strong>
-      Page This is the <strong>Warehouses </strong>Page This is the{" "}
-      <strong>Warehouses </strong>Page This is the <strong>Warehouses </strong>
-      Page This is the <strong>Warehouses </strong>Page This is the{" "}
-      <strong>Warehouses </strong>Page This is the <strong>Warehouses </strong>
-      Page This is the <strong>Warehouses </strong>Page
-    </div>
+    <>
+      <WarehouseList page={"warehouses"} />
+    </>
   );
 };
 
-export default Warehouses;
+export default WarehousePage;
