@@ -70,7 +70,6 @@ function App() {
               <Route path="/inventory/add" element={<AddInventoryPage />} />
             </Routes>
           </main>
-        </div>
         <Footer />
       </BrowserRouter>
     </>
