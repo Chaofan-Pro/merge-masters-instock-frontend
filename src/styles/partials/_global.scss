@@ -8,30 +8,44 @@
   margin: 0;
   padding: 0;
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 a {
   text-decoration: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
 }
 body {
-  position: relative;
   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $background-color2;
 }
 
 main {
   width: calc(100vw - 2rem);
   margin: 0 1rem;
   background-color: white;
-  position: absolute;
-  top: 8.5rem;
+  margin-top: -4rem;
   border-radius: 3px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   @include tablet {
     width: calc(100vw - 4rem);
     margin: 0 2rem;
-    top: 5.75rem;
+    margin-top: -5.875rem;
   }
   @include desktop {
     width: 63.75rem;
     margin: 0 calc((100vw - 63.75rem) / 2);
-    top: 5.75rem;
+    margin-top: -5.875rem;
   }
 }
 
@@ -57,5 +71,45 @@ main {
       line-height: 2.5rem;
       font-size: 2rem;
     }
+  }
+}
+
+.status-green {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+  font-size: 0.6875rem;
+  border-radius: 20px;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  background-color: #15846312;
+  color: $supporting-color1;
+  font-weight: 600;
+
+  @include tablet {
+    line-height: 1.125rem;
+    font-size: 0.75rem;
+    height: 1.625rem;
+  }
+}
+
+.status-red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+  font-size: 0.6875rem;
+  border-radius: 20px;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  background-color: #c9451512;
+  color: $supporting-color2;
+  font-weight: 600;
+
+  @include tablet {
+    line-height: 1.125rem;
+    font-size: 0.75rem;
+    height: 1.625rem;
   }
 }

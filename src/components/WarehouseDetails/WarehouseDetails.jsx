@@ -28,7 +28,7 @@ const WarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
           </Link>
           <h1 className="main-heading__name">{warehouse.warehouse_name}</h1>
         </div>
-        <Link to="/warehouses/edit/:id">
+        <Link to={`/warehouses/edit/${id}`}>
           <button className="main-heading__edit-button">
             <img src={edit} alt="Edit Icon" />
             <span className="main-heading__edit-text">Edit</span>
