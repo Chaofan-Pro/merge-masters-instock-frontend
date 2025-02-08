@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
+import sortIcon from "../../assets/Icons/sort-24px.svg";
 import CustomModal from "../CustomModal/CustomModal";
 import axios from "axios";
 import React from "react";
@@ -32,10 +33,38 @@ const WarehouseInventory = () => {
   return (
     <section className="warehouse-inventory-details">
       <div className="inventory-heading-container">
-        <h4 className="inventory-heading__text">INVENTORY ITEM</h4>
-        <h4 className="inventory-heading__text">CATEGORY</h4>
-        <h4 className="inventory-heading__text">STATUS</h4>
-        <h4 className="inventory-heading__text">QUANTITY</h4>
+        <div className="inventory-heading">
+          <h4 className="inventory-heading__text">INVENTORY ITEM</h4>
+          <img
+            className="inventory-heading__sort-icon"
+            src={sortIcon}
+            alt="Sort"
+          />
+        </div>
+        <div className="inventory-heading">
+          <h4 className="inventory-heading__text">CATEGORY</h4>
+          <img
+            className="inventory-heading__sort-icon"
+            src={sortIcon}
+            alt="Sort"
+          />
+        </div>
+        <div className="inventory-heading">
+          <h4 className="inventory-heading__text">STATUS</h4>
+          <img
+            className="inventory-heading__sort-icon"
+            src={sortIcon}
+            alt="Sort"
+          />
+        </div>
+        <div className="inventory-heading">
+          <h4 className="inventory-heading__text">QUANTITY</h4>
+          <img
+            className="inventory-heading__sort-icon"
+            src={sortIcon}
+            alt="Sort"
+          />
+        </div>
         <h4 className="inventory-heading__text inventory-heading__text--tablet">
           ACTIONS
         </h4>

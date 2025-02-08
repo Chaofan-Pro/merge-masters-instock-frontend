@@ -22,6 +22,18 @@
 }
 
 .inventory-heading {
+  @include tablet {
+    width: 7.5rem;
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  &__sort-icon {
+    width: 1rem;
+    height: 1rem;
+    align-self: center;
+    cursor: pointer;
+  }
   &__text {
     line-height: 1rem;
     font-size: 0.6875rem;
@@ -33,12 +45,12 @@
       line-height: 1.125rem;
       font-size: 0.75rem;
       padding: 0.6875rem 0;
-      width: 7.5rem;
     }
 
     &--tablet {
       @include tablet {
         text-align: right;
+        width: 7.5rem;
       }
     }
   }
@@ -51,7 +63,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem 2rem;
+    padding: 1.125rem 2rem;
     border-bottom: 1px solid $secondary-color2;
 
     &:last-child {
@@ -113,6 +125,11 @@
     height: 1.5rem;
     cursor: pointer;
   }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #2e66e512;
+  }
 }
 
 .status-green {
@@ -150,6 +167,11 @@
   }
   @include tablet {
     display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #2e66e512;
   }
 }
 
