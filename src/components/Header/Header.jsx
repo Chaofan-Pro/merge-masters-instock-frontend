@@ -3,6 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation().pathname;
+  console.log(location);
   return (
     <header className="header">
       <Link to="/">
@@ -16,7 +17,7 @@ const Header = () => {
         <Link
           to="/warehouses"
           className={
-            location.includes("warehouses")
+            location.includes("warehouses") || location === "/"
               ? "header__nav-item--active"
               : "header__nav-item"
           }
