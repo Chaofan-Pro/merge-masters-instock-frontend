@@ -23,7 +23,7 @@
     width: 100%;
     height: 2.25rem;
     border-radius: 20px;
-    box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px $primary-color3 inset;
 
     border: 1px solid $secondary-color2;
     &::placeholder {
