@@ -1,7 +1,7 @@
 import "./Input.scss";
 import Error from "../Error/Error";
 
-const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
+const Input = ({ label, id, value, placeholder, isInputValid, changeInputHandle }) => {
   return (
     <>
       <label className="form__label" htmlFor={id}>
@@ -13,7 +13,7 @@ const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
         id={id}
         value={value}
         onChange={changeInputHandle}
-        placeholder={value}
+        placeholder={placeholder}
       />
       {!isInputValid && <Error />}
     </>

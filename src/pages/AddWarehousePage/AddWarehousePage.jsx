@@ -167,7 +167,7 @@ const AddWarehousePage = ({ baseUrl }) => {
             alt="back arrow"
           />
         </Link>
-        <h3 className="main-heading__name">Edit Warehouse</h3>
+        <h3 className="main-heading__name">Add New Warehouse</h3>
       </section>
       <form onSubmit={submitHandle}>
         <section className="form">
@@ -179,6 +179,7 @@ const AddWarehousePage = ({ baseUrl }) => {
                 label={warehouseDetail.label}
                 id={warehouseDetail.id}
                 value={warehouseDetail.value}
+                placeholder={warehouseDetail.label}
                 isInputValid={warehouseDetail.isInputValid}
                 changeInputHandle={warehouseDetail.changeInputHandle}
               />

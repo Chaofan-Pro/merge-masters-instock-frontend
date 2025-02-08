@@ -199,6 +199,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
                 label={warehouseDetail.label}
                 id={warehouseDetail.id}
                 value={warehouseDetail.value}
+                placeholder={warehouseDetail.value}
                 isInputValid={warehouseDetail.isInputValid}
                 changeInputHandle={warehouseDetail.changeInputHandle}
               />
