@@ -29,14 +29,28 @@ function App() {
     }
   };
 
+  const [inventory, setInventory] = useState(null);
+
+  const fetchInventoryDetail = async (id) => {
+    try {
+      const singleInventoryRes = await axios.get(
+        baseUrl + `/api/inventories/${id}`
+      );
+      setInventory(singleInventoryRes.data);
+    } catch (error) {
+      console.error("ERROR: " + error);
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-            <Route path="/" element={<WarehousesPage />} />
+        <div>
+          <Header />
+          <main>
+            <Routes>
+              {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
+              <Route path="/" element={<WarehousesPage />} />
 
               {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
               <Route path="/warehouses" element={<WarehousesPage />} />
@@ -62,14 +76,28 @@ function App() {
 
               {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
               <Route path="/inventory" element={<InventoryPage />} />
-              <Route path="/inventory/:id" element={<InventoryDetailsPage />} />
+              <Route
+                path="/inventory/:id"
+                element={
+                  <InventoryDetailsPage
+                    fetchInventoryDetail={fetchInventoryDetail}
+                    inventory={inventory}
+                  />
+                }
+              />
               <Route
                 path="/inventory/edit/:id"
-                element={<EditInventoryPage />}
+                element={
+                  <EditInventoryPage
+                    fetchInventoryDetail={fetchInventoryDetail}
+                    inventory={inventory}
+                  />
+                }
               />
               <Route path="/inventory/add" element={<AddInventoryPage />} />
             </Routes>
           </main>
+        </div>
         <Footer />
       </BrowserRouter>
     </>

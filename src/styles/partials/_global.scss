@@ -67,3 +67,43 @@ main {
     }
   }
 }
+
+.status-green {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+  font-size: 0.6875rem;
+  border-radius: 20px;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  background-color: #15846312;
+  color: $supporting-color1;
+  font-weight: 600;
+
+  @include tablet {
+    line-height: 1.125rem;
+    font-size: 0.75rem;
+    height: 1.625rem;
+  }
+}
+
+.status-red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1rem;
+  font-size: 0.6875rem;
+  border-radius: 20px;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  background-color: #c9451512;
+  color: $supporting-color2;
+  font-weight: 600;
+
+  @include tablet {
+    line-height: 1.125rem;
+    font-size: 0.75rem;
+    height: 1.625rem;
+  }
+}
