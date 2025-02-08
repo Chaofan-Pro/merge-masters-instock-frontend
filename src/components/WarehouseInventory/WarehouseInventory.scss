@@ -2,7 +2,7 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
 
-.inventory-details {
+.warehouse-inventory-details {
   display: flex;
   flex-direction: column;
 }
@@ -27,6 +27,7 @@
     font-size: 0.6875rem;
     color: $secondary-color1;
     font-weight: 600;
+    padding-bottom: 0.25rem;
 
     @include tablet {
       line-height: 1.125rem;
@@ -123,4 +124,37 @@
 .status-red {
   padding: 0;
   justify-content: flex-start;
+}
+
+.single-inventory-item {
+  border-top: 1px solid $secondary-color2;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.5rem 1.5rem 1.5rem;
+  gap: 1.25rem;
+
+  &--row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__action-icon {
+    border: none;
+    background-color: $primary-color3;
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+button {
+  border-top: none;
+  background-color: $primary-color3;
+  cursor: pointer;
 }
