@@ -374,7 +374,6 @@
 .warehouse {
   width: 100%; 
   background: $primary-color3;
-  padding: 16px;
   margin: 0 auto;
   color: $secondary-color1;
   font-size: 13px;
@@ -384,14 +383,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-   
     
+    @include tablet{
+    padding: 1.5rem;
+  }
 
     @include tablet {
       flex-direction: row;
       justify-content: space-between;
-      margin-top: 8.5px;
-      margin-bottom: 24.5px;
+      
     }
   }
   &__title-container {
@@ -589,11 +589,11 @@
     color: $primary-color1;
     @include tablet {
       max-width: 110px;
-      padding-left: 1rem;
       position: absolute;
-      left: 20%;
+      left: 22.5%;
       align-items: center;
-      padding-right: 0;
+      
+      
     }
     
     @include desktop {
@@ -601,7 +601,8 @@
       flex-direction: row;
       position: absolute;
       max-width: 200px;
-      left: 22%;
+      left: 23%;
+      padding-right: 0;
     }
   }
   &__contact {
@@ -619,18 +620,22 @@
       color: $primary-color1;
       @include tablet {
         position: absolute;
-        left: 40.5%;
+        left: 42.5%;
         bottom: 35%;
         padding-bottom: 0;
+       
       }
       @include desktop {
-        left: 43.5%;
+        left: 48%;
         padding-bottom: 0;
+
       }
     }
 
     &-info {
       color: $primary-color1
+      
+
       
     }
   }
@@ -718,3 +723,31 @@
     }
   }
 }
+
+
+
+// .list-table__sort-name{
+//   @include tablet{
+//     padding-left: 0;
+//   }
+// }
+// .list-table__sort-contact-name{
+//   @include tablet{
+//     padding-left: 1.5rem;
+//   }
+// }
+// .table-header__column, .list-table__sort-contact-info{
+//   @include tablet{
+//     padding-right: 1rem;
+//   }
+// }
+// .table-header__column, .table-header__actions{
+//   @include tablet{
+//       padding-left: 1rem;
+//     }
+// }
+// .list-table__sort-add{
+//   @include tablet{
+//     padding-right: 1.5rem;
+//   }
+// }
