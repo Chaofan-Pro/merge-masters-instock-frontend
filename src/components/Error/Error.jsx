@@ -1,8 +1,6 @@
 import "./Error.scss";
 
-const Error = ({ isInputValid }) => {
-  if (isInputValid) return null;
-
+const Error = ({ label, id, value, isInputValid, changeInputHandle }) => {
   return (
     <div className="form__error">
       <img

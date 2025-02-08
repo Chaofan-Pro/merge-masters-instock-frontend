@@ -176,11 +176,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={itemName}
             onChange={changeItemNameHandle}
           />
-
-          <Error
-            isInputValid={isItemNameValid}
-            className="form__error-container"
-          />
+          {!isItemNameValid && (
+            <Error
+              isInputValid={isItemNameValid}
+              className="form__error-container"
+            />
+          )}
 
           {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="addInventory__detail-label">
@@ -194,7 +195,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={description}
             onChange={changeDescriptionHandle}
           ></textarea>
-          <Error isInputValid={isDescriptionValid} />
+          {!isDescriptionValid && <Error isInputValid={isDescriptionValid} />}
 
           {/* -=-=-=-CATEGORY-=-=-=-= */}
           <label htmlFor="category" className="addInventory__detail-label">
@@ -216,7 +217,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
               <option value="Health">Health</option>
             </select>
           </div>
-          <Error isInputValid={isCategoryValid} />
+          {!isCategoryValid && <Error isInputValid={isCategoryValid} />}
         </div>
       </div>
 
@@ -269,8 +270,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
                 value={quantity}
                 onChange={changeQuantityHandle}
               />
-
-              <Error isInputValid={isQuantityValid} />
+              {!isQuantityValid && <Error isInputValid={isQuantityValid} />}
             </>
           )}
         </div>
@@ -295,7 +295,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             ))}
           </select>
         </div>
-        <Error isInputValid={isWarehouseValid} />
+        {!isWarehouseValid && <Error isInputValid={isWarehouseValid} />}
       </div>
     </form>
   );
