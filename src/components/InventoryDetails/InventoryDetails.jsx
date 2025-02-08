@@ -70,7 +70,6 @@ const InventoryDetails = ({ fetchInventoryDetail, inventory }) => {
             </p>
           </div>
         </div>
-        {/* <div className="inventory-details__container"></div> */}
       </div>
     </section>
   );
