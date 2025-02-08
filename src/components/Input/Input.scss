@@ -43,5 +43,11 @@
       font-size: 0.875rem;
       height: 2.375rem;
     }
+    &--add {
+      @extend .form__input;
+      &::placeholder {
+        color: $secondary-color1;
+      }
+    }
   }
 }

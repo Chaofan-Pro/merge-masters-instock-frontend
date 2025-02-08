@@ -1,10 +1,9 @@
 import "./AddWarehousePage.scss";
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
-import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
 const AddWarehousePage = ({ baseUrl }) => {
   const [name, setName] = useState("");
@@ -159,16 +158,7 @@ const AddWarehousePage = ({ baseUrl }) => {
 
   return (
     <>
-      <section className="main-header">
-        <Link className="link" to={`/warehouses`}>
-          <img
-            className="main-heading__back-icon"
-            src={backArrow}
-            alt="back arrow"
-          />
-        </Link>
-        <h3 className="main-heading__name">Add New Warehouse</h3>
-      </section>
+      <FormHeader backLink={"/warehouses"} title={"Add New Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
@@ -193,13 +183,14 @@ const AddWarehousePage = ({ baseUrl }) => {
                 label={contactDetail.label}
                 id={contactDetail.id}
                 value={contactDetail.value}
+                placeholder={contactDetail.label}
                 isInputValid={contactDetail.isInputValid}
                 changeInputHandle={contactDetail.changeInputHandle}
               />
             ))}
           </article>
         </section>
-        <BottomButtons link={`/warehouses`} text="Save" />
+        <BottomButtons link={`/warehouses`} text="+ Add Warehouse" />
       </form>
     </>
   );

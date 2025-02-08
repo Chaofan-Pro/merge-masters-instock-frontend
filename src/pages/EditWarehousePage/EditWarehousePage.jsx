@@ -2,6 +2,7 @@ import "./EditWarehousePage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
@@ -179,16 +180,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
 
   return (
     <>
-      <section className="main-header">
-        <Link className="link" to={`/warehouses/${id}`}>
-          <img
-            className="main-heading__back-icon"
-            src={backArrow}
-            alt="back arrow"
-          />
-        </Link>
-        <h3 className="main-heading__name">Edit Warehouse</h3>
-      </section>
+      <FormHeader backLink={`/warehouses/${id}`} title={"Edit Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
