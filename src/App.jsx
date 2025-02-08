@@ -45,57 +45,59 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-            <Route path="/" element={<WarehousesPage />} />
+        <div>
+          <Header />
+          <main>
+            <Routes>
+              {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
+              <Route path="/" element={<WarehousesPage />} />
 
-            {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
-            <Route path="/warehouses" element={<WarehousesPage />} />
-            <Route
-              path="/warehouses/:id"
-              element={
-                <WarehouseDetailsPage
-                  warehouse={warehouse}
-                  fetchWarehouseDetail={fetchWarehouseDetail}
-                />
-              }
-            />
-            <Route
-              path="/warehouses/edit/:id"
-              element={
-                <EditWarehousePage
-                  warehouse={warehouse}
-                  fetchWarehouseDetail={fetchWarehouseDetail}
-                />
-              }
-            />
-            <Route path="/warehouses/add" element={<AddWarehousePage />} />
+              {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
+              <Route path="/warehouses" element={<WarehousesPage />} />
+              <Route
+                path="/warehouses/:id"
+                element={
+                  <WarehouseDetailsPage
+                    warehouse={warehouse}
+                    fetchWarehouseDetail={fetchWarehouseDetail}
+                  />
+                }
+              />
+              <Route
+                path="/warehouses/edit/:id"
+                element={
+                  <EditWarehousePage
+                    warehouse={warehouse}
+                    fetchWarehouseDetail={fetchWarehouseDetail}
+                  />
+                }
+              />
+              <Route path="/warehouses/add" element={<AddWarehousePage />} />
 
-            {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
-            <Route path="/inventory" element={<InventoryPage />} />
-            <Route
-              path="/inventory/:id"
-              element={
-                <InventoryDetailsPage
-                  fetchInventoryDetail={fetchInventoryDetail}
-                  inventory={inventory}
-                />
-              }
-            />
-            <Route
-              path="/inventory/edit/:id"
-              element={
-                <EditInventoryPage
-                  fetchInventoryDetail={fetchInventoryDetail}
-                  inventory={inventory}
-                />
-              }
-            />
-            <Route path="/inventory/add" element={<AddInventoryPage />} />
-          </Routes>
-        </main>
+              {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
+              <Route path="/inventory" element={<InventoryPage />} />
+              <Route
+                path="/inventory/:id"
+                element={
+                  <InventoryDetailsPage
+                    fetchInventoryDetail={fetchInventoryDetail}
+                    inventory={inventory}
+                  />
+                }
+              />
+              <Route
+                path="/inventory/edit/:id"
+                element={
+                  <EditInventoryPage
+                    fetchInventoryDetail={fetchInventoryDetail}
+                    inventory={inventory}
+                  />
+                }
+              />
+              <Route path="/inventory/add" element={<AddInventoryPage />} />
+            </Routes>
+          </main>
+        </div>
         <Footer />
       </BrowserRouter>
     </>
