@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import "./EditInventoryPage.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import FormInventoryDetails from "../../components/FormInventoryDetails/FormInventoryDetails";
 
 function EditInventoryPage() {
   const formRef = useRef(null);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const handleSave = async () => {
     if (formRef.current) {
@@ -29,7 +30,7 @@ function EditInventoryPage() {
       </div>
       <FormInventoryDetails ref={formRef} />
       <div className="buttons">
-        <Link to="/inventory" className="cancel__button">
+        <Link to={`/inventory/${id}`} className="cancel__button">
           Cancel
         </Link>
         <button
