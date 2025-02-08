@@ -25,7 +25,7 @@
   font-weight: 500;
 }
 
-.inventory__form {
+.addInventory__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +39,7 @@
   }
 }
 
-.inventory__details-container {
+.addInventory__details-container {
   width: 100%;
   padding: 0 1.5rem;
   margin: 1rem 0;
@@ -50,13 +50,13 @@
   }
 }
 
-.inventory__subheader-title {
+.addInventory__subheader-title {
   font-size: 1.25rem;
   padding-bottom: 1.5rem;
   font-weight: 600;
 }
 
-.inventory__detail-form {
+.addInventory__detail-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +64,7 @@
   line-height: 1.25rem;
 }
 
-.inventory__detail-label {
+.addInventory__detail-label {
   font-size: 0.813rem;
   font-weight: 600;
   padding-bottom: 0.25rem;
@@ -74,8 +74,9 @@
   //   }
 }
 
-.inventory__detail-input {
-  font-size: 12px;
+.addInventory__detail-input {
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -84,7 +85,8 @@
   margin-bottom: 1rem;
 }
 
-.inventory__quantity {
+.addInventory__quantity {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -106,7 +108,7 @@
   // }
 }
 
-.inventory__detail-textarea {
+.addInventory__detail-textarea {
   height: 7.5rem;
   width: 100%;
   border-radius: 20px;
@@ -125,7 +127,7 @@
   //   }
 }
 
-.inventory__select-container {
+.addInventory__select-container {
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -140,7 +142,7 @@
   }
 }
 
-.inventory__availability-container {
+.addInventory__availability-container {
   width: 100%;
   padding: 1rem 1.5rem;
 }
@@ -169,6 +171,7 @@
 }
 
 .warehouse__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -186,6 +189,7 @@
 }
 
 .category__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -219,6 +223,8 @@
   border: 1px solid $secondary-color2;
   border-radius: 20px;
   padding: 0.5rem;
+  color: $secondary-color1;
+
   &:hover {
     color: $primary-color2;
     border: 1px solid $primary-color2;
@@ -253,7 +259,7 @@
   }
 }
 
-.inventory__select-container {
+.addInventory__select-container {
   width: 100%;
   overflow: hidden;
   background: url("../../assets/icons/arrow_drop_down-24px.svg") no-repeat right
@@ -266,4 +272,8 @@
   background-color: $primary-color2;
   border: 1px solid $primary-color2;
   color: $primary-color3;
+}
+
+.warehouse__select-placeholder {
+  color: $primary-color2;
 }
