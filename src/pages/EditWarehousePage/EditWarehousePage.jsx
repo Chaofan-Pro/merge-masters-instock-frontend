@@ -6,8 +6,7 @@ import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
-const EditWarehousePage = ({ warehouse, fetchWarehouseDetail }) => {
-  const baseUrl = import.meta.env.VITE_API_URL;
+const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
   const { id } = useParams();
 
   useEffect(() => {

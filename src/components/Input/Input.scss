@@ -23,8 +23,10 @@
     width: 100%;
     height: 2.25rem;
     border-radius: 20px;
+    background-color: none;
     border: 1px solid $secondary-color2;
     &::placeholder {
+      background-color: none;
       color: $primary-color1;
       font-weight: 400;
     }
@@ -35,6 +37,7 @@
     }
     &--error {
       border: 1px solid $supporting-color2;
+      background-color: none;
     }
     @include tablet {
       font-size: 0.875rem;

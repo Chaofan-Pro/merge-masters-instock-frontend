@@ -1,19 +1,12 @@
 import "./AddWarehousePage.scss";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
-const FormWarehouseDetails = () => {
-  const baseUrl = import.meta.env.VITE_API_URL;
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetchWarehouseDetail(id);
-  }, [id]);
-
+const AddWarehousePage = ({ baseUrl }) => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -22,19 +15,6 @@ const FormWarehouseDetails = () => {
   const [contactPosition, setContactPosition] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-
-  useEffect(() => {
-    if (warehouse) {
-      setName(warehouse.warehouse_name || "");
-      setAddress(warehouse.address || "");
-      setCity(warehouse.city || "");
-      setCountry(warehouse.country || "");
-      setContactName(warehouse.contact_name || "");
-      setContactPosition(warehouse.contact_position || "");
-      setPhone(warehouse.contact_phone || "");
-      setEmail(warehouse.contact_email || "");
-    }
-  }, [warehouse]);
 
   const [isNameValid, setNameValid] = useState(true);
   const [isAddressValid, setAddressValid] = useState(true);
@@ -100,7 +80,7 @@ const FormWarehouseDetails = () => {
       !!email
     ) {
       try {
-        await axios.put(baseUrl + `/api/warehouses/${id}`, {
+        await axios.post(baseUrl + `/api/warehouses`, {
           warehouse_name: name,
           address,
           city,
@@ -110,7 +90,6 @@ const FormWarehouseDetails = () => {
           contact_phone: phone,
           contact_email: email,
         });
-        fetchWarehouseDetail(id);
       } catch (error) {
         console.error(error);
       }
@@ -181,7 +160,7 @@ const FormWarehouseDetails = () => {
   return (
     <>
       <section className="main-header">
-        <Link className="link" to={`/warehouses/${id}`}>
+        <Link className="link" to={`/warehouses`}>
           <img
             className="main-heading__back-icon"
             src={backArrow}
@@ -219,10 +198,10 @@ const FormWarehouseDetails = () => {
             ))}
           </article>
         </section>
-        <BottomButtons link={`/warehouses/${id}`} text="Save" />
+        <BottomButtons link={`/warehouses`} text="Save" />
       </form>
     </>
   );
 };
 
-export default FormWarehouseDetails;
+export default AddWarehousePage;
