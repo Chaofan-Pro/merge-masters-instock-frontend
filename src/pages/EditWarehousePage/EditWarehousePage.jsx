@@ -181,7 +181,7 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
   return (
     <>
       <section className="main-header">
-        <Link className="link" to={`${baseUrl}/warehouses/${id}`}>
+        <Link className="link" to={`/warehouses/${id}`}>
           <img
             className="main-heading__back-icon"
             src={backArrow}
@@ -195,7 +195,8 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
           <article className="form__left">
             <h3 className="form__title">Warehouse Details</h3>
             {warehouseDetails.map((warehouseDetail) => (
-              <Input key={warehouseDetail.id}
+              <Input
+                key={warehouseDetail.id}
                 label={warehouseDetail.label}
                 id={warehouseDetail.id}
                 value={warehouseDetail.value}
@@ -207,7 +208,8 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
           <article className="form__right">
             <h3 className="form__title">Contact Details</h3>
             {contactDetails.map((contactDetail) => (
-              <Input key={contactDetail.id}
+              <Input
+                key={contactDetail.id}
                 label={contactDetail.label}
                 id={contactDetail.id}
                 value={contactDetail.value}
@@ -217,7 +219,7 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
             ))}
           </article>
         </section>
-        <BottomButtons link={`${baseUrl}/warehouses/${id}`} text="Save" />
+        <BottomButtons link={`/warehouses/${id}`} text="Save" />
       </form>
     </>
   );
