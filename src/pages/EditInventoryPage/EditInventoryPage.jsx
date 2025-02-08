@@ -1,11 +1,24 @@
+import React, { useRef } from "react";
 import "./EditInventoryPage.scss";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
-
 import FormInventoryDetails from "../../components/FormInventoryDetails/FormInventoryDetails";
 
-function EditInventory() {
+function EditInventoryPage() {
+  const formRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleSave = async () => {
+    if (formRef.current) {
+      const success = await formRef.current.submitHandle();
+      if (success) {
+        navigate("/inventory");
+      } else {
+        console.error("Failed to save changes.");
+      }
+    }
+  };
+
   return (
     <div className="editInventory">
       <div className="editInventory__subheader-container">
@@ -14,12 +27,16 @@ function EditInventory() {
         </Link>
         <h2 className="editInventory__title">Edit Inventory Item</h2>
       </div>
-      <FormInventoryDetails />
+      <FormInventoryDetails ref={formRef} />
       <div className="buttons">
         <Link to="/inventory" className="cancel__button">
           Cancel
         </Link>
-        <button type="submit" className="save__button editInventory__button">
+        <button
+          type="button"
+          className="save__button editInventory__button"
+          onClick={handleSave}
+        >
           Save
         </button>
       </div>
@@ -27,4 +44,4 @@ function EditInventory() {
   );
 }
 
-export default EditInventory;
+export default EditInventoryPage;
