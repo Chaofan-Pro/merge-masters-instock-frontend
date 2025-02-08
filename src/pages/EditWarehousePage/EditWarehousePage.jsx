@@ -111,6 +111,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
           contact_email: email,
         });
         fetchWarehouseDetail(id);
+        alert("Successfully edited");
       } catch (error) {
         console.error(error);
       }

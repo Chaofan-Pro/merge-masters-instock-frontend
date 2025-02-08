@@ -89,6 +89,7 @@ const AddWarehousePage = ({ baseUrl }) => {
           contact_phone: phone,
           contact_email: email,
         });
+        alert("Successfully added");
       } catch (error) {
         console.error(error);
       }
