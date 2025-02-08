@@ -56,4 +56,4 @@ const WarehousePage = () => {
   );
 };
 
-export default Warehouses;
+export default WarehousePage;
