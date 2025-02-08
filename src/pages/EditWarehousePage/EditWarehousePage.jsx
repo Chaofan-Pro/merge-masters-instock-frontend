@@ -6,7 +6,7 @@ import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
-const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
+const EditWarehousePage = ({ warehouse, fetchWarehouseDetail }) => {
   const baseUrl = import.meta.env.VITE_API_URL;
   const { id } = useParams();
 
@@ -225,4 +225,4 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
   );
 };
 
-export default FormWarehouseDetails;
+export default EditWarehousePage;
