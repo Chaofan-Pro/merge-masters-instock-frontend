@@ -1,11 +1,16 @@
 import "./InventoryDetailsPage.scss";
 import React from "react";
+import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 
-function InventoryDetails() {
-  return;
-  <>
-    <h3>This is the InventoryDetails page</h3>;
-  </>;
+function InventoryDetailsPage({ fetchInventoryDetail, inventory }) {
+  return (
+    <>
+      <InventoryDetails
+        fetchInventoryDetail={fetchInventoryDetail}
+        inventory={inventory}
+      />
+    </>
+  );
 }
 
-export default InventoryDetails;
+export default InventoryDetailsPage;
