@@ -1,0 +1,35 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/global" as *;
+@use "../../styles/partials/mixin" as *;
+
+.footer {
+  background-color: $background-color2;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  margin-top: 2.5rem;
+  @include tablet {
+    margin-top: 4.375rem;
+  }
+  @include desktop {
+    margin-top: 5.9375rem;
+  }
+  &__text {
+    line-height: 1rem;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: $secondary-color1;
+    text-align: center;
+    padding-bottom: 2.5rem;
+
+    @include tablet {
+      line-height: 1.125rem;
+      font-size: 0.75rem;
+    }
+
+    @include desktop {
+      padding-bottom: 3rem;
+    }
+  }
+}
