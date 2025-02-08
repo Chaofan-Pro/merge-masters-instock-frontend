@@ -7,6 +7,7 @@ import React, {
 import "./FormInventoryDetails.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import Error from "../../components/Error/Error";
 
 const FormInventoryDetails = forwardRef((props, ref) => {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -39,7 +40,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       setQuantity(data.quantity);
 
       // Set the warehouse to the corresponding warehouse_id from inventory
-      setWarehouse(data.warehouse_id); // Set warehouse_id here
+      setWarehouse(data.warehouse_id);
     } catch (error) {
       console.error("ERROR: " + error);
     }
@@ -56,12 +57,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    fetchWarehouses(); //USEEFFECT TO GET WAREHOUSE
+    fetchWarehouses(); // Fetch warehouses
   }, []);
 
   useEffect(() => {
     if (warehouses.length > 0 && id) {
-      fetchInventoryDetail(); //FETCH INVENTORY DETAILS AFTER FETCHWAREHOUSES
+      fetchInventoryDetail(); // Fetch inventory details after fetching warehouses
     }
   }, [warehouses, id]);
 
@@ -82,6 +83,9 @@ const FormInventoryDetails = forwardRef((props, ref) => {
 
   const changeStatusHandle = (e) => {
     setStatus(e.target.value);
+    if (e.target.value === "Out of Stock") {
+      setQuantity(""); // Clear quantity if status is Out of Stock
+    }
   };
 
   const changeQuantityHandle = (e) => {
@@ -107,13 +111,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       itemName &&
       description &&
       category !== "Select" &&
-      quantity &&
       warehouse !== "Select"
     ) {
       try {
-        //FIND WAREHOUSE FROM WAREHOUSE LIST USING WAREHOUSE_ID
+        // Find warehouse from warehouse list using warehouse_id
         const selectedWarehouse = warehouses.find(
-          (wh) => wh.id === parseInt(warehouse) //COMPARE WAREHOUS_ID
+          (wh) => wh.id === parseInt(warehouse)
         );
 
         if (!selectedWarehouse) {
@@ -122,14 +125,20 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           return false;
         }
 
-        await axios.put(baseUrl + `/api/inventories/${id}`, {
+        // If the status is "Out of Stock", set quantity to 0
+        const inventoryData = {
           item_name: itemName,
           description,
           category,
           status,
-          quantity,
           warehouse_id: selectedWarehouse.id,
-        });
+          quantity: status === "In Stock" ? quantity : 0,
+        };
+
+        console.log("Sending data:", inventoryData);
+
+        // Update the inventory item
+        await axios.put(baseUrl + `/api/inventories/${id}`, inventoryData);
 
         fetchInventoryDetail();
 
@@ -137,7 +146,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
 
         return true;
       } catch (error) {
-        console.error(error);
+        console.error("Error in submit:", error);
         alert("Update failed. Please try again.");
         return false;
       }
@@ -154,7 +163,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       <div className="addInventory__details-container">
         <h3 className="addInventory__subheader-title">Item Details</h3>
         <div className="addInventory__detail-form">
-          {/* -=-=-=-=-=-=-ITEM-NAME-=-=-=-==-=-=- */}
+          {/* -=-=-=-ITEM NAME-=-=-=-= */}
           <label htmlFor="name" className="addInventory__detail-label">
             Item Name
           </label>
@@ -167,18 +176,17 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={itemName}
             onChange={changeItemNameHandle}
           />
-          {!isItemNameValid && (
-            <div className="form__error">
-              <p className="form__error-text">This field is required</p>
-            </div>
-          )}
 
-          {/* -=-=-=-=-=-=-DESCRIPTION  -=-=-=-==-=-=- */}
+          <Error
+            isInputValid={isItemNameValid}
+            className="form__error-container"
+          />
+
+          {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="addInventory__detail-label">
             Description
           </label>
           <textarea
-            type="text"
             className="addInventory__detail-textarea"
             placeholder="Please enter a brief item description..."
             id="description"
@@ -186,13 +194,9 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={description}
             onChange={changeDescriptionHandle}
           ></textarea>
-          {!isDescriptionValid && (
-            <div className="form__error">
-              <p className="form__error-text">This field is required</p>
-            </div>
-          )}
+          <Error isInputValid={isDescriptionValid} />
 
-          {/* -=-=-=-=-=-=-CATEGORY-=-=-=-==-=-=- */}
+          {/* -=-=-=-CATEGORY-=-=-=-= */}
           <label htmlFor="category" className="addInventory__detail-label">
             Category
           </label>
@@ -212,18 +216,15 @@ const FormInventoryDetails = forwardRef((props, ref) => {
               <option value="Health">Health</option>
             </select>
           </div>
-          {!isCategoryValid && (
-            <div className="form__error">
-              <p className="form__error-text">This field is required</p>
-            </div>
-          )}
+          <Error isInputValid={isCategoryValid} />
         </div>
       </div>
 
       <div className="addInventory__availability-container">
         <div className="addInventory__availability-form">
           <h3 className="addInventory__subheader-title">Item Availability</h3>
-          {/* -=-=-=-=-=-=-STATUS-=-=-=-==-=-=- */}
+
+          {/* -=-=-=-STATUS-=-=-=-= */}
           <label htmlFor="status" className="addInventory__detail-label">
             Status
           </label>
@@ -253,27 +254,28 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             </label>
           </div>
 
-          {/* -=-=-=-=-=-=-QUANTITY-=-=-=-==-=-=- */}
-          <label htmlFor="quantity" className="addInventory__detail-label">
-            Quantity
-          </label>
-          <input
-            type="text"
-            className="addInventory__quantity"
-            placeholder="0"
-            id="quantity"
-            name="quantity"
-            value={quantity}
-            onChange={changeQuantityHandle}
-          />
-          {!isQuantityValid && (
-            <div className="form__error">
-              <p className="form__error-text">This field is required</p>
-            </div>
+          {/* -=-=-=-QUANTITY-=-=-=-= */}
+          {status === "In Stock" && (
+            <>
+              <label htmlFor="quantity" className="addInventory__detail-label">
+                Quantity
+              </label>
+              <input
+                type="number"
+                className="addInventory__quantity"
+                placeholder="0"
+                id="quantity"
+                name="quantity"
+                value={quantity}
+                onChange={changeQuantityHandle}
+              />
+
+              <Error isInputValid={isQuantityValid} />
+            </>
           )}
         </div>
 
-        {/* -=-=-=-=-=-=-WAREHOUSE-=-=-=-==-=-=- */}
+        {/* -=-=-=-WAREHOUSE-=-=-=-= */}
         <label htmlFor="warehouse" className="addInventory__detail-label">
           Warehouse
         </label>
@@ -293,11 +295,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             ))}
           </select>
         </div>
-        {!isWarehouseValid && (
-          <div className="form__error">
-            <p className="form__error-text">This field is required</p>
-          </div>
-        )}
+        <Error isInputValid={isWarehouseValid} />
       </div>
     </form>
   );
