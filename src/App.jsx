@@ -32,11 +32,12 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <main>
-          <Routes>
-            {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-            <Route path="/" element={<WarehousesPage />} />
+        <div>
+          <Header />
+          <main>
+            <Routes>
+              {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
+              <Route path="/" element={<WarehousesPage />} />
 
               {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
               <Route path="/warehouses" element={<WarehousesPage />} />
@@ -70,6 +71,7 @@ function App() {
               <Route path="/inventory/add" element={<AddInventoryPage />} />
             </Routes>
           </main>
+        </div>
         <Footer />
       </BrowserRouter>
     </>
