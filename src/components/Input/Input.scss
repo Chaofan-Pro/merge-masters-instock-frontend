@@ -12,19 +12,7 @@
       font-size: 0.875rem;
     }
   }
-  &__error {
-    display: flex;
-    align-items: center;
-    gap: 1px;
-    margin-top: 4px;
-  }
-  &__error-icon {
-    height: 1rem;
-  }
-  &__error-text {
-    color: $supporting-color2;
-    font-size: 0.75rem;
-  }
+
   &__input {
     display: block;
     color: $primary-color1;

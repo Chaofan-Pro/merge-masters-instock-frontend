@@ -1,4 +1,5 @@
 import "./Input.scss";
+import Error from "../Error/Error";
 
 const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
   return (
@@ -14,16 +15,7 @@ const Input = ({ label, id, value, isInputValid, changeInputHandle }) => {
         onChange={changeInputHandle}
         placeholder={value}
       />
-      {!isInputValid && (
-        <div className="form__error">
-          <img
-            className="form__error-icon"
-            src="/src/assets/icons/error-24px.svg"
-            alt="error icon"
-          />
-          <p className="form__error-text">This field is required</p>
-        </div>
-      )}
+      {!isInputValid && <Error />}
     </>
   );
 };
