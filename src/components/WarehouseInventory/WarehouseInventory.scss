@@ -2,15 +2,125 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
 
-// .inventory-details {
-// }
+.inventory-details {
+  display: flex;
+  flex-direction: column;
+}
 
-// .inventory-heading {
-//   &__text {
-//     line-height: 1rem;
-//     font-size: 0.6875rem;
+.inventory-heading-container {
+  display: none;
+  @include tablet {
+    display: flex;
+    background-color: #f7f8f9b2;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 2rem;
+  }
+  @include desktop {
+    padding: 0 2.5rem;
+  }
+}
 
-//     @include tablet {
-//     }
-//   }
-// }
+.inventory-heading {
+  &__text {
+    line-height: 1rem;
+    font-size: 0.6875rem;
+    color: $secondary-color1;
+    font-weight: 600;
+
+    @include tablet {
+      line-height: 1.125rem;
+      font-size: 0.75rem;
+      padding: 0.6875rem 0;
+      width: 7.5rem;
+    }
+
+    &--tablet {
+      @include tablet {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.inventory-item {
+  display: none;
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid $secondary-color2;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  @include desktop {
+    padding: 1.125rem 2.5rem;
+  }
+
+  &__text {
+    width: 7.5rem;
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    color: $primary-color1;
+    font-weight: 400;
+
+    @include tablet {
+      line-height: 1.375rem;
+      font-size: 0.875rem;
+    }
+
+    &--indigo {
+      color: $primary-color2;
+      font-weight: 600;
+      display: flex;
+      justify-content: baseline;
+      gap: 0.25rem;
+    }
+  }
+
+  &__status-tag {
+    width: 7.5rem;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__actions {
+    display: flex;
+    width: 7.5rem;
+    justify-content: flex-end;
+
+    @include tablet {
+      gap: 1rem;
+    }
+
+    button {
+      background: none;
+      border: none;
+    }
+  }
+
+  &__action-icon {
+    cursor: pointer;
+  }
+
+  &__arrow-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+.status-green {
+  display: flex;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.status-red {
+  padding: 0;
+  justify-content: flex-start;
+}
