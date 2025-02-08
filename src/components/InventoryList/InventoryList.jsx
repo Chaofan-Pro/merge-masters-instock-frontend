@@ -6,7 +6,6 @@ import sortIcon from "../../assets/Icons/sort-24px.svg";
 import CustomModal from "../CustomModal/CustomModal";
 import React from "react";
 import "../../components/WarehouseInventory/WarehouseInventory.scss";
-import "./InventoryList.scss";
 
 const InventoryList = ({ inventory }) => {
   return (
