@@ -32,12 +32,11 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div>
-          <Header />
-          <main>
-            <Routes>
-              {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
-              <Route path="/" element={<WarehousesPage />} />
+        <Header />
+        <main>
+          <Routes>
+            {/* =-=-=-=-=-HOME PAGE-=-=-=-=-= */}
+            <Route path="/" element={<WarehousesPage />} />
 
               {/* =-=-=-=-=-WAREHOUSE PAGES-=-=-=-=-= */}
               <Route path="/warehouses" element={<WarehousesPage />} />

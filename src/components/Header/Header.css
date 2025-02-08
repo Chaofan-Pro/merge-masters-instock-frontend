@@ -1,0 +1,127 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  position: relative;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+}
+
+main {
+  width: calc(100vw - 2rem);
+  margin: 0 1rem;
+  background-color: white;
+  position: absolute;
+  top: 8.5rem;
+  border-radius: 3px;
+}
+@media screen and (min-width: 768px) {
+  main {
+    width: calc(100vw - 4rem);
+    margin: 0 2rem;
+    top: 5.75rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  main {
+    width: 63.75rem;
+    margin: 0 calc((100vw - 63.75rem) / 2);
+    top: 5.75rem;
+  }
+}
+
+.main-heading__container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+.main-heading__back-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.main-heading__name {
+  line-height: 2.25rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #13182C;
+}
+@media screen and (min-width: 768px) {
+  .main-heading__name {
+    line-height: 2.5rem;
+    font-size: 2rem;
+  }
+}
+
+.header {
+  background-color: #232940;
+  overflow-y: visible;
+  padding: 0 1rem;
+  height: 12.5rem;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    padding: 2rem 2rem 0 2rem;
+    justify-content: space-between;
+    height: 11.625rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .header {
+    width: 100vw;
+    padding-left: calc((100vw - 63.75rem) / 2);
+    padding-right: calc((100vw - 63.75rem) / 2);
+  }
+}
+.header__logo {
+  display: block;
+  margin: 0 auto;
+  padding: 1.5rem 0 1rem 0;
+}
+@media screen and (min-width: 768px) {
+  .header__logo {
+    padding: 0;
+    margin: 0;
+  }
+}
+.header__nav-bar {
+  display: flex;
+  justify-content: space-between;
+}
+.header__nav-item, .header__nav-item--active {
+  padding: 0.5rem;
+  color: #BDC5D5;
+  font-size: 0.8125rem;
+  text-align: center;
+  width: 10.1875rem;
+  height: 2.25rem;
+  border-radius: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  .header__nav-item, .header__nav-item--active {
+    width: 6.6875rem;
+    height: 2.375rem;
+    font-size: 0.875rem;
+    border-radius: 1.25rem;
+  }
+}
+.header__nav-item:hover, .header__nav-item--active:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+.header__nav-item--active {
+  color: #FFFFFF;
+  background-color: #13182C;
+  text-decoration: none;
+}
+.header__nav-item--active:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=Header.css.map */
