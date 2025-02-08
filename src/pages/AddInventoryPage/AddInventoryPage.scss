@@ -75,7 +75,8 @@
 }
 
 .addInventory__detail-input {
-  font-size: 12px;
+  font-family: "Titillium Web";
+  font-size: 0.813rem;
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -85,6 +86,7 @@
 }
 
 .addInventory__quantity {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -169,6 +171,7 @@
 }
 
 .warehouse__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -186,6 +189,7 @@
 }
 
 .category__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -219,6 +223,8 @@
   border: 1px solid $secondary-color2;
   border-radius: 20px;
   padding: 0.5rem;
+  color: $secondary-color1;
+
   &:hover {
     color: $primary-color2;
     border: 1px solid $primary-color2;
@@ -266,4 +272,8 @@
   background-color: $primary-color2;
   border: 1px solid $primary-color2;
   color: $primary-color3;
+}
+
+.warehouse__select-placeholder {
+  color: $primary-color2;
 }

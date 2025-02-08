@@ -4,7 +4,7 @@ const Inventory = () => {
   return (
     <>
       <p>
-        This is the <strong>Inventory Page</strong>
+        This is the <strong>Inventory Page </strong>
       </p>
     </>
   );
