@@ -1,31 +1,59 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import InventoryHeader from "../../components/InventoryHeader/InventoryHeader";
 import InventoryList from "../../components/InventoryList/InventoryList";
-import CustomModal from "../../components/CustomModal/CustomModal";
+import InventoryModal from "../../components/InventoryModal/InventoryModal";  
 import "./InventoryPage.scss";
 
+// Fix: Use correct baseUrl from environment variable
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const InventoryPage = () => {
-  const [inventory, setInventory] = useState(null);
-  const fetchInventory = async () => {
-    try {
-      const inventoryRes = await axios.get(baseUrl + `/api/inventories`);
-      setInventory(inventoryRes.data);
-    } catch (error) {
-      console.error("ERROR: " + error);
-    }
-  };
+  const [inventories, setInventories] = useState([]);
+  const [selectedInventory, setSelectedInventory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   useEffect(() => {
-    fetchInventory();
+    fetchInventories();
   }, []);
 
-  if (!inventory) return <p>Loading Inventories... </p>;
+  const fetchInventories = () => {
+    fetch(`${baseUrl}/api/inventories`)  // Fix: Replace API_URL with baseUrl
+      .then((response) => response.json())
+      .then((data) => setInventories(data))
+      .catch((error) => console.error("Error getting inventories:", error));
+  };
+
+  const openModal = (inventory) => {
+    setSelectedInventory(inventory);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const deleteInventory = (id) => {
+    fetch(`${baseUrl}/api/inventories/${id}`, {  // Fix: Replace API_URL with baseUrl
+      method: "DELETE",
+    })
+      .then(() => fetchInventories())
+      .catch((error) => console.error("Error deleting inventory:", error));
+  };
+
   return (
     <>
-      <InventoryHeader />
-      <InventoryList page={"inventory"} inventory={inventory} />
+      <InventoryHeader/>
+      <InventoryList
+        inventories={inventories}
+        openModal={openModal}
+      />
+      {selectedInventory && isModalOpen && (
+        <InventoryModal
+          inventory={selectedInventory}
+          closeModal={closeModal}
+          deleteInventory={deleteInventory}
+        />
+      )}
     </>
   );
 };
