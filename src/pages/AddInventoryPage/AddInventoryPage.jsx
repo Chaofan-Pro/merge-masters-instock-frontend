@@ -35,7 +35,6 @@ function AddInventory() {
         `${baseUrl}/api/inventories`,
         newInventory
       );
-      console.log("Inventory added successfully:", response.data);
       alert("Inventory item added successfully!");
 
       window.location.href = "/inventory";
