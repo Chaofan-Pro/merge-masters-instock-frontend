@@ -29,7 +29,6 @@
 
     @include tablet {
       flex-direction: row;
-      // justify-content: space-between;
       padding: 1rem;
       margin-bottom: .6rem;
       margin-top: .6rem;
@@ -155,7 +154,6 @@
     @include tablet {
       display: flex;
       flex-direction: row;
-      // justify-content: space-between;
       align-items: center;
       color: $secondary-color1;
     }
