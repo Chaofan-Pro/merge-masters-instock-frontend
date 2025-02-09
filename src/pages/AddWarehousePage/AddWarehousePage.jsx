@@ -6,7 +6,7 @@ import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 
-const AddWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
+const AddWarehousePage = ({ baseUrl }) => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -94,7 +94,6 @@ const AddWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
         });
         alert("Warehouse successfully added");
         navigate(`/warehouses`);
-        console.log(id);
       } catch (error) {
         console.error(error);
       }
