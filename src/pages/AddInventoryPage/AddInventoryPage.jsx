@@ -2,8 +2,7 @@ import "./AddInventoryPage.scss";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import { Link } from "react-router-dom";
 import React from "react";
-
-import FormInventoryDetails from "../../components/FormInventoryDetails/FormInventoryDetails";
+import AddFormInventoryDetails from "../../components/AddFormInventoryDetails/AddFormInventoryDetails";
 
 function AddInventory() {
   return (
@@ -14,7 +13,7 @@ function AddInventory() {
         </Link>
         <h2 className="addInventory__title">Add New Inventory Item</h2>
       </div>
-      <FormInventoryDetails />
+      <AddFormInventoryDetails />
       {/* =-=-=-=-=-=-BUTTONS-=-=-=-==- */}
       <div className="buttons">
         <Link to="/inventory" className="cancel__button">
