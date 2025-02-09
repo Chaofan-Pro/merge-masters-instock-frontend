@@ -36,7 +36,7 @@ const InventoryList = ({ inventory }) => {
           />
         </div>
         <div className="inventory-heading">
-          <h4 className="inventory-heading__text">QUANTITY</h4>
+          <h4 className="inventory-heading__text">QTY</h4>
           <img
             className="inventory-heading__sort-icon"
             src={sortIcon}
