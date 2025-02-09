@@ -15,6 +15,7 @@
 
 .warehouse {
   width: 100%;
+  width: 100%;
   background: $primary-color3;
   margin: 0 auto;
   color: $secondary-color1;
@@ -77,6 +78,7 @@
       height: 38px;
     }
   }
+
     input,
     .warehouse__search {
       border: none;
@@ -88,6 +90,7 @@
       padding: 8px 46px 8px 12px;
       color: $secondary-color1;
       outline: none;
+      font-family: "Titillium Web", Arial, Helvetica, sans-serif;
       font-family: "Titillium Web", Arial, Helvetica, sans-serif;
       font-family: "Titillium Web", Arial, Helvetica, sans-serif;
       position: absolute;
@@ -241,6 +244,7 @@
     }
 
 
+
     @include desktop {
       display: flex;
       flex-direction: row;
@@ -278,8 +282,7 @@
     }
 
     &-info {
-      color: $primary-color1
-      
+      color: $primary-color1;
     }
   }
   &__name {
@@ -316,7 +319,6 @@
       border: none;
     }
   }
-
 }
 .warehouse__action--edit {
   position: absolute;
