@@ -7,7 +7,7 @@ const BottomButtons = ({ link, img, text, onSave }) => {
       <Link to={link} className="button__cancel">
         Cancel
       </Link>
-      <button type="submit" className="button__save" onSave={onSave}>
+      <button type="submit" className="button__save" onClick={onSave}>
         <img src={img} alt="" />
         {text}
       </button>
