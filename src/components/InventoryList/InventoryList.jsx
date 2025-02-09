@@ -3,7 +3,7 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/Icons/sort-24px.svg";
-import CustomModal from "../CustomModal/CustomModal";
+import InventoryModal from "../InventoryModal/InventoryModal";
 import React from "react";
 import "../../components/WarehouseInventory/WarehouseInventory.scss";
 
