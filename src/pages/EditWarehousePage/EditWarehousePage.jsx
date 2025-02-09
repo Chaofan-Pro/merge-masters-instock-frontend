@@ -112,7 +112,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
         });
         fetchWarehouseDetail(id);
         alert("Warehouse successfully edited");
-        navigate(`/warehouses/${id}`);
+        navigate("/warehouses");
       } catch (error) {
         console.error(error);
       }
@@ -182,7 +182,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
 
   return (
     <>
-      <FormHeader backLink={-1} title={"Edit Warehouse"} />
+      <FormHeader backLink={"/warehouses"} title={"Edit Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
@@ -213,7 +213,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
             ))}
           </article>
         </section>
-        <BottomButtons link={-1} text="Save" />
+        <BottomButtons link={"/warehouses"} text="Save" />
       </form>
     </>
   );
