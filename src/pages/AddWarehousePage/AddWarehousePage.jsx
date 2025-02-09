@@ -92,8 +92,7 @@ const AddWarehousePage = ({ baseUrl }) => {
           contact_phone: phone,
           contact_email: email,
         });
-        alert("Warehouse successfully added");
-        navigate(`/warehouses`);
+        navigate(-1);
       } catch (error) {
         console.error(error);
       }
@@ -163,7 +162,7 @@ const AddWarehousePage = ({ baseUrl }) => {
 
   return (
     <>
-      <FormHeader backLink={"/warehouses"} title={"Add New Warehouse"} />
+      <FormHeader backLink={-1} title={"Add New Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
@@ -195,7 +194,7 @@ const AddWarehousePage = ({ baseUrl }) => {
             ))}
           </article>
         </section>
-        <BottomButtons link={`/warehouses`} text="+ Add Warehouse" />
+        <BottomButtons link={-1} text="+ Add Warehouse" />
       </form>
     </>
   );
