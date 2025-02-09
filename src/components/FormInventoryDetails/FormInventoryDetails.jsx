@@ -38,8 +38,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       setCategory(data.category);
       setStatus(data.status);
       setQuantity(data.quantity);
-
-      // Set the warehouse to the corresponding warehouse_id from inventory
       setWarehouse(data.warehouse_id);
     } catch (error) {
       console.error("ERROR: " + error);
@@ -57,12 +55,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    fetchWarehouses(); // Fetch warehouses
+    fetchWarehouses();
   }, []);
 
   useEffect(() => {
     if (warehouses.length > 0 && id) {
-      fetchInventoryDetail(); // Fetch inventory details after fetching warehouses
+      fetchInventoryDetail();
     }
   }, [warehouses, id]);
 
@@ -114,7 +112,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       warehouse !== "Select"
     ) {
       try {
-        // Find warehouse from warehouse list using warehouse_id
         const selectedWarehouse = warehouses.find(
           (wh) => wh.id === parseInt(warehouse)
         );
@@ -125,7 +122,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           return false;
         }
 
-        // If the status is "Out of Stock", set quantity to 0
         const inventoryData = {
           item_name: itemName,
           description,
@@ -135,15 +131,11 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           quantity: status === "In Stock" ? quantity : 0,
         };
 
-        console.log("Sending data:", inventoryData);
-
         // Update the inventory item
         await axios.put(baseUrl + `/api/inventories/${id}`, inventoryData);
 
         fetchInventoryDetail();
-
         alert("Updated successfully!");
-
         return true;
       } catch (error) {
         console.error("Error in submit:", error);
@@ -163,7 +155,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       <div className="editInventory__details-container">
         <h3 className="editInventory__subheader-title">Item Details</h3>
         <div className="editInventory__detail-form">
-          {/* -=-=-=-ITEM NAME-=-=-=-= */}
           <label htmlFor="name" className="editInventory__detail-label">
             Item Name
           </label>
@@ -176,48 +167,20 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={itemName}
             onChange={changeItemNameHandle}
           />
-          {!isItemNameValid && (
-            <Error
-              isInputValid={isItemNameValid}
-              className="form__error-container"
-            />
-          )}
+          {!isItemNameValid && <Error isInputValid={isItemNameValid} />}
 
-          {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="editInventory__detail-label">
             Description
           </label>
           <textarea
             className="editInventory__detail-textarea"
-            placeholder="Please enter a brief item description..."
+            placeholder="Item description"
             id="description"
             name="description"
             value={description}
             onChange={changeDescriptionHandle}
           ></textarea>
           {!isDescriptionValid && <Error isInputValid={isDescriptionValid} />}
-
-          {/* -=-=-=-CATEGORY-=-=-=-= */}
-          <label htmlFor="category" className="editInventory__detail-label">
-            Category
-          </label>
-          <div className="editInventory__select-container">
-            <select
-              name="category"
-              id="category"
-              className="category__select"
-              value={category}
-              onChange={changeCategoryHandle}
-            >
-              <option value="Select">Please select</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Gear">Gear</option>
-              <option value="Apparel">Apparel</option>
-              <option value="Accessories">Accessories</option>
-              <option value="Health">Health</option>
-            </select>
-          </div>
-          {!isCategoryValid && <Error isInputValid={isCategoryValid} />}
         </div>
       </div>
 
@@ -225,7 +188,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
         <div className="editInventory__availability-form">
           <h3 className="editInventory__subheader-title">Item Availability</h3>
 
-          {/* -=-=-=-STATUS-=-=-=-= */}
           <label htmlFor="status" className="editInventory__detail-label">
             Status
           </label>
@@ -255,7 +217,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             </label>
           </div>
 
-          {/* -=-=-=-QUANTITY-=-=-=-= */}
           {status === "In Stock" && (
             <>
               <label htmlFor="quantity" className="editInventory__detail-label">
@@ -275,7 +236,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           )}
         </div>
 
-        {/* -=-=-=-WAREHOUSE-=-=-=-= */}
         <label htmlFor="warehouse" className="editInventory__detail-label">
           Warehouse
         </label>
