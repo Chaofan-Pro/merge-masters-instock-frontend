@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import "./InventoryModal.scss"; 
+import "./InventoryModal.scss"; // Update this to use the appropriate stylesheet for InventoryModal
 
 Modal.setAppElement("#root");
 
