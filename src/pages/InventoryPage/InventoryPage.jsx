@@ -42,6 +42,7 @@ const InventoryPage = () => {
 
   return (
     <>
+      <InventoryHeader/>
       <InventoryList
         inventories={inventories}
         openModal={openModal}
