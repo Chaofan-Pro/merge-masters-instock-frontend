@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import InventoryHeader from "../../components/InventoryHeader/InventoryHeader";
 import InventoryList from "../../components/InventoryList/InventoryList";
 import CustomModal from "../../components/CustomModal/CustomModal";
 import "./InventoryPage.scss";
@@ -23,6 +24,7 @@ const InventoryPage = () => {
   if (!inventory) return <p>Loading Inventories... </p>;
   return (
     <>
+      <InventoryHeader />
       <InventoryList page={"inventory"} inventory={inventory} />
     </>
   );
