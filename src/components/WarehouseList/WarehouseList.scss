@@ -9,9 +9,9 @@
 //   font-size: 13px;
 //   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
 // }
-.add-btn{
-  width: 100%;
-}
+// .add-btn{
+//   width: 100%;
+// }
 
 .warehouse {
   width: 100%;
@@ -25,11 +25,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1rem;
 
     @include tablet {
       flex-direction: row;
       // justify-content: space-between;
       padding: 1rem;
+      margin-bottom: .6rem;
+      margin-top: .6rem;
     }
   }
   &__title-container {
@@ -99,9 +102,9 @@
       top: 15%;
       right: 12px;
     }
-  }
+  
 
-  &__add-button {
+  .warehouse__add-button {
     background-color: $primary-color2;
     color: $primary-color3;
     height: 2.25rem;
@@ -316,7 +319,7 @@
     }
   }
 
-
+}
 .warehouse__action--edit {
   position: absolute;
   right: 2rem;
