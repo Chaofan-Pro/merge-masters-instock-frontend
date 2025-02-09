@@ -6,16 +6,14 @@ import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import TableHeader from "../TableHeader/TableHeader";
 import "./WarehouseList.scss";
 
-
 const API_URL = import.meta.env.VITE_API_URL;
 
-function WarehouseList({openModal, warehouses}) {
-
+function WarehouseList({ openModal, warehouses }) {
   // const [searchTerm, setSearchTerm] = useState("");
   // const handleSearch = (e) => {
   //   setSearchTerm(e.target.value);
   // };
-  // const filteredWarehouses = warehouses.filter((warehouse) => 
+  // const filteredWarehouses = warehouses.filter((warehouse) =>
   //   warehouse.warehouse_name.toLowerCase().includes(searchTerm.toLowerCase())
   // );
 
@@ -23,7 +21,8 @@ function WarehouseList({openModal, warehouses}) {
     <div className="warehouse">
       <div className="warehouse__container">
         <div className="warehouse__title-container">
-        <h1 className="warehouse__title">Warehouses</h1></div>
+          <h1 className="warehouse__title">Warehouses</h1>
+        </div>
         <div className="warehouse__search-container">
           <input
             type="text"
@@ -50,7 +49,9 @@ function WarehouseList({openModal, warehouses}) {
               <div className="warehouse__info">
                 <p className="warehouse__heading">WAREHOUSE</p>
                 <button className="warehouse__name-button">
-                  <div className="warehouse__name">{warehouse.warehouse_name}</div>
+                  <div className="warehouse__name">
+                    {warehouse.warehouse_name}
+                  </div>
                   <img
                     src={rightArrowIcon}
                     alt="Go to warehouse"
@@ -83,8 +84,10 @@ function WarehouseList({openModal, warehouses}) {
             </div>
             {/* Actions */}
             <div className="warehouse__actions">
-              <button className="warehouse__action warehouse__action--delete"
-              onClick={() => openModal(warehouse)}>
+              <button
+                className="warehouse__action warehouse__action--delete"
+                onClick={() => openModal(warehouse)}
+              >
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <button className="warehouse__action warehouse__action--edit">
