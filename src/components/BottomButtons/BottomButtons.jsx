@@ -7,10 +7,10 @@ const BottomButtons = ({ link, img, text }) => {
       <Link to={link} className="button__cancel">
         Cancel
       </Link>
-      <button type="submit" className="button__save">
-        <img src={img} alt="" />
-        {text}
-      </button>
+        <button type="submit" className="button__save">
+          <img src={img} alt="" />
+          {text}
+        </button>
     </section>
   );
 };
