@@ -1,16 +1,18 @@
 import "./WarehouseDetailsPage.scss";
-import WarehouseDetailsComp from "../../components/WarehouseDetails/WarehouseDetails";
+import WarehouseDetails from "../../components/WarehouseDetails/WarehouseDetails";
+import WarehouseInventory from "../../components/WarehouseInventory/WarehouseInventory";
 import React from "react";
 
-function WarehouseDetails({ warehouse, fetchWarehouseDetail }) {
+function WarehouseDetailsPage({ warehouse, fetchWarehouseDetail }) {
   return (
     <>
-      <WarehouseDetailsComp
+      <WarehouseDetails
         warehouse={warehouse}
         fetchWarehouseDetail={fetchWarehouseDetail}
       />
+      <WarehouseInventory />
     </>
   );
 }
 
-export default WarehouseDetails;
+export default WarehouseDetailsPage;
