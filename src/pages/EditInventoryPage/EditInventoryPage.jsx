@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import "./EditInventoryPage.scss";
-import { useParams, Link, useNavigate } from "react-router-dom";
-import backArrow from "../../assets/icons/arrow_back-24px.svg";
+import { useParams, useNavigate } from "react-router-dom";
 import FormInventoryDetails from "../../components/FormInventoryDetails/FormInventoryDetails";
+import FormHeader from "../../components/FormHeader/FormHeader";
+import BottomButtons from "../../components/BottomButtons/BottomButtons";
 
 function EditInventoryPage() {
   const formRef = useRef(null);
@@ -22,25 +23,9 @@ function EditInventoryPage() {
 
   return (
     <div className="editInventory">
-      <div className="editInventory__subheader-container">
-        <Link to="/inventory">
-          <img src={backArrow} alt="back arrow" className="back-arrow" />
-        </Link>
-        <h2 className="editInventory__title">Edit Inventory Item</h2>
-      </div>
+      <FormHeader backLink={-1} title={"Edit Inventory Item"} />
       <FormInventoryDetails ref={formRef} />
-      <div className="buttons">
-        <Link to={`/inventory/${id}`} className="cancel__button">
-          Cancel
-        </Link>
-        <button
-          type="button"
-          className="save__button editInventory__button"
-          onClick={handleSave}
-        >
-          Save
-        </button>
-      </div>
+      <BottomButtons link={-1} text="Save" onSave={handleSave} />
     </div>
   );
 }
