@@ -38,7 +38,6 @@ function AddInventory() {
       console.log("Inventory added successfully:", response.data);
       alert("Inventory item added successfully!");
 
-      // Redirect to /inventory
       window.location.href = "/inventory";
     } catch (error) {
       console.error("Error adding inventory:", error);
