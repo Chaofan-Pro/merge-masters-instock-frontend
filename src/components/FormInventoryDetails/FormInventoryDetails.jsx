@@ -159,17 +159,17 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   }));
 
   return (
-    <form className="addInventory__form" onSubmit={submitHandle}>
-      <div className="addInventory__details-container">
-        <h3 className="addInventory__subheader-title">Item Details</h3>
-        <div className="addInventory__detail-form">
+    <form className="editInventory__form" onSubmit={submitHandle}>
+      <div className="editInventory__details-container">
+        <h3 className="editInventory__subheader-title">Item Details</h3>
+        <div className="editInventory__detail-form">
           {/* -=-=-=-ITEM NAME-=-=-=-= */}
-          <label htmlFor="name" className="addInventory__detail-label">
+          <label htmlFor="name" className="editInventory__detail-label">
             Item Name
           </label>
           <input
             type="text"
-            className="addInventory__detail-input"
+            className="editInventory__detail-input"
             placeholder="Item Name"
             id="name"
             name="itemname"
@@ -184,11 +184,11 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           )}
 
           {/* -=-=-=-DESCRIPTION-=-=-=-= */}
-          <label htmlFor="description" className="addInventory__detail-label">
+          <label htmlFor="description" className="editInventory__detail-label">
             Description
           </label>
           <textarea
-            className="addInventory__detail-textarea"
+            className="editInventory__detail-textarea"
             placeholder="Please enter a brief item description..."
             id="description"
             name="description"
@@ -198,10 +198,10 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           {!isDescriptionValid && <Error isInputValid={isDescriptionValid} />}
 
           {/* -=-=-=-CATEGORY-=-=-=-= */}
-          <label htmlFor="category" className="addInventory__detail-label">
+          <label htmlFor="category" className="editInventory__detail-label">
             Category
           </label>
-          <div className="addInventory__select-container">
+          <div className="editInventory__select-container">
             <select
               name="category"
               id="category"
@@ -221,12 +221,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="addInventory__availability-container">
-        <div className="addInventory__availability-form">
-          <h3 className="addInventory__subheader-title">Item Availability</h3>
+      <div className="editInventory__availability-container">
+        <div className="editInventory__availability-form">
+          <h3 className="editInventory__subheader-title">Item Availability</h3>
 
           {/* -=-=-=-STATUS-=-=-=-= */}
-          <label htmlFor="status" className="addInventory__detail-label">
+          <label htmlFor="status" className="editInventory__detail-label">
             Status
           </label>
           <div className="stock__status">
@@ -258,12 +258,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           {/* -=-=-=-QUANTITY-=-=-=-= */}
           {status === "In Stock" && (
             <>
-              <label htmlFor="quantity" className="addInventory__detail-label">
+              <label htmlFor="quantity" className="editInventory__detail-label">
                 Quantity
               </label>
               <input
                 type="number"
-                className="addInventory__quantity"
+                className="editInventory__quantity"
                 placeholder="0"
                 id="quantity"
                 name="quantity"
@@ -276,10 +276,10 @@ const FormInventoryDetails = forwardRef((props, ref) => {
         </div>
 
         {/* -=-=-=-WAREHOUSE-=-=-=-= */}
-        <label htmlFor="warehouse" className="addInventory__detail-label">
+        <label htmlFor="warehouse" className="editInventory__detail-label">
           Warehouse
         </label>
-        <div className="addInventory__select-container">
+        <div className="editInventory__select-container">
           <select
             name="warehouse"
             id="warehouse"

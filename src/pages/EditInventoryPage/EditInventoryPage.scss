@@ -22,9 +22,7 @@
     font-size: 1.75rem;
     font-weight: 500;
   }
-}
 
-.inventory {
   &__form {
     display: flex;
     flex-direction: column;
@@ -70,7 +68,8 @@
   }
 
   &__detail-input {
-    font-size: 12px;
+    font-family: "Titillium Web";
+    font-size: 0.813rem;
     height: 2.25rem;
     width: 100%;
     border-radius: 20px;
@@ -80,6 +79,7 @@
   }
 
   &__quantity {
+    font-family: "Titillium Web";
     height: 2.25rem;
     width: 100%;
     border-radius: 20px;
@@ -90,15 +90,6 @@
       display: flex;
       width: 20%;
     }
-
-    //   -=-=-PENDING STYLES FOR PAGE-=-=-=
-    // &--none {
-    //   display: none;
-    // }
-    // &:focus {
-    //   outline: none;
-    //   border: 1px solid $primary-color2;
-    // }
   }
 
   &__detail-textarea {
@@ -141,6 +132,26 @@
       right 7px #fff;
     border: none;
   }
+
+  &__button {
+    width: 45%;
+    text-align: center;
+    background-color: $primary-color2;
+    border: 1px solid $primary-color2;
+    color: $primary-color3;
+    border-radius: 20px;
+    padding: 0.5rem;
+    &:hover {
+      background-color: $background-color1;
+      border: 1px solid $background-color1;
+    }
+    @include tablet {
+      width: 13%;
+    }
+    @include desktop {
+      width: 9%;
+    }
+  }
 }
 
 .stock__status {
@@ -167,6 +178,7 @@
 }
 
 .warehouse__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -184,6 +196,7 @@
 }
 
 .category__select {
+  font-family: "Titillium Web";
   height: 2.25rem;
   width: 100%;
   border-radius: 20px;
@@ -229,26 +242,6 @@
   @include desktop {
     width: 8%;
     margin-right: 1rem;
-  }
-}
-
-.editInventory__button {
-  width: 45%;
-  text-align: center;
-  background-color: $primary-color2;
-  border: 1px solid $primary-color2;
-  color: $primary-color3;
-  border-radius: 20px;
-  padding: 0.5rem;
-  &:hover {
-    background-color: $background-color1;
-    border: 1px solid $background-color1;
-  }
-  @include tablet {
-    width: 13%;
-  }
-  @include desktop {
-    width: 9%;
   }
 }
 

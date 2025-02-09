@@ -67,12 +67,16 @@ function App() {
                 path="/warehouses/edit/:id"
                 element={
                   <EditWarehousePage
+                    baseUrl={baseUrl}
                     warehouse={warehouse}
                     fetchWarehouseDetail={fetchWarehouseDetail}
                   />
                 }
               />
-              <Route path="/warehouses/add" element={<AddWarehousePage />} />
+              <Route
+                path="/warehouses/add"
+                element={<AddWarehousePage baseUrl={baseUrl} />}
+              />
 
               {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
               <Route path="/inventory" element={<InventoryPage />} />
