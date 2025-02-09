@@ -1,14 +1,14 @@
 import "./EditWarehousePage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
-import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
 const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWarehouseDetail(id);
@@ -111,7 +111,8 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
           contact_email: email,
         });
         fetchWarehouseDetail(id);
-        alert("Successfully edited");
+        alert("Warehouse successfully edited");
+        navigate(`/warehouses/${id}`);
       } catch (error) {
         console.error(error);
       }
@@ -181,7 +182,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
 
   return (
     <>
-      <FormHeader backLink={`/warehouses/${id}`} title={"Edit Warehouse"} />
+      <FormHeader backLink={-1} title={"Edit Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
@@ -212,7 +213,7 @@ const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
             ))}
           </article>
         </section>
-        <BottomButtons link={`/warehouses/${id}`} text="Save" />
+        <BottomButtons link={-1} text="Save" />
       </form>
     </>
   );

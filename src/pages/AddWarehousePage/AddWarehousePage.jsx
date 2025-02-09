@@ -1,11 +1,14 @@
 import "./AddWarehousePage.scss";
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
 
-const AddWarehousePage = ({ baseUrl }) => {
+const AddWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -89,7 +92,9 @@ const AddWarehousePage = ({ baseUrl }) => {
           contact_phone: phone,
           contact_email: email,
         });
-        alert("Successfully added");
+        alert("Warehouse successfully added");
+        navigate(`/warehouses`);
+        console.log(id);
       } catch (error) {
         console.error(error);
       }

@@ -75,7 +75,13 @@ function App() {
               />
               <Route
                 path="/warehouses/add"
-                element={<AddWarehousePage baseUrl={baseUrl} />}
+                element={
+                  <AddWarehousePage
+                    baseUrl={baseUrl}
+                    warehouse={warehouse}
+                    fetchWarehouseDetail={fetchWarehouseDetail}
+                  />
+                }
               />
 
               {/* =-=-=-=-=-INVENTORY PAGES-=-=-=-=-= */}
