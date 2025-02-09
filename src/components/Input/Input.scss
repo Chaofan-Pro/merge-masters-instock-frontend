@@ -23,15 +23,17 @@
     width: 100%;
     height: 2.25rem;
     border-radius: 20px;
+    box-shadow: 0 0 0px 1000px $primary-color3 inset;
+
     border: 1px solid $secondary-color2;
     &::placeholder {
+      background-color: none;
       color: $primary-color1;
       font-weight: 400;
     }
-    &:focus {
+    &:focus-visible {
       outline: none;
       border: 1px solid $primary-color2;
-      background-color: none;
     }
     &--error {
       border: 1px solid $supporting-color2;
@@ -39,6 +41,12 @@
     @include tablet {
       font-size: 0.875rem;
       height: 2.375rem;
+    }
+    &--add {
+      @extend .form__input;
+      &::placeholder {
+        color: $secondary-color1;
+      }
     }
   }
 }

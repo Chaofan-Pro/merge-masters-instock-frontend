@@ -1,14 +1,14 @@
 import "./EditWarehousePage.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import FormHeader from "../../components/FormHeader/FormHeader";
 import Input from "../../components/Input/Input";
 import BottomButtons from "../../components/BottomButtons/BottomButtons";
-import backArrow from "../../assets/icons/arrow_back-24px.svg";
 
-const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
-  const baseUrl = import.meta.env.VITE_API_URL;
+const EditWarehousePage = ({ baseUrl, warehouse, fetchWarehouseDetail }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWarehouseDetail(id);
@@ -111,6 +111,7 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
           contact_email: email,
         });
         fetchWarehouseDetail(id);
+        navigate(-1);
       } catch (error) {
         console.error(error);
       }
@@ -180,16 +181,7 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
 
   return (
     <>
-      <section className="main-header">
-        <Link className="link" to={`/warehouses/${id}`}>
-          <img
-            className="main-heading__back-icon"
-            src={backArrow}
-            alt="back arrow"
-          />
-        </Link>
-        <h3 className="main-heading__name">Edit Warehouse</h3>
-      </section>
+      <FormHeader backLink={-1} title={"Edit Warehouse"} />
       <form onSubmit={submitHandle}>
         <section className="form">
           <article className="form__left">
@@ -200,6 +192,7 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
                 label={warehouseDetail.label}
                 id={warehouseDetail.id}
                 value={warehouseDetail.value}
+                placeholder={warehouseDetail.value}
                 isInputValid={warehouseDetail.isInputValid}
                 changeInputHandle={warehouseDetail.changeInputHandle}
               />
@@ -219,10 +212,10 @@ const FormWarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
             ))}
           </article>
         </section>
-        <BottomButtons link={`/warehouses/${id}`} text="Save" />
+        <BottomButtons link={-1} text="Save" />
       </form>
     </>
   );
 };
 
-export default FormWarehouseDetails;
+export default EditWarehousePage;
