@@ -45,7 +45,6 @@ const AddFormInventoryDetails = ({
       [name]: value,
     }));
 
-
     // setItemNameValid(formData.itemName);
     // setDescriptionValid(formData.description);
     // setQuantityValid(formData.quantity);
@@ -67,7 +66,6 @@ const AddFormInventoryDetails = ({
       setWarehouseValid(value);
     }
   };
-
 
   return (
     <form className="addInventory__form" id="form">
@@ -133,7 +131,9 @@ const AddFormInventoryDetails = ({
             <select
               name="category"
               id="category"
-              className="category__select"
+              className={`category__select ${
+                !isQuantityValid ? "invalid" : ""
+              }`}
               value={formData.category}
               onChange={handleChange}
             >
@@ -163,7 +163,7 @@ const AddFormInventoryDetails = ({
           <h3 className="addInventory__subheader-title">Item Availability</h3>
 
           {/* -=-=-=-STATUS-=-=-=-= */}
-          <label htmlFor="status" className="addInventory__detail-label">
+          <label htmlFor="instock" className="addInventory__detail-label">
             Status
           </label>
           <div className="stock__status">
@@ -231,7 +231,7 @@ const AddFormInventoryDetails = ({
           <select
             name="warehouse"
             id="warehouse"
-            className="warehouse__select"
+            className={`warehouse__select ${!isQuantityValid ? "invalid" : ""}`}
             value={formData.warehouse}
             onChange={handleChange}
           >

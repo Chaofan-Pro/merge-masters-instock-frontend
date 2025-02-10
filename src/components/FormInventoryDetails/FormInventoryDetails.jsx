@@ -41,7 +41,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
 
       // Set the warehouse to the corresponding warehouse_id from inventory
       setWarehouse(data.warehouse_name);
-      console.log(data)
+      console.log(data);
     } catch (error) {
       console.error("ERROR: " + error);
     }
