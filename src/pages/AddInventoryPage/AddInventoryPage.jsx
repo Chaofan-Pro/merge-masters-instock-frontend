@@ -6,7 +6,6 @@ import BottomButtons from "../../components/BottomButtons/BottomButtons";
 import axios from "axios";
 
 function AddInventory() {
-  // State for form fields
   const [formData, setFormData] = useState({
     itemName: "",
     description: "",
@@ -16,7 +15,6 @@ function AddInventory() {
     warehouse: "Select",
   });
 
-  // Function to handle form submission
   const handleAddItem = async () => {
     const { itemName, description, category, status, quantity, warehouse } =
       formData;
@@ -31,15 +29,14 @@ function AddInventory() {
         quantity: status === "Out of Stock" ? 0 : parseInt(quantity, 10),
       };
 
-      // POST request to save the inventory item
+      const baseUrl = import.meta.env.VITE_API_URL;
+
       const response = await axios.post(
-        "http://localhost:8080/api/inventories",
+        `${baseUrl}/api/inventories`,
         newInventory
       );
-      console.log("Inventory added successfully:", response.data);
       alert("Inventory item added successfully!");
 
-      // Redirect to /inventory
       window.location.href = "/inventory";
     } catch (error) {
       console.error("Error adding inventory:", error);
@@ -51,8 +48,7 @@ function AddInventory() {
     <div className="addInventory">
       <FormHeader backLink={-1} title={"Add New Inventory"} />
       <AddFormInventoryDetails formData={formData} setFormData={setFormData} />
-      {/* Pass the handleAddItem function to BottomButtons */}
-      <BottomButtons link={-1} text="+ Add Item" onClick={handleAddItem} />
+      <BottomButtons link={-1} text="Save" onClick={handleAddItem} />
     </div>
   );
 }

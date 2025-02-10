@@ -169,7 +169,9 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           </label>
           <input
             type="text"
-            className="editInventory__detail-input"
+            className={`editInventory__detail-input ${
+              !isItemNameValid ? "invalid " : ""
+            }`}
             placeholder="Item Name"
             id="name"
             name="itemname"
@@ -188,7 +190,9 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             Description
           </label>
           <textarea
-            className="editInventory__detail-textarea"
+            className={`editInventory__detail-textarea ${
+              !isDescriptionValid ? "invalid" : ""
+            }`}
             placeholder="Please enter a brief item description..."
             id="description"
             name="description"
@@ -263,7 +267,9 @@ const FormInventoryDetails = forwardRef((props, ref) => {
               </label>
               <input
                 type="number"
-                className="editInventory__quantity"
+                className={`editInventory__quantity ${
+                  !isDescriptionValid ? "invalid" : ""
+                }`}
                 placeholder="0"
                 id="quantity"
                 name="quantity"

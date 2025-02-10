@@ -223,31 +223,3 @@
     justify-content: flex-end;
   }
 }
-
-.cancel__button {
-  width: 45%;
-  text-align: center;
-  border: 1px solid $secondary-color2;
-  border-radius: 20px;
-  padding: 0.5rem;
-  &:hover {
-    color: $primary-color2;
-    border: 1px solid $primary-color2;
-  }
-  @include tablet {
-    width: 13%;
-    margin-right: 1rem;
-    padding: 0.4rem;
-  }
-  @include desktop {
-    width: 8%;
-    margin-right: 1rem;
-  }
-}
-
-.save__button {
-  border: none;
-  background-color: $primary-color2;
-  border: 1px solid $primary-color2;
-  color: $primary-color3;
-}
