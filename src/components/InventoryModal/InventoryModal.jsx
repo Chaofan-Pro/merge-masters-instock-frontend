@@ -32,9 +32,9 @@ function InventoryModal({ inventory, closeModal, deleteInventory }) {
             fill="#13182C"
           />
         </svg>
-        <p className="modal-text">
+        <div className="modal-text">
           <p className="modal-title">Delete {inventory.item_name}?</p>
-        </p>
+        </div>
         <article className="modal-article">
           Please confirm that you'd like to delete the{" "}
           {inventory.item_name} from the list of inventories. This action cannot be undone.
