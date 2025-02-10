@@ -1,0 +1,43 @@
+@use "../../styles//partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.form {
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: 1px;
+    margin-top: 4px;
+  }
+  &__error-icon {
+    height: 1rem;
+  }
+  &__error-text {
+    color: $supporting-color2;
+    font-size: 0.75rem;
+    margin-top: 0;
+  }
+}
+
+.addInventory__quantity.invalid {
+  margin-bottom: 0;
+  border: 2px solid $supporting-color2;
+}
+
+.addInventory__detail-input.invalid {
+  margin-bottom: 0;
+  border: 2px solid $supporting-color2;
+}
+
+.addInventory__detail-label {
+  margin-top: 0.5rem;
+}
+
+.addInventory__detail-textarea.invalid {
+  margin-bottom: 0;
+  border: 2px solid $supporting-color2;
+}

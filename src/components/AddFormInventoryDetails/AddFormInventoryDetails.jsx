@@ -1,10 +1,10 @@
 import "./AddFormInventoryDetails.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import Error from "../../components/Error/Error";
 
 const AddFormInventoryDetails = ({ formData, setFormData }) => {
   const [warehouses, setWarehouses] = useState([]);
+  const [isItemNameValid, setItemNameValid] = useState(true); // Define the validation state
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -19,14 +19,20 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
         }
       } catch (error) {
         console.error("Error fetching warehouses:", error);
-        setError("Failed to load warehouses.");
       }
     };
     fetchWarehouses();
   }, []);
 
+  // Handle form input change and validate item name
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // If itemName is being updated, validate it
+    if (name === "itemName") {
+      setItemNameValid(value.trim() !== ""); // Set validation state
+    }
+
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -34,42 +40,66 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
   };
 
   return (
-    <form className="editInventory__form" id="form">
-      <div className="editInventory__details-container">
-        <h3 className="editInventory__subheader-title">Item Details</h3>
-        <div className="editInventory__detail-form">
+    <form className="addInventory__form" id="form">
+      <div className="addInventory__details-container">
+        <h3 className="addInventory__subheader-title">Item Details</h3>
+        <div className="addInventory__detail-form">
           {/* -=-=-=-ITEM NAME-=-=-=-= */}
-          <label htmlFor="name" className="editInventory__detail-label">
+          <label htmlFor="name" className="addInventory__detail-label">
             Item Name
           </label>
           <input
             type="text"
-            className="editInventory__detail-input"
+            className={`addInventory__detail-input ${
+              !isItemNameValid ? "invalid" : ""
+            }`}
             placeholder="Item Name"
             id="name"
             name="itemName"
             value={formData.itemName}
             onChange={handleChange}
           />
+          {!isItemNameValid && (
+            <div className="form__error">
+              <img
+                className="form__error-icon"
+                src="/src/assets/icons/error-24px.svg"
+                alt="error icon"
+              />
+              <p className="form__error-text">This field is required</p>
+            </div>
+          )}
 
           {/* -=-=-=-DESCRIPTION-=-=-=-= */}
-          <label htmlFor="description" className="editInventory__detail-label">
+          <label htmlFor="description" className="addInventory__detail-label">
             Description
           </label>
           <textarea
-            className="editInventory__detail-textarea"
+            className={`addInventory__detail-textarea ${
+              !isItemNameValid ? "invalid" : ""
+            }`}
             placeholder="Please enter a brief item description..."
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
           ></textarea>
+          {!isItemNameValid && (
+            <div className="form__error">
+              <img
+                className="form__error-icon"
+                src="/src/assets/icons/error-24px.svg"
+                alt="error icon"
+              />
+              <p className="form__error-text">This field is required</p>
+            </div>
+          )}
 
           {/* -=-=-=-CATEGORY-=-=-=-= */}
-          <label htmlFor="category" className="editInventory__detail-label">
+          <label htmlFor="category" className="addInventory__detail-label">
             Category
           </label>
-          <div className="editInventory__select-container">
+          <div className="addInventory__select-container">
             <select
               name="category"
               id="category"
@@ -88,12 +118,12 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
         </div>
       </div>
 
-      <div className="editInventory__availability-container">
-        <div className="editInventory__availability-form">
-          <h3 className="editInventory__subheader-title">Item Availability</h3>
+      <div className="addInventory__availability-container">
+        <div className="addInventory__availability-form">
+          <h3 className="addInventory__subheader-title">Item Availability</h3>
 
           {/* -=-=-=-STATUS-=-=-=-= */}
-          <label htmlFor="status" className="editInventory__detail-label">
+          <label htmlFor="status" className="addInventory__detail-label">
             Status
           </label>
           <div className="stock__status">
@@ -125,27 +155,39 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
           {/* -=-=-=-QUANTITY-=-=-=-= */}
           {formData.status === "In Stock" && (
             <>
-              <label htmlFor="quantity" className="editInventory__detail-label">
+              <label htmlFor="quantity" className="addInventory__detail-label">
                 Quantity
               </label>
               <input
                 type="number"
-                className="editInventory__quantity"
+                className={`addInventory__quantity ${
+                  !isItemNameValid ? "invalid" : ""
+                }`}
                 placeholder="0"
                 id="quantity"
                 name="quantity"
                 value={formData.quantity}
                 onChange={handleChange}
               />
+              {!isItemNameValid && (
+                <div className="form__error">
+                  <img
+                    className="form__error-icon"
+                    src="/src/assets/icons/error-24px.svg"
+                    alt="error icon"
+                  />
+                  <p className="form__error-text">This field is required</p>
+                </div>
+              )}
             </>
           )}
         </div>
 
         {/* -=-=-=-WAREHOUSE-=-=-=-= */}
-        <label htmlFor="warehouse" className="editInventory__detail-label">
+        <label htmlFor="warehouse" className="addInventory__detail-label">
           Warehouse
         </label>
-        <div className="editInventory__select-container">
+        <div className="addInventory__select-container">
           <select
             name="warehouse"
             id="warehouse"
