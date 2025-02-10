@@ -40,7 +40,8 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       setQuantity(data.quantity);
 
       // Set the warehouse to the corresponding warehouse_id from inventory
-      setWarehouse(data.warehouse_id);
+      setWarehouse(data.warehouse_name);
+      console.log(data)
     } catch (error) {
       console.error("ERROR: " + error);
     }
@@ -213,7 +214,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
               value={category}
               onChange={changeCategoryHandle}
             >
-              <option value="Select">Please select</option>
               <option value="Electronics">Electronics</option>
               <option value="Gear">Gear</option>
               <option value="Apparel">Apparel</option>
@@ -293,7 +293,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={warehouse}
             onChange={changeWarehouseHandle}
           >
-            <option value="Select">Please select</option>
             {warehouses.map((wh) => (
               <option key={wh.id} value={wh.id}>
                 {wh.warehouse_name}
