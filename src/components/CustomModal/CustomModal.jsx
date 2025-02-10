@@ -32,9 +32,9 @@ function CustomModal({ warehouse, closeModal, deleteWarehouse }) {
             fill="#13182C"
           />
         </svg>
-        <p className="modal-text">
+        <div className="modal-text">
           <p className="modal-title">Delete {warehouse.warehouse_name}?</p>
-        </p>
+        </div>
         <article className="modal-article">
           Please confirm that you'd like to delete the{" "}
           {warehouse.warehouse_name} from the list of warehouses. You won't be

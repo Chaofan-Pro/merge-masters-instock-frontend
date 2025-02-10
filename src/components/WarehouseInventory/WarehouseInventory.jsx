@@ -4,9 +4,9 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/Icons/sort-24px.svg";
-import CustomModal from "../CustomModal/CustomModal";
 import axios from "axios";
 import React from "react";
+import InventoryModal from "../InventoryModal/InventoryModal";
 import "./WarehouseInventory.scss";
 
 const baseUrl = import.meta.env.VITE_API_URL;
@@ -14,6 +14,8 @@ const baseUrl = import.meta.env.VITE_API_URL;
 const WarehouseInventory = () => {
   const { id } = useParams();
   const [warehouseInventory, setWarehouseInventory] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fetchWarehouseInventoryDetail = async (id) => {
     try {
@@ -25,9 +27,33 @@ const WarehouseInventory = () => {
       console.error("ERROR: " + error);
     }
   };
+
   useEffect(() => {
     fetchWarehouseInventoryDetail(id);
   }, [id]);
+
+  const closeModal = () => setIsModalOpen(false);
+
+  const openModal = (item) => {
+    setSelectedItem(item); 
+    setIsModalOpen(true); 
+  };
+
+  const deleteInventory = async () => {
+    if (!selectedItem) {
+      console.error("No item selected for deletion");
+      return;  
+    }
+
+    try {
+      await axios.delete(baseUrl + `/api/inventories/${selectedItem.id}`);
+      setWarehouseInventory(warehouseInventory.filter(item => item.id !== selectedItem.id)); // Remove the item from the list
+      closeModal();  
+    } catch (error) {
+      console.error("Failed to delete inventory item:", error);
+    }
+  };
+
 
   if (!warehouseInventory) return <p>No Warehouse Inventory Details Found</p>;
   return (
@@ -147,7 +173,7 @@ const WarehouseInventory = () => {
             <p className="inventory-item__text">{item.quantity}</p>
             <div className="inventory-item__actions">
               {/* Link to Modal */}
-              <button className="inventory-item__action-icon">
+              <button className="single-inventory-item__action-icon" onClick={() => openModal(item)}>
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <Link to={`/inventory/edit/${item.id}`}>
@@ -159,6 +185,13 @@ const WarehouseInventory = () => {
           </div>
         </React.Fragment>
       ))}
+      {isModalOpen && selectedItem && (
+        <InventoryModal
+          inventory={selectedItem}
+          closeModal={closeModal}
+          deleteInventory={deleteInventory}
+        />
+      )}
     </section>
   );
 };
