@@ -1,0 +1,47 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixin" as *;
+
+.button {
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+  font-size: 0.8125rem;
+  border-radius: 20px;
+  padding: 0.5rem;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+  @include tablet {
+    font-size: 0.875rem;
+    width: auto;
+    padding: 0.5rem 1rem;
+  }
+  &__container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background-color: rgba($background-color2, 0.7);
+    @include tablet {
+      padding: 1rem 2rem;
+      justify-content: flex-end;
+    }
+  }
+  &__cancel {
+    @extend .button;
+    color: $secondary-color1;
+    background-color: $primary-color3;
+    border: 1px solid $secondary-color2;
+    &:hover {
+      color: $primary-color2;
+      border: 1px solid $primary-color2;
+    }
+  }
+  &__save {
+    @extend .button;
+    color: $primary-color3;
+    background-color: $primary-color2;
+    border: 1px solid $primary-color2;
+    &:hover {
+      background-color: $background-color1;
+      border: 1px solid $background-color1;
+    }
+  }
+}

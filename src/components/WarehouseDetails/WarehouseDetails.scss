@@ -1,0 +1,164 @@
+@use "../../styles/partials/global";
+@use "../../styles/partials/mixin" as *;
+@use "../../styles/partials/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300;400;600;700;900&display=swap");
+
+.warehouse-detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-heading {
+  display: flex;
+  flex-direction: row;
+  padding-top: 2rem;
+  padding-bottom: 1.3125rem;
+  margin: 0 1.5rem;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @include tablet {
+    margin: 0 2rem;
+  }
+
+  @include desktop {
+    margin: 0 2.5rem;
+  }
+
+  &__edit-button {
+    width: 2.25rem;
+    height: 2.25rem;
+    background-color: $primary-color2;
+    border: none;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include tablet {
+      height: 2.375rem;
+      width: auto;
+      gap: 0.25rem;
+      padding: 0 1rem;
+      border-radius: 1.25rem;
+    }
+
+    img {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    &:hover {
+      background-color: $background-color1;
+    }
+  }
+
+  &__edit-text {
+    display: none;
+
+    @include tablet {
+      display: inline;
+      color: $primary-color3;
+      line-height: 1.375rem;
+      font-size: 0.875rem;
+      font-family: "Titillium Web", sans-serif !important;
+      font-weight: 600;
+    }
+  }
+}
+
+.warehouse-details {
+  border-top: 1px solid $secondary-color2;
+
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    border-bottom: none;
+    padding: 1.5rem 0;
+    gap: 7.5rem;
+  }
+
+  @include desktop {
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  &__address-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    padding-top: 1rem;
+
+    @include tablet {
+      padding: 0 0 0 2rem;
+    }
+
+    @include desktop {
+      padding: 0 0 0 2.5rem;
+    }
+  }
+
+  &__heading {
+    line-height: 1rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: $secondary-color1;
+    padding-bottom: 0.25rem;
+
+    @include tablet {
+      line-height: 1.125rem;
+      font-size: 0.75rem;
+    }
+  }
+
+  &__text {
+    line-height: 1.25rem;
+    font-size: 0.8125rem;
+    font-weight: 400;
+    color: $primary-color1;
+
+    @include tablet {
+      line-height: 1.375rem;
+      font-size: 0.875rem;
+    }
+
+    &--mobile {
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+      @include tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__contact-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0 1.5rem;
+    padding-top: 2.25rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+
+    @include tablet {
+      padding: 0 0 0 2.5rem;
+      border-left: 1px solid $secondary-color2;
+      gap: 1.5rem;
+    }
+
+    @include desktop {
+      padding: 0 12rem 0 2.5rem;
+      gap: 7.5rem;
+    }
+  }
+
+  &__contact-details {
+    display: flex;
+    flex-direction: column;
+  }
+}
