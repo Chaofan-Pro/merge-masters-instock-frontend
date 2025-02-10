@@ -2,9 +2,17 @@ import "./AddFormInventoryDetails.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddFormInventoryDetails = ({ formData, setFormData }) => {
+const AddFormInventoryDetails = ({
+  formData,
+  setFormData,
+  isItemNameValid,
+  setItemNameValid,
+  isDescriptionValid,
+  setDescriptionValid,
+  isQuantityValid,
+  setQuantityValid,
+}) => {
   const [warehouses, setWarehouses] = useState([]);
-  const [isItemNameValid, setItemNameValid] = useState(true); // Define the validation state
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -28,10 +36,9 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // If itemName is being updated, validate it
-    if (name === "itemName") {
-      setItemNameValid(value.trim() !== ""); // Set validation state
-    }
+    setItemNameValid(formData.itemName);
+    setDescriptionValid(formData.description);
+    setQuantityValid(formData.quantity);
 
     setFormData((prevData) => ({
       ...prevData,
@@ -76,7 +83,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
           </label>
           <textarea
             className={`addInventory__detail-textarea ${
-              !isItemNameValid ? "invalid" : ""
+              !isDescriptionValid ? "invalid" : ""
             }`}
             placeholder="Please enter a brief item description..."
             id="description"
@@ -84,7 +91,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             value={formData.description}
             onChange={handleChange}
           ></textarea>
-          {!isItemNameValid && (
+          {!isDescriptionValid && (
             <div className="form__error">
               <img
                 className="form__error-icon"
@@ -161,7 +168,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
               <input
                 type="number"
                 className={`addInventory__quantity ${
-                  !isItemNameValid ? "invalid" : ""
+                  !isQuantityValid ? "invalid" : ""
                 }`}
                 placeholder="0"
                 id="quantity"
@@ -169,7 +176,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
                 value={formData.quantity}
                 onChange={handleChange}
               />
-              {!isItemNameValid && (
+              {!isQuantityValid && (
                 <div className="form__error">
                   <img
                     className="form__error-icon"

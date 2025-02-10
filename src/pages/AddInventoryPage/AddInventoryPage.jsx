@@ -15,9 +15,17 @@ function AddInventory() {
     warehouse: "Select",
   });
 
+  const [isItemNameValid, setItemNameValid] = useState(true);
+  const [isDescriptionValid, setDescriptionValid] = useState(true);
+  const [isQuantityValid, setQuantityValid] = useState(true);
+
   const handleAddItem = async () => {
     const { itemName, description, category, status, quantity, warehouse } =
       formData;
+
+    setItemNameValid(itemName);
+    setDescriptionValid(description);
+    setQuantityValid(quantity);
 
     try {
       const newInventory = {
@@ -47,7 +55,16 @@ function AddInventory() {
   return (
     <div className="addInventory">
       <FormHeader backLink={-1} title={"Add New Inventory"} />
-      <AddFormInventoryDetails formData={formData} setFormData={setFormData} />
+      <AddFormInventoryDetails
+        formData={formData}
+        setFormData={setFormData}
+        isItemNameValid={isItemNameValid}
+        setItemNameValid={setItemNameValid}
+        isDescriptionValid={isDescriptionValid}
+        setDescriptionValid={setDescriptionValid}
+        isQuantityValid={isQuantityValid}
+        setQuantityValid={setQuantityValid}
+      />
       <BottomButtons link={-1} text="Save" onClick={handleAddItem} />
     </div>
   );
