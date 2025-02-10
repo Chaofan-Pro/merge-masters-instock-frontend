@@ -2,9 +2,21 @@ import "./AddFormInventoryDetails.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const AddFormInventoryDetails = ({ formData, setFormData }) => {
+const AddFormInventoryDetails = ({
+  formData,
+  setFormData,
+  isItemNameValid,
+  setItemNameValid,
+  isDescriptionValid,
+  setDescriptionValid,
+  isQuantityValid,
+  setQuantityValid,
+  isCategoryValid,
+  setCategoryValid,
+  isWarehouseValid,
+  setWarehouseValid,
+}) => {
   const [warehouses, setWarehouses] = useState([]);
-  const [isItemNameValid, setItemNameValid] = useState(true); // Define the validation state
 
   useEffect(() => {
     const fetchWarehouses = async () => {
@@ -24,19 +36,29 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
     fetchWarehouses();
   }, []);
 
-  // Handle form input change and validate item name
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // If itemName is being updated, validate it
-    if (name === "itemName") {
-      setItemNameValid(value.trim() !== ""); // Set validation state
-    }
 
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+    if (name === "itemName") {
+      setItemNameValid(value);
+    }
+    if (name === "description") {
+      setDescriptionValid(value);
+    }
+    if (name === "quantity") {
+      setQuantityValid(value);
+    }
+    if (name === "category") {
+      setCategoryValid(value);
+    }
+    if (name === "warehouse") {
+      setWarehouseValid(value);
+    }
   };
 
   return (
@@ -44,7 +66,6 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
       <div className="addInventory__details-container">
         <h3 className="addInventory__subheader-title">Item Details</h3>
         <div className="addInventory__detail-form">
-          {/* -=-=-=-ITEM NAME-=-=-=-= */}
           <label htmlFor="name" className="addInventory__detail-label">
             Item Name
           </label>
@@ -70,13 +91,12 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             </div>
           )}
 
-          {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="addInventory__detail-label">
             Description
           </label>
           <textarea
             className={`addInventory__detail-textarea ${
-              !isItemNameValid ? "invalid" : ""
+              !isDescriptionValid ? "invalid" : ""
             }`}
             placeholder="Please enter a brief item description..."
             id="description"
@@ -84,7 +104,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             value={formData.description}
             onChange={handleChange}
           ></textarea>
-          {!isItemNameValid && (
+          {!isDescriptionValid && (
             <div className="form__error">
               <img
                 className="form__error-icon"
@@ -95,7 +115,6 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             </div>
           )}
 
-          {/* -=-=-=-CATEGORY-=-=-=-= */}
           <label htmlFor="category" className="addInventory__detail-label">
             Category
           </label>
@@ -103,7 +122,9 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             <select
               name="category"
               id="category"
-              className="category__select"
+              className={`category__select ${
+                !isQuantityValid ? "invalid" : ""
+              }`}
               value={formData.category}
               onChange={handleChange}
             >
@@ -115,6 +136,16 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
               <option value="Health">Health</option>
             </select>
           </div>
+          {isCategoryValid === "Select" && (
+            <div className="form__error">
+              <img
+                className="form__error-icon"
+                src="/src/assets/icons/error-24px.svg"
+                alt="error icon"
+              />
+              <p className="form__error-text">This field is required</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -122,8 +153,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
         <div className="addInventory__availability-form">
           <h3 className="addInventory__subheader-title">Item Availability</h3>
 
-          {/* -=-=-=-STATUS-=-=-=-= */}
-          <label htmlFor="status" className="addInventory__detail-label">
+          <label htmlFor="instock" className="addInventory__detail-label">
             Status
           </label>
           <div className="stock__status">
@@ -152,7 +182,6 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             </label>
           </div>
 
-          {/* -=-=-=-QUANTITY-=-=-=-= */}
           {formData.status === "In Stock" && (
             <>
               <label htmlFor="quantity" className="addInventory__detail-label">
@@ -161,7 +190,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
               <input
                 type="number"
                 className={`addInventory__quantity ${
-                  !isItemNameValid ? "invalid" : ""
+                  !isQuantityValid ? "invalid" : ""
                 }`}
                 placeholder="0"
                 id="quantity"
@@ -169,7 +198,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
                 value={formData.quantity}
                 onChange={handleChange}
               />
-              {!isItemNameValid && (
+              {!isQuantityValid && (
                 <div className="form__error">
                   <img
                     className="form__error-icon"
@@ -183,7 +212,6 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
           )}
         </div>
 
-        {/* -=-=-=-WAREHOUSE-=-=-=-= */}
         <label htmlFor="warehouse" className="addInventory__detail-label">
           Warehouse
         </label>
@@ -191,7 +219,7 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
           <select
             name="warehouse"
             id="warehouse"
-            className="warehouse__select"
+            className={`warehouse__select ${!isQuantityValid ? "invalid" : ""}`}
             value={formData.warehouse}
             onChange={handleChange}
           >
@@ -203,6 +231,16 @@ const AddFormInventoryDetails = ({ formData, setFormData }) => {
             ))}
           </select>
         </div>
+        {isWarehouseValid === "Select" && (
+          <div className="form__error">
+            <img
+              className="form__error-icon"
+              src="/src/assets/icons/error-24px.svg"
+              alt="error icon"
+            />
+            <p className="form__error-text">This field is required</p>
+          </div>
+        )}
       </div>
     </form>
   );

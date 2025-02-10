@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import InventoryHeader from "../../components/InventoryHeader/InventoryHeader";
 import InventoryList from "../../components/InventoryList/InventoryList";
-import InventoryModal from "../../components/InventoryModal/InventoryModal";  
+import InventoryModal from "../../components/InventoryModal/InventoryModal";
 import "./InventoryPage.scss";
 
-// Fix: Use correct baseUrl from environment variable
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const InventoryPage = () => {
@@ -17,7 +16,7 @@ const InventoryPage = () => {
   }, []);
 
   const fetchInventories = () => {
-    fetch(`${baseUrl}/api/inventories`)  // Fix: Replace API_URL with baseUrl
+    fetch(`${baseUrl}/api/inventories`)
       .then((response) => response.json())
       .then((data) => setInventories(data))
       .catch((error) => console.error("Error getting inventories:", error));
@@ -33,7 +32,7 @@ const InventoryPage = () => {
   };
 
   const deleteInventory = (id) => {
-    fetch(`${baseUrl}/api/inventories/${id}`, {  // Fix: Replace API_URL with baseUrl
+    fetch(`${baseUrl}/api/inventories/${id}`, {
       method: "DELETE",
     })
       .then(() => fetchInventories())
@@ -42,11 +41,8 @@ const InventoryPage = () => {
 
   return (
     <>
-      <InventoryHeader/>
-      <InventoryList
-        inventories={inventories}
-        openModal={openModal}
-      />
+      <InventoryHeader />
+      <InventoryList inventories={inventories} openModal={openModal} />
       {selectedInventory && isModalOpen && (
         <InventoryModal
           inventory={selectedInventory}

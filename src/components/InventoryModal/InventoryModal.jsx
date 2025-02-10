@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import "./InventoryModal.scss"; // Update this to use the appropriate stylesheet for InventoryModal
+import "./InventoryModal.scss";
 
 Modal.setAppElement("#root");
 
@@ -32,12 +32,12 @@ function InventoryModal({ inventory, closeModal, deleteInventory }) {
             fill="#13182C"
           />
         </svg>
-        <p className="modal-text">
+        <div className="modal-text">
           <p className="modal-title">Delete {inventory.item_name}?</p>
-        </p>
+        </div>
         <article className="modal-article">
-          Please confirm that you'd like to delete the{" "}
-          {inventory.item_name} from the list of inventories. This action cannot be undone.
+          Please confirm that you'd like to delete the {inventory.item_name}{" "}
+          from the list of inventories. This action cannot be undone.
         </article>
 
         <div className="modal-btn">

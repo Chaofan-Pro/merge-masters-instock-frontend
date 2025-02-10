@@ -1,4 +1,3 @@
-// import { useState} from "react";
 import { Link } from "react-router-dom";
 import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
@@ -10,14 +9,6 @@ import "./WarehouseList.scss";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function WarehouseList({ openModal, warehouses }) {
-  // const [searchTerm, setSearchTerm] = useState("");
-  // const handleSearch = (e) => {
-  //   setSearchTerm(e.target.value);
-  // };
-  // const filteredWarehouses = warehouses.filter((warehouse) =>
-  //   warehouse.warehouse_name.toLowerCase().includes(searchTerm.toLowerCase())
-  // );
-
   return (
     <div className="warehouse">
       <div className="warehouse__container">
@@ -36,8 +27,8 @@ function WarehouseList({ openModal, warehouses }) {
             alt="Search"
           />
         </div>
-        <Link to="/warehouses/add"  
-        className="warehouse__add-button">+ Add New Warehouse
+        <Link to="/warehouses/add" className="warehouse__add-button">
+          + Add New Warehouse
         </Link>
       </div>
       <div className="warehouse__table-container">
@@ -50,9 +41,14 @@ function WarehouseList({ openModal, warehouses }) {
               {/* Warehouse Info */}
               <div className="warehouse__info">
                 <p className="warehouse__heading">WAREHOUSE</p>
-                
-                <Link to={`/warehouses/${warehouse.id}`} className="warehouse__name-button">
-                  <div className="warehouse__name">{warehouse.warehouse_name}</div>
+
+                <Link
+                  to={`/warehouses/${warehouse.id}`}
+                  className="warehouse__name-button"
+                >
+                  <div className="warehouse__name">
+                    {warehouse.warehouse_name}
+                  </div>
                   <img
                     src={rightArrowIcon}
                     alt="Go to warehouse"
@@ -91,7 +87,10 @@ function WarehouseList({ openModal, warehouses }) {
               >
                 <img src={deleteIcon} alt="Delete" />
               </button>
-              <Link to={`/warehouses/edit/${warehouse.id}`} className="warehouse__action warehouse__action--edit">
+              <Link
+                to={`/warehouses/edit/${warehouse.id}`}
+                className="warehouse__action warehouse__action--edit"
+              >
                 <img src={editIcon} alt="Edit" />
               </Link>
             </div>

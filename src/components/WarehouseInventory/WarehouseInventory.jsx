@@ -35,25 +35,26 @@ const WarehouseInventory = () => {
   const closeModal = () => setIsModalOpen(false);
 
   const openModal = (item) => {
-    setSelectedItem(item); 
-    setIsModalOpen(true); 
+    setSelectedItem(item);
+    setIsModalOpen(true);
   };
 
   const deleteInventory = async () => {
     if (!selectedItem) {
       console.error("No item selected for deletion");
-      return;  
+      return;
     }
 
     try {
       await axios.delete(baseUrl + `/api/inventories/${selectedItem.id}`);
-      setWarehouseInventory(warehouseInventory.filter(item => item.id !== selectedItem.id)); // Remove the item from the list
-      closeModal();  
+      setWarehouseInventory(
+        warehouseInventory.filter((item) => item.id !== selectedItem.id)
+      );
+      closeModal();
     } catch (error) {
       console.error("Failed to delete inventory item:", error);
     }
   };
-
 
   if (!warehouseInventory) return <p>No Warehouse Inventory Details Found</p>;
   return (
@@ -97,7 +98,6 @@ const WarehouseInventory = () => {
       </div>
       {warehouseInventory.map((item, index) => (
         <React.Fragment key={index}>
-          {/* Warehouse Inventory List for Mobile */}
           <div key={index} className="single-inventory-item">
             <div className="single-inventory-item--row">
               <div className="single-inventory-item__detail">
@@ -137,7 +137,6 @@ const WarehouseInventory = () => {
               </div>
             </div>
             <div className="single-inventory-item--row">
-              {/* Link to Delete Modal */}
               <button className="single-inventory-item__action-icon">
                 <img src={deleteIcon} alt="Delete" />
               </button>
@@ -148,7 +147,7 @@ const WarehouseInventory = () => {
               </Link>
             </div>
           </div>
-          {/* Warehouse Inventory List for tablet and desktop */}
+
           <div className="inventory-item">
             <Link to={`/inventory/${item.id}`}>
               <h4 className="inventory-item__text inventory-item__text--indigo">
@@ -172,8 +171,10 @@ const WarehouseInventory = () => {
             </div>
             <p className="inventory-item__text">{item.quantity}</p>
             <div className="inventory-item__actions">
-              {/* Link to Modal */}
-              <button className="single-inventory-item__action-icon" onClick={() => openModal(item)}>
+              <button
+                className="single-inventory-item__action-icon"
+                onClick={() => openModal(item)}
+              >
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <Link to={`/inventory/edit/${item.id}`}>

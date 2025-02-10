@@ -28,7 +28,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   const [isQuantityValid, setQuantityValid] = useState(true);
   const [isWarehouseValid, setWarehouseValid] = useState(true);
 
-  // Fetch inventory details
   const fetchInventoryDetail = async () => {
     try {
       const { data } = await axios.get(baseUrl + `/api/inventories/${id}`);
@@ -39,14 +38,13 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       setStatus(data.status);
       setQuantity(data.quantity);
 
-      // Set the warehouse to the corresponding warehouse_id from inventory
-      setWarehouse(data.warehouse_id);
+      setWarehouse(data.warehouse_name);
+      console.log(data);
     } catch (error) {
       console.error("ERROR: " + error);
     }
   };
 
-  // Fetch warehouses
   const fetchWarehouses = async () => {
     try {
       const { data } = await axios.get(baseUrl + "/api/warehouses");
@@ -57,12 +55,12 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   };
 
   useEffect(() => {
-    fetchWarehouses(); // Fetch warehouses
+    fetchWarehouses();
   }, []);
 
   useEffect(() => {
     if (warehouses.length > 0 && id) {
-      fetchInventoryDetail(); // Fetch inventory details after fetching warehouses
+      fetchInventoryDetail();
     }
   }, [warehouses, id]);
 
@@ -84,7 +82,7 @@ const FormInventoryDetails = forwardRef((props, ref) => {
   const changeStatusHandle = (e) => {
     setStatus(e.target.value);
     if (e.target.value === "Out of Stock") {
-      setQuantity(""); // Clear quantity if status is Out of Stock
+      setQuantity("");
     }
   };
 
@@ -114,7 +112,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       warehouse !== "Select"
     ) {
       try {
-        // Find warehouse from warehouse list using warehouse_id
         const selectedWarehouse = warehouses.find(
           (wh) => wh.id === parseInt(warehouse)
         );
@@ -125,7 +122,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           return false;
         }
 
-        // If the status is "Out of Stock", set quantity to 0
         const inventoryData = {
           item_name: itemName,
           description,
@@ -137,7 +133,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
 
         console.log("Sending data:", inventoryData);
 
-        // Update the inventory item
         await axios.put(baseUrl + `/api/inventories/${id}`, inventoryData);
 
         fetchInventoryDetail();
@@ -163,7 +158,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
       <div className="editInventory__details-container">
         <h3 className="editInventory__subheader-title">Item Details</h3>
         <div className="editInventory__detail-form">
-          {/* -=-=-=-ITEM NAME-=-=-=-= */}
           <label htmlFor="name" className="editInventory__detail-label">
             Item Name
           </label>
@@ -185,7 +179,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             />
           )}
 
-          {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="editInventory__detail-label">
             Description
           </label>
@@ -201,7 +194,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           ></textarea>
           {!isDescriptionValid && <Error isInputValid={isDescriptionValid} />}
 
-          {/* -=-=-=-CATEGORY-=-=-=-= */}
           <label htmlFor="category" className="editInventory__detail-label">
             Category
           </label>
@@ -213,7 +205,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
               value={category}
               onChange={changeCategoryHandle}
             >
-              <option value="Select">Please select</option>
               <option value="Electronics">Electronics</option>
               <option value="Gear">Gear</option>
               <option value="Apparel">Apparel</option>
@@ -229,7 +220,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
         <div className="editInventory__availability-form">
           <h3 className="editInventory__subheader-title">Item Availability</h3>
 
-          {/* -=-=-=-STATUS-=-=-=-= */}
           <label htmlFor="status" className="editInventory__detail-label">
             Status
           </label>
@@ -259,7 +249,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             </label>
           </div>
 
-          {/* -=-=-=-QUANTITY-=-=-=-= */}
           {status === "In Stock" && (
             <>
               <label htmlFor="quantity" className="editInventory__detail-label">
@@ -281,7 +270,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
           )}
         </div>
 
-        {/* -=-=-=-WAREHOUSE-=-=-=-= */}
         <label htmlFor="warehouse" className="editInventory__detail-label">
           Warehouse
         </label>
@@ -293,7 +281,6 @@ const FormInventoryDetails = forwardRef((props, ref) => {
             value={warehouse}
             onChange={changeWarehouseHandle}
           >
-            <option value="Select">Please select</option>
             {warehouses.map((wh) => (
               <option key={wh.id} value={wh.id}>
                 {wh.warehouse_name}
