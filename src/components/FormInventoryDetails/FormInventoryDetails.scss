@@ -23,12 +23,23 @@ input[type="number"]::-webkit-inner-spin-button {
     margin-bottom: 0.5rem;
   }
 }
+.editInventory__quantity {
+  &:focus-visible {
+    outline: none;
+    border: 1px solid $primary-color2;
+  }
+}
 
 .editInventory__quantity.invalid {
   margin-bottom: 0;
   border: 2px solid $supporting-color2;
 }
-
+.editInventory__detail-input {
+  &:focus-visible {
+    outline: none;
+    border: 1px solid $primary-color2;
+  }
+}
 .editInventory__detail-input.invalid {
   margin-bottom: 0;
   border: 2px solid $supporting-color2;
@@ -36,6 +47,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .editInventory__detail-label {
   margin-top: 0.5rem;
+}
+.editInventory__detail-textarea {
+  &:focus-visible {
+    outline: none;
+    border: 1px solid $primary-color2;
+  }
 }
 
 .editInventory__detail-textarea.invalid {
