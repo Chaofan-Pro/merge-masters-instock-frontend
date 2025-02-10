@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import edit from "../../assets/icons/edit-white-24px.svg";
@@ -7,7 +7,7 @@ import "./WarehouseDetails.scss";
 const baseUrl = import.meta.env.VITE_API_URL;
 
 const WarehouseDetails = ({ warehouse, fetchWarehouseDetail }) => {
-  const { id } = useParams(); // Get warehouse ID from URL
+  const { id } = useParams();
 
   useEffect(() => {
     fetchWarehouseDetail(id);

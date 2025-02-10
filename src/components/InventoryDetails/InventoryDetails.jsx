@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import edit from "../../assets/icons/edit-white-24px.svg";
-import axios from "axios";
 import "./InventoryDetails.scss";
 
 const InventoryDetails = ({ fetchInventoryDetail, inventory }) => {

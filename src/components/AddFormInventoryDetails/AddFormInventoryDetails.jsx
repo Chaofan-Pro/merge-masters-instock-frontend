@@ -36,7 +36,6 @@ const AddFormInventoryDetails = ({
     fetchWarehouses();
   }, []);
 
-  // Handle form input change and validate item name
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -45,11 +44,6 @@ const AddFormInventoryDetails = ({
       [name]: value,
     }));
 
-    // setItemNameValid(formData.itemName);
-    // setDescriptionValid(formData.description);
-    // setQuantityValid(formData.quantity);
-    // setCategoryValid(formData.category);
-    // setWarehouseValid(formData.warehouse);
     if (name === "itemName") {
       setItemNameValid(value);
     }
@@ -72,7 +66,6 @@ const AddFormInventoryDetails = ({
       <div className="addInventory__details-container">
         <h3 className="addInventory__subheader-title">Item Details</h3>
         <div className="addInventory__detail-form">
-          {/* -=-=-=-ITEM NAME-=-=-=-= */}
           <label htmlFor="name" className="addInventory__detail-label">
             Item Name
           </label>
@@ -98,7 +91,6 @@ const AddFormInventoryDetails = ({
             </div>
           )}
 
-          {/* -=-=-=-DESCRIPTION-=-=-=-= */}
           <label htmlFor="description" className="addInventory__detail-label">
             Description
           </label>
@@ -123,7 +115,6 @@ const AddFormInventoryDetails = ({
             </div>
           )}
 
-          {/* -=-=-=-CATEGORY-=-=-=-= */}
           <label htmlFor="category" className="addInventory__detail-label">
             Category
           </label>
@@ -162,7 +153,6 @@ const AddFormInventoryDetails = ({
         <div className="addInventory__availability-form">
           <h3 className="addInventory__subheader-title">Item Availability</h3>
 
-          {/* -=-=-=-STATUS-=-=-=-= */}
           <label htmlFor="instock" className="addInventory__detail-label">
             Status
           </label>
@@ -192,7 +182,6 @@ const AddFormInventoryDetails = ({
             </label>
           </div>
 
-          {/* -=-=-=-QUANTITY-=-=-=-= */}
           {formData.status === "In Stock" && (
             <>
               <label htmlFor="quantity" className="addInventory__detail-label">
@@ -223,7 +212,6 @@ const AddFormInventoryDetails = ({
           )}
         </div>
 
-        {/* -=-=-=-WAREHOUSE-=-=-=-= */}
         <label htmlFor="warehouse" className="addInventory__detail-label">
           Warehouse
         </label>

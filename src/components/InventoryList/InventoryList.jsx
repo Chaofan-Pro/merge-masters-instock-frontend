@@ -56,7 +56,6 @@ const InventoryList = ({ openModal, inventories }) => {
       </div>
       {inventories.map((item, index) => (
         <React.Fragment key={index}>
-          {/* Inventory List for Mobile */}
           <div className="single-inventory-item">
             <div className="single-inventory-item--row">
               <div className="single-inventory-item__detail">
@@ -103,7 +102,10 @@ const InventoryList = ({ openModal, inventories }) => {
               </div>
             </div>
             <div className="single-inventory-item--row">
-              <button className="single-inventory-item__action-icon" onClick={() => openModal(item)}>
+              <button
+                className="single-inventory-item__action-icon"
+                onClick={() => openModal(item)}
+              >
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <Link to={`/inventory/edit/${item.id}`}>
@@ -113,7 +115,7 @@ const InventoryList = ({ openModal, inventories }) => {
               </Link>
             </div>
           </div>
-          {/* Inventory List for tablet and desktop */}
+
           <div className="inventory-item">
             <Link to={`/inventory/${item.id}`}>
               <h4 className="inventory-item__text inventory-item__text--indigo">

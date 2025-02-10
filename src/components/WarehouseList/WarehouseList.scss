@@ -2,16 +2,6 @@
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
 
-// Global styles
-// body {
-//   background-color: $background-color2;
-//   font-size: 13px;
-//   font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-// }
-// .add-btn{
-//   width: 100%;
-// }
-
 .warehouse {
   width: 100%;
   width: 100%;
@@ -358,10 +348,6 @@
       font-size: 12px;
     }
 
-    // &__sort-add {
-    //   // gap: 10%;
-    // }
-
     &__sort-icon {
       width: 16px;
       height: 16px;
@@ -377,11 +363,6 @@
   width: 100%;
 }
 
-// .list-table__sort-name{
-//   @include tablet{
-//     padding-left: 0;
-//   }
-// }
 .list-table__sort-contact-name {
   @include tablet {
     padding-left: 3.5rem;
