@@ -1,12 +1,12 @@
 import React from "react";
 import Modal from "react-modal";
-import "./CustomModal.scss";
+import "./InventoryModal.scss"; // Update this to use the appropriate stylesheet for InventoryModal
 
 Modal.setAppElement("#root");
 
-function CustomModal({ warehouse, closeModal, deleteWarehouse }) {
+function InventoryModal({ inventory, closeModal, deleteInventory }) {
   const handleDelete = () => {
-    deleteWarehouse(warehouse.id);
+    deleteInventory(inventory.id);
     closeModal();
   };
 
@@ -32,13 +32,12 @@ function CustomModal({ warehouse, closeModal, deleteWarehouse }) {
             fill="#13182C"
           />
         </svg>
-        <div className="modal-text">
-          <p className="modal-title">Delete {warehouse.warehouse_name}?</p>
-        </div>
+        <p className="modal-text">
+          <p className="modal-title">Delete {inventory.item_name}?</p>
+        </p>
         <article className="modal-article">
           Please confirm that you'd like to delete the{" "}
-          {warehouse.warehouse_name} from the list of warehouses. You won't be
-          able to undo this action.
+          {inventory.item_name} from the list of inventories. This action cannot be undone.
         </article>
 
         <div className="modal-btn">
@@ -54,4 +53,4 @@ function CustomModal({ warehouse, closeModal, deleteWarehouse }) {
   );
 }
 
-export default CustomModal;
+export default InventoryModal;

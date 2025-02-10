@@ -163,7 +163,7 @@
 
   &__action-icon {
     border: none;
-    background-color: $primary-color3;
+    background: none;
   }
   @include tablet {
     display: none;

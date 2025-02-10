@@ -3,11 +3,10 @@ import editIcon from "../../assets/icons/edit-24px.svg";
 import deleteIcon from "../../assets/icons/delete_outline-24px.svg";
 import rightArrowIcon from "../../assets/icons/chevron_right-24px.svg";
 import sortIcon from "../../assets/Icons/sort-24px.svg";
-import CustomModal from "../CustomModal/CustomModal";
 import React from "react";
 import "../../components/WarehouseInventory/WarehouseInventory.scss";
 
-const InventoryList = ({ inventory }) => {
+const InventoryList = ({ openModal, inventories }) => {
   return (
     <section className="warehouse-inventory-details">
       <div className="inventory-heading-container">
@@ -55,10 +54,10 @@ const InventoryList = ({ inventory }) => {
           ACTIONS
         </h4>
       </div>
-      {inventory.map((item, index) => (
+      {inventories.map((item, index) => (
         <React.Fragment key={index}>
           {/* Inventory List for Mobile */}
-          <div key={index} className="single-inventory-item">
+          <div className="single-inventory-item">
             <div className="single-inventory-item--row">
               <div className="single-inventory-item__detail">
                 <h4 className="inventory-heading__text">INVENTORY ITEM</h4>
@@ -104,8 +103,7 @@ const InventoryList = ({ inventory }) => {
               </div>
             </div>
             <div className="single-inventory-item--row">
-              {/* Link to Delete Modal */}
-              <button className="single-inventory-item__action-icon">
+              <button className="single-inventory-item__action-icon" onClick={() => openModal(item)}>
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <Link to={`/inventory/edit/${item.id}`}>
@@ -140,8 +138,10 @@ const InventoryList = ({ inventory }) => {
             <p className="inventory-item__text">{item.quantity}</p>
             <p className="inventory-item__text">{item.warehouse_name}</p>
             <div className="inventory-item__actions">
-              {/* Link to Modal */}
-              <button className="inventory-item__action-icon">
+              <button
+                className="inventory__action inventory__action--delete"
+                onClick={() => openModal(item)}
+              >
                 <img src={deleteIcon} alt="Delete" />
               </button>
               <Link to={`/inventory/edit/${item.id}`}>

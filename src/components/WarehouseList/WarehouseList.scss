@@ -1,4 +1,3 @@
-
 @use "../../styles/partials/global" as *;
 @use "../../styles/partials/mixin" as *;
 @use "../../styles/partials/variables" as *;
@@ -31,8 +30,8 @@
     @include tablet {
       flex-direction: row;
       padding: 1rem;
-      margin-bottom: .6rem;
-      margin-top: .6rem;
+      margin-bottom: 0.6rem;
+      margin-top: 0.6rem;
     }
   }
   &__title-container {
@@ -79,32 +78,31 @@
     }
   }
 
-    input,
-    .warehouse__search {
-      border: none;
-      width: 95%;
-      height: 20px;
-      font-size: 13px;
-      line-height: 20px;
-      font-weight: 400;
-      padding: 8px 46px 8px 12px;
-      color: $secondary-color1;
-      outline: none;
-      font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-      font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-      font-family: "Titillium Web", Arial, Helvetica, sans-serif;
-      position: absolute;
-      left: 5px;
-    }
+  input,
+  .warehouse__search {
+    border: none;
+    width: 95%;
+    height: 20px;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 400;
+    padding: 8px 46px 8px 12px;
+    color: $secondary-color1;
+    outline: none;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+    font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+    position: absolute;
+    left: 5px;
+  }
 
-    .warehouse__search-icon {
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      top: 15%;
-      right: 12px;
-    }
-  
+  .warehouse__search-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 15%;
+    right: 12px;
+  }
 
   .warehouse__add-button {
     background-color: $primary-color2;
@@ -118,7 +116,7 @@
     margin-bottom: 1rem;
     width: 85%;
     text-align: center;
-   
+    margin-bottom: 0;
 
     @include tablet {
       width: 170px;
@@ -128,9 +126,7 @@
       margin-left: 1rem;
       margin-bottom: 0;
     }
-      margin-bottom: 0;
   }
-  
 
   &__table-container {
     display: none;
@@ -175,7 +171,6 @@
     flex-direction: column;
     gap: 8px;
     position: relative;
-    
 
     &:hover {
       background-color: rgba(46, 102, 229, 0.07);
@@ -239,11 +234,7 @@
       position: absolute;
       left: 22.5%;
       align-items: center;
-      
-      
     }
-
-
 
     @include desktop {
       display: flex;
@@ -272,12 +263,10 @@
         left: 41%;
         bottom: 35%;
         padding-bottom: 0;
-       
       }
       @include desktop {
         left: 50%;
         padding-bottom: 0;
-
       }
     }
 
@@ -358,7 +347,6 @@
     padding-left: 10px;
 
     @include desktop {
-     
     }
     width: 100%;
 
@@ -385,7 +373,7 @@
   }
 }
 
-.add-btn{
+.add-btn {
   width: 100%;
 }
 
@@ -394,35 +382,35 @@
 //     padding-left: 0;
 //   }
 // }
-.list-table__sort-contact-name{
-  @include tablet{
-    padding-left: 3.5rem;  
+.list-table__sort-contact-name {
+  @include tablet {
+    padding-left: 3.5rem;
   }
-  @include desktop{
+  @include desktop {
     padding-left: 14.5rem;
   }
 }
-.list-table__sort-contact-info{
-  @include tablet{
+.list-table__sort-contact-info {
+  @include tablet {
     padding-left: 2.2rem;
   }
-  @include desktop{
+  @include desktop {
     padding-left: 3.5rem;
   }
 }
-.table-header__actions{
-  @include tablet{
-      padding-left: 4rem;
-    }
-  @include desktop{
-      padding-left: 8rem;
+.table-header__actions {
+  @include tablet {
+    padding-left: 4rem;
+  }
+  @include desktop {
+    padding-left: 8rem;
   }
 }
-.list-table__sort-add{
-  @include tablet{
-    padding-left: 3rem
+.list-table__sort-add {
+  @include tablet {
+    padding-left: 3rem;
   }
-  @include desktop{
-    padding-left: 6rem
+  @include desktop {
+    padding-left: 6rem;
   }
 }
