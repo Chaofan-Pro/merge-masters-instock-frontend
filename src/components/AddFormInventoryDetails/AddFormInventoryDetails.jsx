@@ -11,6 +11,10 @@ const AddFormInventoryDetails = ({
   setDescriptionValid,
   isQuantityValid,
   setQuantityValid,
+  isCategoryValid,
+  setCategoryValid,
+  isWarehouseValid,
+  setWarehouseValid,
 }) => {
   const [warehouses, setWarehouses] = useState([]);
 
@@ -36,15 +40,34 @@ const AddFormInventoryDetails = ({
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setItemNameValid(formData.itemName);
-    setDescriptionValid(formData.description);
-    setQuantityValid(formData.quantity);
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+
+
+    // setItemNameValid(formData.itemName);
+    // setDescriptionValid(formData.description);
+    // setQuantityValid(formData.quantity);
+    // setCategoryValid(formData.category);
+    // setWarehouseValid(formData.warehouse);
+    if (name === "itemName") {
+      setItemNameValid(value);
+    }
+    if (name === "description") {
+      setDescriptionValid(value);
+    }
+    if (name === "quantity") {
+      setQuantityValid(value);
+    }
+    if (name === "category") {
+      setCategoryValid(value);
+    }
+    if (name === "warehouse") {
+      setWarehouseValid(value);
+    }
   };
+
 
   return (
     <form className="addInventory__form" id="form">
@@ -122,6 +145,16 @@ const AddFormInventoryDetails = ({
               <option value="Health">Health</option>
             </select>
           </div>
+          {isCategoryValid === "Select" && (
+            <div className="form__error">
+              <img
+                className="form__error-icon"
+                src="/src/assets/icons/error-24px.svg"
+                alt="error icon"
+              />
+              <p className="form__error-text">This field is required</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -210,6 +243,16 @@ const AddFormInventoryDetails = ({
             ))}
           </select>
         </div>
+        {isWarehouseValid === "Select" && (
+          <div className="form__error">
+            <img
+              className="form__error-icon"
+              src="/src/assets/icons/error-24px.svg"
+              alt="error icon"
+            />
+            <p className="form__error-text">This field is required</p>
+          </div>
+        )}
       </div>
     </form>
   );

@@ -18,6 +18,8 @@ function AddInventory() {
   const [isItemNameValid, setItemNameValid] = useState(true);
   const [isDescriptionValid, setDescriptionValid] = useState(true);
   const [isQuantityValid, setQuantityValid] = useState(true);
+  const [isCategoryValid, setCategoryValid] = useState("");
+  const [isWarehouseValid, setWarehouseValid] = useState("");
 
   const handleAddItem = async () => {
     const { itemName, description, category, status, quantity, warehouse } =
@@ -26,6 +28,8 @@ function AddInventory() {
     setItemNameValid(itemName);
     setDescriptionValid(description);
     setQuantityValid(quantity);
+    setCategoryValid(category);
+    setWarehouseValid(warehouse);
 
     try {
       const newInventory = {
@@ -64,6 +68,10 @@ function AddInventory() {
         setDescriptionValid={setDescriptionValid}
         isQuantityValid={isQuantityValid}
         setQuantityValid={setQuantityValid}
+        isCategoryValid={isCategoryValid}
+        setCategoryValid={setCategoryValid}
+        isWarehouseValid={isWarehouseValid}
+        setWarehouseValid={setWarehouseValid}
       />
       <BottomButtons link={-1} text="Save" onClick={handleAddItem} />
     </div>
